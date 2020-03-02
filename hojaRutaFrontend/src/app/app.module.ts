@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { DirectrizComponent } from './components/directriz/directriz.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { ProgramaPresupuestalComponent } from './components/programa-presupuestal/programa-presupuestal.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RegistroComponent } from './components/registro/registro.component';
     NavbarComponent,
     LoginComponent,
     DirectrizComponent,
-    RegistroComponent
+    RegistroComponent,
+    ProgramaPresupuestalComponent
   ],
   imports: [
     BrowserModule,
