@@ -5,10 +5,11 @@ import { DirectrizComponent } from './components/directriz/directriz.component';
 import { RegistroComponent } from './components/registro/registro.component';
 
 const routes: Routes = [
-  { path: "**", pathMatch: "full", redirectTo: "login" },
+  { path: "", pathMatch: "full", redirectTo: "login" },
   { path: "login", component: LoginComponent },
   { path: "directriz", component: DirectrizComponent },
-  { path: "registro", component: RegistroComponent }
+  { path: "registro", component: RegistroComponent },
+  { path: "**", pathMatch: "full", redirectTo: "login" }
 
 ];
 
