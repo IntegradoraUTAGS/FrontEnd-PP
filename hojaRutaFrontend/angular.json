@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "hojaDeRuta"
+    }
+  },
+  "defaultProject": "hojaDeRuta",
+  "cli": {
+    "analytics": "065b236b-7c61-47bf-8708-e3b093ad21b9"
+  }
 }
