@@ -1,0 +1,13 @@
+<h2>User List</h2>
+
+<div>
+    <button (click)="addUser()">
+        add
+    </button>
+</div>
+<ul class="user">
+ <li *ngFor="let p of user.usuarios; let i = index;">
+ <span class="badge"> {{i+1}}</span>"NOMBRE: "{{p.nombre}} "EMAIL: " {{p.email}}
+ <button class="delete" title="delete product" (click)="deleteUSer(p._id)">X</button>
+ </li>
+</ul>

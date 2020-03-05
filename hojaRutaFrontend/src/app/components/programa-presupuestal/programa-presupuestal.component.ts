@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class ProgramaPresupuestalComponent implements OnInit {
 
   constructor() { }
-
+  
   ngOnInit() {
+    
   }
-
+ 
 }
