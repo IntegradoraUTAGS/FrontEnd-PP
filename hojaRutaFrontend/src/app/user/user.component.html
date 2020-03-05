@@ -11,3 +11,35 @@
  <button class="delete" title="delete product" (click)="deleteUSer(p._id)">X</button>
  </li>
 </ul>
+<table mdbTable class="user">
+    <thead class="black white-text">
+      <tr>
+        <th *ngFor="let head of user.usuarios" scope="col">{{head.nombre}} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let el of user.usuarios">
+        <th scope="row">{{el.id}}</th>
+        <td>{{el.nombre}}</td>
+        <td>{{el.email}}</td>
+        <td>{{el.direccion}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <table mdbTable>
+    <thead class="grey lighten-1 black-text">
+      <tr>
+        <th *ngFor="let head of user.usuarios" scope="col">{{head.nombre}} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let el of user.usuarios">
+        <th scope="row">{{el._id}}</th>
+        <td>{{el.nombre}}</td>
+        <td>{{el.email}}</td>
+        <td>{{el.direccion}}</td>
+      </tr>
+    </tbody>
+  </table>
+

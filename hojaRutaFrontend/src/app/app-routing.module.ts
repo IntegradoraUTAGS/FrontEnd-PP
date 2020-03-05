@@ -5,6 +5,7 @@ import { DirectrizComponent } from './components/directriz/directriz.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ProgramaPresupuestalComponent } from './components/programa-presupuestal/programa-presupuestal.component';
 import { UserComponent } from './user/user.component';
+import { UserAddComponent } from './user-add/user-add.component';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "login" },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: "directriz", component: DirectrizComponent },
   { path: "presupuesto", component: ProgramaPresupuestalComponent },
   { path: "registro", component: RegistroComponent },
-  { path: "login", component: UserComponent},
+  { path: "user", component: UserComponent},
+  { path: "user-add", component: UserAddComponent},
   { path: "**", pathMatch: "full", redirectTo: "login" },
 
 ];

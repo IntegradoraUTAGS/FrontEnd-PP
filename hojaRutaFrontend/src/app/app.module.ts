@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserComponent } from './user/user.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 const appRoutes: Routes = [
   {
 path: 'user',
