@@ -1,11 +1,12 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <h2>User List</h2>
   <table class="table">
-    <thead class="thead-dark">
+    <thead class="thead-green">
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Status</th>
+        <th scope="col">Email</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
         <th scope="col">Eliminar</th>
         <th scope="col"> Add</th>
       </tr>
@@ -15,14 +16,18 @@
             <th scope="col">{{el.estado}}</th>
             <th scope="col">{{el.email}}</th>
             <th scope="col">{{el.nombre}}</th>
-            <th scope="col">{{el.direccion}}</th>
+            <th scope="col">{{el.apellido}}</th>
             <th>
-            <button class="delete" title="delete product" (click)="deleteUSer(el._id)">Eliminar</button>
+            <button class="icon-remov" title="delete product" (click)="deleteUSer(el._id)">X</button>
             </th>
             <th>
-                <button class="Add" title="delete product" (click)="addUser()">Add</button>
+                <button class="glyphicon glyphicon-pencil" title="delete product" (click)="updateUser()"></button>
             </th>
         </tr>
     </tbody>
   </table>
+  <div class="Actualizar" id="act">
+      <input type="text">Actualizar
+      <button (click)="updateUserG()">Guardar</button>
+  </div>
   

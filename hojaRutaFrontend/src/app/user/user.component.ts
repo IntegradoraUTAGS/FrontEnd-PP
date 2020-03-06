@@ -20,9 +20,14 @@ user:any = [];
       console.log(this.user.usuarios);
     })
   }
-  addUser(){
-    location.pathname='/user-add';
+  updateUser(){
+   let element = document.getElementById('act');
+   element.style.display ="inline";
   }
+  updateUserG(){
+    let element = document.getElementById('act');
+    element.style.display ="none";
+   }
   deleteUSer(id){
     this.rest.deleteUser(id).subscribe(res => {
       this.getUser();

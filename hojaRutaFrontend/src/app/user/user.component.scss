@@ -1,0 +1,21 @@
+.thead-green {
+    background-color: rgb(28, 160, 68);
+    color: white;
+  }
+  .icon-remov{
+    border: solid rgb(28, 160, 68);
+    border-radius: 60% ;
+    color: rgb(28, 160, 68);
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .Actualizar{
+    display: none;
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    margin: 20%;
+    top: 10px;
+    border: solid 2px green;
+    background-color: ivory;
+  }
