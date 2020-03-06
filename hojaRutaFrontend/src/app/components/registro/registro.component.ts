@@ -19,8 +19,8 @@ export class RegistroComponent implements OnInit {
      await this.rest.addUser(this.usuario).subscribe((data:{}) => {
       this.user = data; 
       this.validar = this.user.usrDB;
-      if(this.validar.email === this.usuario.email){
-                alert(this.validar.nombre + 'Creado con exito');
+      if(this.validar.email != null){
+                alert('Usuario  ' +this.validar.nombre + '  Creado con exito');
                 location.pathname="/login"
       }
     })
