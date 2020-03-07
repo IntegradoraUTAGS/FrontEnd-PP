@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <h2>User List</h2>
-  <table class="table">
+  <table class="table" id="display-tab1" >
     <thead class="thead-green">
       <tr>
         <th scope="col">Status</th>
@@ -8,26 +8,65 @@
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
         <th scope="col">Eliminar</th>
-        <th scope="col"> Add</th>
+        <th scope="col"> Actualizar</th>
       </tr>
     </thead>
     <tbody *ngFor="let el of user.usuarios">
         <tr>
-            <th scope="col">{{el.estado}}</th>
-            <th scope="col">{{el.email}}</th>
-            <th scope="col">{{el.nombre}}</th>
-            <th scope="col">{{el.apellido}}</th>
+            <th scope="col">
+              <input type="text" value="{{el.estado}}" class="actual" name="estado">
+            </th>
+            <th scope="col">
+              <input type="text" value="{{el.email}}" class="actual" name="email" >
+            </th>
+            <th scope="col">
+              <input type="text" value="{{el.nombre}}" class="actual" name="nombre">
+            </th>
+            <th scope="col">
+              <input type="text" value="{{el.apellido}}" class="actual" name="apellido" >
+            </th>
             <th>
             <button class="icon-remov" title="delete product" (click)="deleteUSer(el._id)">X</button>
             </th>
             <th>
-                <button class="glyphicon glyphicon-pencil" title="delete product" (click)="updateUser()"></button>
+                <button class="prueba" title="Actualizar" (click)="updateUser(el._id)">
+                  <a class="glyphicon glyphicon-pencil"></a>
+                </button>
             </th>
         </tr>
     </tbody>
   </table>
-  <div class="Actualizar" id="act">
-      <input type="text">Actualizar
-      <button (click)="updateUserG()">Guardar</button>
+  <div id="display-tab2" >
+    <table class="table">
+      <thead class="thead-green">
+        <tr>
+          <th scope="col"> Actualizar</th>
+        </tr>
+      </thead>
+      <div class="formulario">
+      <tbody *ngFor="let al of value.usuarios">
+        <h3>Estado: {{al.estado}} </h3>
+        <p>
+          <input type="text" [(ngModel)]="usuario.estado" name="usuario">
+        </p> 
+        <h3>Email:{{al.email}} </h3>    
+         <p>
+           <input type="text" [(ngModel)]="usuario.email" name="usuario" >
+        </p> 
+        <h3>Nombre: {{al.nombre}} </h3>     
+           <p>
+              <input type="text" [(ngModel)]="usuario.nombre" name="usuario">
+          </p> 
+          <h3>Apellido: {{al.apellido}}</h3>  
+           <p>
+             <input type="text" [(ngModel)]="usuario.apellido" name="usuario">
+
+             <button class="prueba" title="Actualizar" (click)="updateUserById(al._id)">
+              <a class="glyphicon glyphicon-pencil"></a>
+             </button>
+          </p>            
+      </tbody>
+    </div>
+    </table>
   </div>
   
