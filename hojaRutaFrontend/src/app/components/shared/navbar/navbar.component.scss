@@ -1,6 +1,6 @@
 .main-header {
   height: 3em;
-  background: hsl(200, 90, 60);
+  background: #263238;
   display: flex;
   align-items: center;
   padding: 0 1em;
@@ -20,7 +20,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: hsl(200, 80, 50);
+  background-color: #263238;
   width: var(--ofcanvas);
   height: 100vh;
   transform: translate(-100%);
