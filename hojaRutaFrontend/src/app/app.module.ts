@@ -15,6 +15,7 @@ import { UserAddComponent } from './user-add/user-add.component';
 import { UserComponent } from './user/user.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PerfilComponent } from './components/perfil/perfil.component';
 const appRoutes: Routes = [
   {
 path: 'user',
@@ -47,7 +48,8 @@ data: {title:'User Edit'}
     ProgramaPresupuestalComponent,
     UserAddComponent,
     UserComponent,
-    UserEditComponent
+    UserEditComponent,
+    PerfilComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
