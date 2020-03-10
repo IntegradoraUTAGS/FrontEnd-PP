@@ -4,6 +4,7 @@ export class UsuarioModel{
  email: String;
  apellido:String;
  password:String;
+ valid:String;
  direccion:String;
  estado: String;
  img:String;

@@ -1,32 +1,37 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<h2>User List</h2>
-  <table class="table" id="display-tab1" >
+<table class="table" id="display-tab1">
     <thead class="thead-green">
-      <tr>
-        <th scope="col">Status</th>
-        <th scope="col">Email</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
-        <th scope="col">Eliminar</th>
-        <th scope="col"> Actualizar</th>
-      </tr>
+        <tr>
+            <th scope="col">
+                Status</th>
+            <th scope="col">
+                Email</th>
+            <th scope="col">
+                Nombre</th>
+            <th scope="col">
+                Apellido</th>
+            <th scope="col">
+                Eliminar</th>
+            <th scope="col">
+                Actualizar</th>
+        </tr>
     </thead>
     <tbody *ngFor="let el of user.usuarios">
         <tr>
             <th scope="col">
-              <input type="text" value="{{el.estado}}" class="actual" name="estado">
+                <input type="text" value="{{el.estado}}" class="actual" name="estado">
             </th>
             <th scope="col">
-              <input type="text" value="{{el.email}}" class="actual" name="email" >
+                <input type="text" value="{{el.email}}" class="actual" name="email">
             </th>
             <th scope="col">
-              <input type="text" value="{{el.nombre}}" class="actual" name="nombre">
+                <input type="text" value="{{el.nombre}}" class="actual" name="nombre">
             </th>
             <th scope="col">
-              <input type="text" value="{{el.apellido}}" class="actual" name="apellido" >
+                <input type="text" value="{{el.apellido}}" class="actual" name="apellido">
             </th>
             <th>
-            <button class="icon-remov" title="delete product" (click)="deleteUSer(el._id)">X</button>
+                <button class="icon-remov" title="delete product" (click)="deleteUSer(el._id)">X</button>
             </th>
             <th>
                 <button class="prueba" title="Actualizar" (click)="updateUser(el._id)">
@@ -35,38 +40,67 @@
             </th>
         </tr>
     </tbody>
-  </table>
-  <div id="display-tab2" >
+</table>
+<div id="display-tab2">
     <table class="table">
-      <thead class="thead-green">
-        <tr>
-          <th scope="col"> Actualizar</th>
-        </tr>
-      </thead>
-      <div class="formulario">
-      <tbody *ngFor="let al of value.usuarios">
-        <h3>Estado: {{al.estado}} </h3>
-        <p>
-          <input type="text" [(ngModel)]="usuario.estado" name="usuario">
-        </p> 
-        <h3>Email:{{al.email}} </h3>    
-         <p>
-           <input type="text" [(ngModel)]="usuario.email" name="usuario" >
-        </p> 
-        <h3>Nombre: {{al.nombre}} </h3>     
-           <p>
-              <input type="text" [(ngModel)]="usuario.nombre" name="usuario">
-          </p> 
-          <h3>Apellido: {{al.apellido}}</h3>  
-           <p>
-             <input type="text" [(ngModel)]="usuario.apellido" name="usuario">
+        <thead class="thead-green">
+            <tr>
+                <th scope="col"> Actualizar</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let al of value.usuarios">
+            <div class="formulario">
+                <!-- Default form contact -->
+                <form class="text-center border border-light p-5">
 
-             <button class="prueba" title="Actualizar" (click)="updateUserById(al._id)">
-              <a class="glyphicon glyphicon-pencil"></a>
+                    <p class="h4 mb-4">Unidades Ejecutoras</p>
+
+                    <!-- Name -->
+                    <h5>Email:{{al.email}}</h5>
+                    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="{{al.email}}" [(ngModel)]="usuario.email" name="usuario">
+
+                    <!-- Email -->
+                    <h5>Nombre:{{al.nombre}}</h5>
+                    <input type=" email " id="defaultContactFormEmail " class="form-control mb-4 " placeholder="{{al.nombre}}" [(ngModel)]="usuario.nombre" name="usuario">
+
+
+                    <!-- Copy -->
+                    <div class="row ">
+                        <div class="col-md-6 mx-auto d-flex justify-content-center ">
+
+                        </div>
+                    </div>
+
+
+                    <!-- Send button -->
+                    <button mdbBtn color="info " block="true " type="submit " class="btn btn-outline-success " (click)="updateUserById(al._id)">Send</button>
+
+                </form>
+
+                <!-- Default form contact -->
+                <!--   <tbody *ngFor=" let al of value.usuarios ">
+                <h3>Estado: {{al.estado}} </h3>
+                <p>
+                    <input type="text " [(ngModel)]="usuario.estado " name="usuario ">
+                </p>
+                <h3>Email:{{al.email}} </h3>
+                <p>
+                    <input type="text " [(ngModel)]="usuario.email " name="usuario ">
+                </p>
+                <h3>Nombre: {{al.nombre}} </h3>
+                <p>
+                    <input type="text " [(ngModel)]="usuario.nombre " name="usuario ">
+                </p>
+                <h3>Apellido: {{al.apellido}}</h3>
+                <p>
+                    <input type="text " [(ngModel)]="usuario.apellido " name="usuario ">
+
+                    <button class="prueba " title="Actualizar " (click)="updateUserById(al._id) ">
+              <a class="glyphicon glyphicon-pencil "></a>
              </button>
-          </p>            
-      </tbody>
-    </div>
+                </p>
+            </tbody>-->
+            </div>
+        </tbody>
     </table>
-  </div>
-  
+</div>

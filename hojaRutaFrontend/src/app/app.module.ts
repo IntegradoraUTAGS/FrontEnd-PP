@@ -11,26 +11,16 @@ import { DirectrizComponent } from './components/directriz/directriz.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ProgramaPresupuestalComponent } from './components/programa-presupuestal/programa-presupuestal.component';
 import { HttpClientModule } from '@angular/common/http';
-import { UserAddComponent } from './user-add/user-add.component';
 import { UserComponent } from './user/user.component';
-import { UserEditComponent } from './user-edit/user-edit.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UnidEjecComponent } from './unid-ejec/unid-ejec.component';
 const appRoutes: Routes = [
   {
 path: 'user',
 component: UserComponent,
 data: {title:'User List'}
   },
-  {
-path: 'user-add',
-component: UserAddComponent,
-data: {title:'User Add'}
-},
 {
-path: 'user-edit/:id',
-component: UserEditComponent,
-data: {title:'User Edit'}
-},{
   path: '',
   redirectTo: '/user',
   pathMatch: 'full'
@@ -45,9 +35,8 @@ data: {title:'User Edit'}
     DirectrizComponent,
     RegistroComponent,
     ProgramaPresupuestalComponent,
-    UserAddComponent,
     UserComponent,
-    UserEditComponent
+    UnidEjecComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

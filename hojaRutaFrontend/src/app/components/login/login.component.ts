@@ -3,6 +3,7 @@ import { $ } from 'protractor';
 import {UsuarioModel} from '../../models/usuario.models';
 import {RestService} from '../../rest.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,14 +22,16 @@ export class LoginComponent implements OnInit {
      await this.rest.logearUser(this.usuario).subscribe((data:{}) => {
       this.user = data; 
       this.validar = this.user.usuario;
-      console.log(this.validar.email);
-      console.log(this.user.ok);
       if(this.validar.email === this.usuario.email && this.validar.password){
                 alert(this.validar.email + ' Ah sido logeado');
-                location.pathname="/user"
+                location.pathname="/presupuesto";
+                console.log(this.user.ok);
       }
+    }, (data : HttpErrorResponse) =>{
+      alert(data.error.err.message);
+      console.log(data.error.err.message);
     })
-    
+  
   }
   registrar(){
     location.pathname="/registro";
