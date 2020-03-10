@@ -6,6 +6,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { ProgramaPresupuestalComponent } from './components/programa-presupuestal/programa-presupuestal.component';
 import { UserComponent } from './user/user.component';
 import { UserAddComponent } from './user-add/user-add.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "login" },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: "registro", component: RegistroComponent },
   { path: "user", component: UserComponent},
   { path: "user-add", component: UserAddComponent},
+  { path: "perfil", component: PerfilComponent},
   { path: "**", pathMatch: "full", redirectTo: "login" },
 
 ];
