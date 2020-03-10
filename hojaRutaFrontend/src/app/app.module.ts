@@ -13,7 +13,11 @@ import { ProgramaPresupuestalComponent } from './components/programa-presupuesta
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { UnidEjecComponent } from './unid-ejec/unid-ejec.component';
+
+import { PerfilComponent } from './components/perfil/perfil.component';
+
 const appRoutes: Routes = [
   {
 path: 'user',
@@ -36,7 +40,9 @@ data: {title:'User List'}
     RegistroComponent,
     ProgramaPresupuestalComponent,
     UserComponent,
+
     UnidEjecComponent
+    ,PerfilComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

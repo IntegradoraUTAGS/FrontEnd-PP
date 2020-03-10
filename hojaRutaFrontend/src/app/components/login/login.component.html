@@ -1,44 +1,46 @@
 <div class="caja">
-  <div class="container">
-    <div class="row">
+    <div class="container">
+        <div class="row">
 
-      <div class="col-sm-6 col-md-5 hidden-xs hidden-sm">
-        <img src="../../../assets/img/icon-ut.png" alt="" class="center-block img-fluid" />
-      </div>
+            <div class="col-sm-6 col-md-5 hidden-xs hidden-sm">
 
-      <div class="col-md-1 hidden-xs hidden-sm">
-        <div class="border-login"></div>
-      </div>
+                <img src="../../../assets/img/icon-ut.png" alt="" class="center-block img-fluid" />
 
+            </div>
 
-      <div class="col-sm-12 col-xs-12 col-md-4">
-        <div class="space-top">
+            <div class="col-md-1 hidden-xs hidden-sm d-md-block d-none">
+                <div class="border-login"></div>
+            </div>
 
 
-          <h3 class="text-center">Hoja de Planeacion</h3>
+            <div class="col-sm-12 col-xs-12 col-md-4">
+                <div class="space-top">
 
-          <form class="form-signin" class="form-horizontal">
 
-            <label class="user" > Usuario: {{usuario.email}} </label>
+                    <h3 class="text-center">Hoja de Planeacion</h3>
 
-            <input type="text" class="form-control" placeholder="" required [(ngModel)]="usuario.email" name="usuario">
+                    <form class="form-signin" class="form-horizontal">
 
-            <label class=""> Contraseña </label>
-            <input type="password" class="form-control" placeholder="" required [(ngModel)]="usuario.password" name="usuario">
+                        <label class="user"> Usuario: {{usuario.email}} </label>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="verificar()">
+                        <input type="text" class="form-control" placeholder="" required [(ngModel)]="usuario.email" name="usuario">
+
+                        <label class=""> Contraseña </label>
+                        <input type="password" class="form-control" placeholder="" required [(ngModel)]="usuario.password" name="usuario">
+
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="verificar()">
               Entrar
             </button>
 
-          </form>
-        </div>
+                    </form>
+                </div>
 
-        <p class="text-center"> Si no tienes una cuenta. <a  data-toggle="modal" (click)="registrar()">
+                <p class="text-center"> Si no tienes una cuenta. <a data-toggle="modal" (click)="registrar()">
             Registrate</a></p>
 
 
-        <!-- Modal -->
-        <!--   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <!-- Modal -->
+                <!--   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -91,7 +93,7 @@
           </div>
         </div> -->
 
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
