@@ -32,67 +32,34 @@
 
 </div>
 
-<div class="container mt-4">
-
-    <div class="row row-cols-1 row-cols-md-3 justify-content-around">
-        <div class="col mb-4">
-            <div class="card text-center ">
-                <div class="card-header">
-                    <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
-                        <h5 class="card-title ">Proceso educativo</h5>
-                    </a>
-                </div>
-                <img src="../../../assets/img/Wolf-.svg" class="tarjeta__img card-img-top" alt="..." href="http://localhost:4200/directriz">
-
-                <div class="card-body">
 
 
+<table class="row">
+    <tbody *ngFor="let el of pp.programas">
+        <div class="container mt-4">
 
-                    <p class="card-text font-weight-normal mb-1  ">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">Tics</span></p>
-                    <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">2020</span></p>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card text-center ">
-                <div class="card-header">
-                    <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
-                        <h5 class="card-title ">Proceso educativo</h5>
-                    </a>
-                </div>
-                <img src="../../../assets/img/Wolf-.svg" class="tarjeta__img card-img-top" alt="...">
-
-                <div class="card-body">
+            <div class="col">
 
 
-
-                    <p class="card-text font-weight-normal mb-1  ">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">Tics</span></p>
-                    <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">2020</span></p>
+                <div class="col mb-7">
+                    <div class="card text-center ">
+                        <div class="card-header">
+                            <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
+                                <h5 class="card-title ">{{el.descripcion}}</h5>
+                            </a>
+                        </div>
+                        <img src="../../../assets/img/Wolf-.svg" class="tarjeta__img card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text font-weight-normal mb-2  ">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">Tics</span></p>
+                            <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">2020</span></p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
-        <div class="col mb-4">
-            <div class="card text-center ">
-                <div class="card-header">
-                    <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
-                        <h5 class="card-title ">Proceso educativo</h5>
-                    </a>
-                </div>
-                <img src="../../../assets/img/Wolf-.svg" class="tarjeta__img card-img-top" alt="...">
-
-                <div class="card-body">
-
-
-
-                    <p class="card-text font-weight-normal mb-1  ">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">Tics</span></p>
-                    <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">2020</span></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
+    </tbody>
+</table>
 
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">

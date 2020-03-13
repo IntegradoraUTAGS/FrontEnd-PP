@@ -18,6 +18,7 @@ import { UnidEjecComponent } from './unid-ejec/unid-ejec.component';
 
 import { PerfilComponent } from './components/perfil/perfil.component';
 
+
 const appRoutes: Routes = [
   {
 path: 'user',
@@ -42,7 +43,7 @@ data: {title:'User List'}
     UserComponent,
 
     UnidEjecComponent
-    ,PerfilComponent
+    ,PerfilComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
