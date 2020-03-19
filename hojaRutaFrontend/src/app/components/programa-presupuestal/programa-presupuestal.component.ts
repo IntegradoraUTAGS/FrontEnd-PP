@@ -16,8 +16,23 @@ export class ProgramaPresupuestalComponent implements OnInit {
         this.pp = data;
         console.log(this.pp.programas);
       });
-
-
   }
 
+  desactivar(){
+    document.getElementById('tabla1').style.display= "inline";
+    document.getElementById('tabla2').style.display= "none";
+    document.getElementById('fecha').style.display= "none";
+    document.getElementById('nav').style.display= "none";
+  }
+  reload(){
+    location.reload();
+  }
+  async addProgram (){
+    this.pp = [];
+     await this.rest.addPRograma(this.programa).subscribe((data:{}) => {
+      this.pp = data;
+      console.log(this.pp);
+      location.reload();
+    })
+   }
 }
