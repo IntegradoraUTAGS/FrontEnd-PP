@@ -10,7 +10,7 @@ import { UnidEjecComponent } from './unid-ejec/unid-ejec.component';
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "login" },
   { path: "login", component: LoginComponent },
-  { path: "directriz", component: DirectrizComponent },
+  { path: "admin/directriz", component: DirectrizComponent },
   { path: "presupuesto", component: ProgramaPresupuestalComponent },
   { path: "registro", component: RegistroComponent },
   { path: "user", component: UserComponent},

@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UnidEjecComponent } from './unid-ejec/unid-ejec.component';
 
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { PresupuestolUsuarioComponent } from './components/presupuestol-usuario/presupuestol-usuario.component';
 
 const appRoutes: Routes = [
   {
@@ -42,7 +43,7 @@ data: {title:'User List'}
     UserComponent,
 
     UnidEjecComponent
-    ,PerfilComponent
+    ,PerfilComponent, PresupuestolUsuarioComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
