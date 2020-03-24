@@ -10,13 +10,14 @@
 
 <div class="container mt-5 p-5  perf ">
   <div class="row  justify-content-around  align-items-center  ">
-    <div class="col-2  ">
-      <img src="../../../assets/img/user.svg" alt="" class="img-tumbnail img-fluid">
-    </div>
+
   </div>
 
   <div class="row justify-content-around  align-items-center ">
 
+    <div class="col-4  ">
+      <img src="../../../assets/img/profile.svg" alt="" class="img-tumbnail img-fluid">
+    </div>
     <div class="col-6    ">
 
       <div class="row flex-column ">
@@ -45,8 +46,9 @@
 
         </div>
         <div class="col-12">
-            <button type="button" class="btn btn-outline-primary btn-md btn-block " data-toggle="modal" data-target=".bd-example-modal-xl">Editar</button>
-            <button type="button" class="btn btn-outline-primary btn-md btn-block ">Cambiar contraseña</button>
+          <button type="button" class="btn btn-outline-dark btn-md btn-block " data-toggle="modal"
+            data-target=".bd-example-modal-lg">Editar</button>
+          <button type="button" class="btn btn-outline-dark primary btn-md btn-block ">Cambiar contraseña</button>
         </div>
 
       </div>
@@ -61,9 +63,9 @@
 
 
 <!-- Modal -->
-<div class="modal fade bd-example-modal-xl" id="editar" tabindex="-1" role="dialog" aria-labelledby="editarLabel"
+<div class="modal fade bd-example-modal-lg" id="editar" tabindex="-1" role="dialog" aria-labelledby="editarLabel"
   aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Configuracion de datos</h5>
@@ -72,63 +74,64 @@
         </button>
       </div>
       <div class="modal-body">
-<form>
-  <fieldset disabled>
-    <div class="form-group mb-5">
-      <label for="disabledTextInput">Nombre</label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="UsuarioX">
-    </div>
-    </fieldset>
-    <div class="form-group mb-3">
+        <form>
+          <fieldset disabled>
+            <div class="form-group mb-5">
+              <label for="disabledTextInput">Nombre</label>
+              <input type="text" id="disabledTextInput" class="form-control" placeholder="UsuarioX">
+            </div>
+          </fieldset>
+          <div class="form-group mb-3">
 
-      <label for="disabledTextInput">Departamentos:</label>
-      <table class="table table-hover table-dark">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Departamento</th>
-            <th scope="col">Código</th>
-            <th scope="col">Acción</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Teconologías de la Informacion</td>
-            <td>242523452</td>
-            <td>
-              <button type="button" href="#" class="text-white btn btn-danger ml-3 btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</button>
-            </td>
-          </tr>
+            <label for="disabledTextInput">Departamentos:</label>
+            <table class="table table-hover table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Departamento</th>
+                  <th scope="col">Código</th>
+                  <th scope="col">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Teconologías de la Informacion</td>
+                  <td>242523452</td>
+                  <td>
+                    <button type="button" href="#" class="text-white btn btn-danger ml-3 btn-sm"><i
+                        class="fas fa-trash-alt"></i> Eliminar</button>
+                  </td>
+                </tr>
 
-        </tbody>
-      </table>
-
-
-    </div>
+              </tbody>
+            </table>
 
 
-  <div class="form-group">
-    <div class="input-group">
-      <select name="" id="" class="form-control" onfocus='this.size=5;' onblur='this.size=1;'
-        onchange='this.size=1; this.blur();'>
-        <option value="">One</option>
-        <option value="">Two</option>
-        <option value="">Three</option>
-        <option value="">Four</option>
-        <option value="">Five</option>
-        <option value="">Six</option>
-        <option value="">Seven</option>
-        <option value="">Eight</option>
-        <option value="">Nine</option>
-        <option value="">Ten</option>
-      </select>
-      <div class="input-group-append align-self-start">
-        <button class="btn btn-outline-success" type="button">Agregar</button>
-      </div>
-    </div>
-  </div>
-</form>
+          </div>
+
+
+          <div class="form-group">
+            <div class="input-group">
+              <select name="" id="" class="form-control" onfocus='this.size=5;' onblur='this.size=1;'
+                onchange='this.size=1; this.blur();'>
+                <option value="">One</option>
+                <option value="">Two</option>
+                <option value="">Three</option>
+                <option value="">Four</option>
+                <option value="">Five</option>
+                <option value="">Six</option>
+                <option value="">Seven</option>
+                <option value="">Eight</option>
+                <option value="">Nine</option>
+                <option value="">Ten</option>
+              </select>
+              <div class="input-group-append align-self-start">
+                <button class="btn btn-outline-success" type="button">Agregar</button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -137,3 +140,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>
