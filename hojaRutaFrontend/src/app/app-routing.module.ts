@@ -1,3 +1,4 @@
+import { PerfilComponent } from './components/perfil/perfil.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: "presupuesto", component: ProgramaPresupuestalComponent },
   { path: "registro", component: RegistroComponent },
   { path: "user", component: UserComponent},
+  { path: "perfil", component: PerfilComponent},
   {path: "unidEjec", component: UnidEjecComponent},
   { path: "**", pathMatch: "full", redirectTo: "login" },
 

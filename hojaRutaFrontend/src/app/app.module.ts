@@ -13,7 +13,7 @@ import { ProgramaPresupuestalComponent } from './components/programa-presupuesta
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { UnidEjecComponent } from './unid-ejec/unid-ejec.component';
 
 import { PerfilComponent } from './components/perfil/perfil.component';
@@ -41,7 +41,6 @@ data: {title:'User List'}
     RegistroComponent,
     ProgramaPresupuestalComponent,
     UserComponent,
-
     UnidEjecComponent
     ,PerfilComponent,
   ],
@@ -50,7 +49,8 @@ data: {title:'User List'}
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

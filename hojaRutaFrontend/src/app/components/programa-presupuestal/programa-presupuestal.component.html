@@ -32,35 +32,68 @@
 
 </div>
 
-
-
-<table class="row" id="tabla2">
-    <tbody *ngFor="let el of pp.programas">
-        <div class="container mt-4">
-
-            <div class="col">
-
-
-                <div class="col mb-7">
-                    <div class="card text-center ">
-                        <div class="card-header">
-                            <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
-                                <h5 class="card-title ">{{el.descripcion}}</h5>
-                            </a>
+<div class="container" id="tabla2">
+    <div class="row">
+        <div class="col-12">
+            <table class="row">
+                <tbody *ngFor="let el of pp.programas | paginate: paginationConfig">
+                    <div class="container mt-2">
+                        <div class="col">
+                            <div class="col mt-2">
+                                <div class="card text-center ">
+                                    <div class="card-header">
+                                        <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
+                                            <h5 class="card-title ">{{el.descripcion}}</h5>
+                                        </a>
+                                    </div>
+                                    <img src="../../../assets/img/Wolf-.svg" class="tarjeta__img card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-text font-weight-normal mb-2  ">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">Tics</span></p>
+                                        <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">´{{el.fecha}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <img src="../../../assets/img/Wolf-.svg" class="tarjeta__img card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text font-weight-normal mb-2  ">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">Tics</span></p>
-                            <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">2020</span></p>
-                        </div>
+
                     </div>
-                </div>
-            </div>
 
+                </tbody>
+            </table>
         </div>
-
-    </tbody>
-</table>
+        <div class="col-12 mt-3 d-flex justify-content-center">
+            <pagination-template #p="paginationApi" [id]="paginationConfig.id" [maxSize]="maxSizePagination" autoHide="true" (pageChange)="paginationConfig.currentPage = $event">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li [className]="p.isFirstPage() ? 'page-item disabled' : 'page-item'">
+                            <a class="page-link" (click)="p.previous()" href="#" aria-label="Previous">
+                                <span aria-hidden="true">«</span>
+                            </a>
+                        </li>
+                        <li *ngFor="let page of p.pages" [className]="
+              p.getCurrent() === page.value
+                ? 'page-item disabled'
+                : 'page-item'
+            ">
+                            <a class="page-link" (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+              {{ page.label }}
+            </a>
+                            <a class="page-link" *ngIf="p.getCurrent() === page.value">
+              {{ page.label }}
+            </a>
+                        </li>
+                        <li [className]="
+              p.isLastPage() ? 'page-item disabled' : 'page-item disabled'
+            ">
+                            <a class="page-link" href="#" (click)="p.next()" aria-label="Next">
+                                <span aria-hidden="true">»</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </pagination-template>
+        </div>
+    </div>
+</div>
 <div class="add-presupuestal" id="tabla1">
     <!-- Material form subscription -->
     <div class="card">
@@ -100,21 +133,3 @@
     </div>
     <!-- Material form subscription -->
 </div>
-
-<nav aria-label="Page navigation example" id="nav">
-    <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li class="page-item active"><a class="page-link " href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>
