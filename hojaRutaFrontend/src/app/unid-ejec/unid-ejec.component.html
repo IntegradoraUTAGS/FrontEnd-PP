@@ -1,28 +1,15 @@
+<app-navbar></app-navbar>
 <!-- Default form contact -->
 <form class="text-center border border-light p-5">
 
     <p class="h4 mb-4">Unidades Ejecutoras</p>
 
-    <!-- Name -->
-    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name">
+    <!-- Codigo -->
+    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Codigo" [(ngModel)]="UnidadEjecuctora.codigo" name="UnidadEjecuctora">
 
-    <!-- Email -->
-    <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
+    <!-- Descripcion -->
+    <input type="text" id="defaultContactFormEmail" class="form-control mb-4" placeholder="Descripcion" [(ngModel)]="UnidadEjecuctora.descripcion" name="UnidadEjecuctora">
 
-    <!-- Subject -->
-    <label>Subject</label>
-    <select class="browser-default custom-select mb-4">
-      <option value="" disabled>Choose option</option>
-      <option value="1" selected>Feedback</option>
-      <option value="2">Report a bug</option>
-      <option value="3">Feature request</option>
-      <option value="4">Feature request</option>
-    </select>
-
-    <!-- Message -->
-    <div class="form-group">
-        <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
-    </div>
 
     <!-- Copy -->
     <div class="row">
@@ -33,7 +20,7 @@
 
 
     <!-- Send button -->
-    <button mdbBtn color="info" block="true" type="submit" class="btn btn-outline-success">Send</button>
+    <button mdbBtn color="info" block="true" type="submit" class="btn btn-outline-success" (click)="addUnidadEject()">Send</button>
 
 </form>
 <!-- Default form contact -->

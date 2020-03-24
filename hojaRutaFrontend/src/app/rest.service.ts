@@ -27,5 +27,31 @@ export class RestService {
    getUserById(id): Observable <any>{
     return this.http.get(endPoint +'usuario/'+id);
    }
+   ////////CRUD unidad ejecutora///////////
+   getUnidadEject(): Observable <any>{
+    return this.http.get(endPoint +'unidadEjecutora');
+   }
+   addUnidadEject(product): Observable <any>{
+    return this.http.post<any>(endPoint + 'unidadEjecutora',product);
+   }
+   updateUnidadEject(id, product): Observable <any>{
+    return this.http.put(endPoint + 'unidadEjecutora/' + id, product);
+   }
+   deleteUnidadEject(id): Observable <any>{
+    return this.http.delete(endPoint +'unidadEjecutora/'+ id);
+   }
+   ///////CRUD programa presupuestario //////////////
+   getPrograma(): Observable <any>{
+    return this.http.get(endPoint +'programa');
+   }
+   addPRograma(product): Observable <any>{
+    return this.http.post<any>(endPoint + 'programa',product);
+   }
+   updatePrograma(id, product): Observable <any>{
+    return this.http.put(endPoint + 'programa/' + id, product);
+   }
+   deletePrograma(id): Observable <any>{
+    return this.http.delete(endPoint +'programa/'+ id);
+   }
 }
 

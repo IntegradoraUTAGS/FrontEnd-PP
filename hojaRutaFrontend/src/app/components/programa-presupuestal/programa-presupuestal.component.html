@@ -2,15 +2,23 @@
 </app-navbar>
 
 
-<div class="container">
+<div class="container" id="fecha">
 
   <div class="row mt-5">
 
+<<<<<<< HEAD
     <div class="col-12  col-md-6">
       <h4 class="text-center text-md-left">Programa Presupuestario</h4>
     </div>
     <div class="col-12  col-md-6 mt-md-0 mt-4 ">
       <div class="row">
+=======
+        <div class="col-12  col-md-4">
+            <h4 class="text-center text-md-left">Programa Presupuestario <button type="button" class="btn btn-danger" (click)="desactivar()">Agregar</button></h4>
+        </div>
+        <div class="col-12  col-md-6 mt-md-0 mt-4 ">
+            <div class="row">
+>>>>>>> master
 
         <label for="inputEmail3" class="h4 col-6 col-md-2 col-form-label offset-md-5
 "><i class="far fa-calendar-alt"></i> Año</label>
@@ -32,7 +40,6 @@
 
 </div>
 
-<div class="container mt-4">
 
   <div class="row row-cols-1 row-cols-md-3 justify-content-around">
     <div class="col mb-4">
@@ -47,8 +54,10 @@
 
         <div class="card-body">
 
+            <div class="col">
 
 
+<<<<<<< HEAD
           <p class="card-text font-weight-normal mb-1  ">Unidad Ejecutora: <span
               class="text-monospace badge badge-pill badge-dark">Tics</span></p>
           <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">2020</span></p>
@@ -65,9 +74,41 @@
         <img src="../../../assets/img/utLogo.jpg" class="tarjeta__img card-img-top" alt="...">
 
         <div class="card-body">
+=======
+                <div class="col mb-7">
+                    <div class="card text-center ">
+                        <div class="card-header">
+                            <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
+                                <h5 class="card-title ">{{el.descripcion}}</h5>
+                            </a>
+                        </div>
+                        <img src="../../../assets/img/Wolf-.svg" class="tarjeta__img card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text font-weight-normal mb-2  ">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">Tics</span></p>
+                            <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">2020</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+        </div>
 
+    </tbody>
+</table>
+<div class="add-presupuestal" id="tabla1">
+    <!-- Material form subscription -->
+    <div class="card">
+>>>>>>> master
 
+        <h5 class="card-header info-color white-text text-center py-4">
+            <strong>Agregar Programa Presupuestal</strong>
+            <button class="float-right" (click)="reload()">X</button>
+        </h5>
+
+        <!--Card content-->
+        <div class="card-body px-lg-5">
+
+<<<<<<< HEAD
           <p class="card-text font-weight-normal mb-1  ">Unidad Ejecutora: <span
               class="text-monospace badge badge-pill badge-dark">Tics</span></p>
           <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">2020</span></p>
@@ -84,9 +125,31 @@
         <img src="../../../assets/img/utLogo.jpg" class="tarjeta__img card-img-top" alt="...">
 
         <div class="card-body">
+=======
+            <!-- Form -->
+            <form class="text-center" style="color: #008f39;" action="#!">
 
 
+                <!-- Name -->
+                <div class="md-form mt-3">
+                    <input type="text" id="materialSubscriptionFormPasswords" class="form-control" style="border: solid #008f39;" [(ngModel)]="programa.descripcion" name="programa">
+                    <label for="materialSubscriptionFormPasswords">Descripcion</label>
+                </div>
 
+                <!-- E-mai -->
+                <div class="md-form">
+                    <input type="email" id="materialSubscriptionFormEmail" class="form-control" style="border: solid #008f39;" [(ngModel)]="programa.fecha" name="programa">
+                    <label for="materialSubscriptionFormEmail">Fecha</label>
+                </div>
+>>>>>>> master
+
+                <!-- Sign in button -->
+                <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-2 waves-effect" type="submit" (click)="addProgram()">Agregar</button>
+
+            </form>
+            <!-- Form -->
+
+<<<<<<< HEAD
           <p class="card-text font-weight-normal mb-1  ">Unidad Ejecutora: <span
               class="text-monospace badge badge-pill badge-dark">Tics</span></p>
           <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">2020</span></p>
@@ -94,9 +157,15 @@
       </div>
     </div>
   </div>
+=======
+        </div>
+>>>>>>> master
 
+    </div>
+    <!-- Material form subscription -->
 </div>
 
+<<<<<<< HEAD
 
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
@@ -115,3 +184,22 @@
     </li>
   </ul>
 </nav>
+=======
+<nav aria-label="Page navigation example" id="nav">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item active"><a class="page-link " href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+>>>>>>> master

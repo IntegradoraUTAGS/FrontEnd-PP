@@ -6,29 +6,39 @@
   }
 }
 
-.card-header{
-  &:hover{
-    cursor: pointer;
-    .tarjeta__title {
-      color: #212529;;
+.card-header {
+    &:hover {
+        cursor: pointer;
+        .tarjeta__title {
+            color: #212529;
+            ;
+        }
     }
-  }
 }
 
 .tarjeta__title {
-  color: #616161;
-  transition: color .1s;
-
+    color: #616161;
+    transition: color .1s;
 }
-
 
 .example .pagination>li>a,
 .example .pagination>li>span {
-
-  border: 1px solid var(--dark);
+    border: 1px solid var(--dark);
 }
 
 .pagination>li.active>a {
-  background: var(--dark);
-  color: #fff;
+    background: var(--dark);
+    color: #fff;
+}
+
+.add-presupuestal {
+    display: none;
+    position: relative;
+    margin: 40%;
+    padding: 40%;
+}
+
+.float-right {
+    color: green;
+    border: solid green;
 }

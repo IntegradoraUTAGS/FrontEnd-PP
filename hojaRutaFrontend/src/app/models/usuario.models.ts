@@ -6,7 +6,7 @@ export class UsuarioModel{
  password:String;
  valid:String;
  direccion:String;
- estado: String;
+ estado: Boolean;
  img:String;
  unidadEject:String;
 }

@@ -16,7 +16,7 @@ export class RegistroComponent implements OnInit {
   ngOnInit() {
   }
   async addUSer (){
-    try{ this.user = [];
+     this.user = [];
       await this.rest.addUser(this.usuario).subscribe((data:{}) => {
        this.user = data; 
        this.validar = this.user.usrDB;
@@ -24,11 +24,7 @@ export class RegistroComponent implements OnInit {
                  alert('Usuario  ' +this.validar.nombre + '  Creado con exito');
                  location.pathname="/login"
        }
-     })}catch(e) {
-       return this.bandera;
-      console.log(this.bandera);
-     }
-   
+     })
     }
  async valid(){
     if(this.usuario.password != this.usuario.valid){
