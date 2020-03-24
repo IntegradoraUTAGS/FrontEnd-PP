@@ -1,1 +1,130 @@
-<p>perfil works!</p>
+<app-navbar class="mb-5"></app-navbar>
+
+
+<h2 class="text-center mt-5">Perfil de usuario</h2>
+
+<div class="container mt-5 ">
+  <div class="row justify-content-around  align-items-center ">
+    <div class="col-3  offset-1" >
+      <img src="../../../assets/img/user.svg" alt="" class="img-tumbnail img-fluid">
+    </div>
+    <div class="col-6 offset-2   ">
+
+      <div class="row flex-column ">
+
+        <div class="col-12">
+          <div class="datos ">
+            <div class="nombre mb-3 text-center">
+              <span class="font-weight-bold">Nombre: </span>
+              <span>UsuarioX</span>
+              <br>
+            </div>
+
+            <div class="departamentos mb-2 text-center">
+              <span class="font-weight-bold">Departamento/s: </span>
+
+              <div class="mb-2">DepertamentoX</div>
+
+            </div>
+
+            <div class="correo mb-4 text-center">
+              <span class="font-weight-bold">Correo: </span>
+              <span>correox@gmail.com</span>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-12">
+            <button type="button" class="btn btn-outline-primary btn-md btn-block " data-toggle="modal" data-target=".bd-example-modal-xl">Editar</button>
+            <button type="button" class="btn btn-outline-primary btn-md btn-block ">Cambiar contraseña</button>
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-xl" id="editar" tabindex="-1" role="dialog" aria-labelledby="editarLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Configuracion de datos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+<form>
+  <fieldset disabled>
+    <div class="form-group mb-5">
+      <label for="disabledTextInput">Nombre</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder="UsuarioX">
+    </div>
+    </fieldset>
+    <div class="form-group mb-3">
+
+      <label for="disabledTextInput">Departamentos:</label>
+      <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Código</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Teconologías de la Informacion</td>
+            <td>242523452</td>
+            <td>
+              <button type="button" href="#" class="text-white btn btn-danger ml-3 btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+    </div>
+
+
+  <div class="form-group">
+    <div class="input-group">
+      <select name="" id="" class="form-control" onfocus='this.size=5;' onblur='this.size=1;'
+        onchange='this.size=1; this.blur();'>
+        <option value="">One</option>
+        <option value="">Two</option>
+        <option value="">Three</option>
+        <option value="">Four</option>
+        <option value="">Five</option>
+        <option value="">Six</option>
+        <option value="">Seven</option>
+        <option value="">Eight</option>
+        <option value="">Nine</option>
+        <option value="">Ten</option>
+      </select>
+      <div class="input-group-append align-self-start">
+        <button class="btn btn-outline-success" type="button">Agregar</button>
+      </div>
+    </div>
+  </div>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

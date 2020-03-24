@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,19 +18,20 @@ import { UnidEjecComponent } from './unid-ejec/unid-ejec.component';
 
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PresupuestolUsuarioComponent } from './components/presupuestol-usuario/presupuestol-usuario.component';
+import { DirectrizUsuarioComponent } from './components/directriz-usuario/directriz-usuario.component';
 
 const appRoutes: Routes = [
   {
-path: 'user',
-component: UserComponent,
-data: {title:'User List'}
+    path: 'user',
+    component: UserComponent,
+    data: { title: 'User List' }
   },
-{
-  path: '',
-  redirectTo: '/user',
-  pathMatch: 'full'
+  {
+    path: '',
+    redirectTo: '/user',
+    pathMatch: 'full'
 
-}
+  }
 ]
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ data: {title:'User List'}
     UserComponent,
 
     UnidEjecComponent
-    ,PerfilComponent, PresupuestolUsuarioComponent
+    , PerfilComponent, PresupuestolUsuarioComponent, DirectrizUsuarioComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
