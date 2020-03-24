@@ -19,6 +19,7 @@ import { UnidEjecComponent } from './unid-ejec/unid-ejec.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { PresupuestolUsuarioComponent } from './components/presupuestol-usuario/presupuestol-usuario.component';
 import { DirectrizUsuarioComponent } from './components/directriz-usuario/directriz-usuario.component';
+import { AgregarPresupuestoComponent } from './components/agregar-presupuesto/agregar-presupuesto.component';
 
 
 const appRoutes: Routes = [
@@ -45,7 +46,7 @@ const appRoutes: Routes = [
     UserComponent,
 
     UnidEjecComponent
-    , PerfilComponent, PresupuestolUsuarioComponent, DirectrizUsuarioComponent
+    , PerfilComponent, PresupuestolUsuarioComponent, DirectrizUsuarioComponent, AgregarPresupuestoComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
