@@ -13,11 +13,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "login" },
   { path: "login", component: LoginComponent },
-  {
-    path: "admin/presupuesto/:id", component: DirectrizComponent},
-  {
-    path: "presupuesto", component: ProgramaPresupuestalComponent
-  },
+  { path: "admin/presupuesto/:id", component: DirectrizComponent},
+  {path: "presupuesto", component: ProgramaPresupuestalComponent},
   { path: "perfil", component: PerfilComponent },
   { path: "presupuesto/:id", component: DirectrizUsuarioComponent },
   { path: "registro", component: RegistroComponent },
