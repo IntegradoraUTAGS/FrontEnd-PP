@@ -17,21 +17,25 @@ export class RegistroComponent implements OnInit {
   }
   async addUSer (){
      this.user = [];
+
       await this.rest.addUser(this.usuario).subscribe((data:{}) => {
-       this.user = data; 
-       this.validar = this.user.usrDB;
-       if(this.validar.email != null){
-                 alert('Usuario  ' +this.validar.nombre + '  Creado con exito');
-                 location.pathname="/login"
-       }
-     })
+        this.user = data;
+        this.validar = this.user.usrDB;
+        if(this.validar.email != null){
+                  alert('Usuario  ' +this.validar.nombre + '  Creado con exito');
+                  location.pathname="/login"
+        }
+      })
+
     }
  async valid(){
     if(this.usuario.password != this.usuario.valid){
         alert("contraseña distinta");
+    }else if (this.usuario.email.slice(-12) != "utags.edu.mx"){
+      alert("Terminacion debe ser: utags.edu.mx")
     }else{
       this.addUSer();
     }
-    
+
   }
 }

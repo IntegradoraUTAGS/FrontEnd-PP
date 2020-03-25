@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import { catchError} from 'rxjs/operators';
-const endPoint = 'http://localhost:3000/'
+const endPoint = 'https://hoja-ruta.herokuapp.com/'
 @Injectable({
   providedIn: 'root'
 })
