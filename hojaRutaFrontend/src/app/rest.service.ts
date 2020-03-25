@@ -53,5 +53,9 @@ export class RestService {
    deletePrograma(id): Observable <any>{
     return this.http.delete(endPoint +'programa/'+ id);
    }
+///////CRUD directriz //////////////
+   getDirectriz(): Observable <any>{
+    return this.http.get(endPoint +'directriz');
+   }
 }
 
