@@ -44,6 +44,9 @@ export class RestService {
    getPrograma(): Observable <any>{
     return this.http.get(endPoint +'programa');
    }
+   getProgramaPorAño(): Observable <any>{
+    return this.http.get(endPoint +'programa/year');
+   }
    addPRograma(product): Observable <any>{
     return this.http.post<any>(endPoint + 'programa',product);
    }
