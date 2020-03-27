@@ -13,7 +13,9 @@ export class RegistroComponent implements OnInit {
   validar:any = [];
   bandera :Boolean = false;
   user:any = [];
+  unidadE:any=[];
   ngOnInit() {
+    this.getUnidEject();
   }
   async addUSer (){
      this.user = [];
@@ -29,13 +31,19 @@ export class RegistroComponent implements OnInit {
 
     }
  async valid(){
-    if(this.usuario.password != this.usuario.valid){
-        alert("contraseña distinta");
-    }else if (this.usuario.email.slice(-12) != "utags.edu.mx"){
-      alert("Terminacion debe ser: utags.edu.mx")
-    }else{
+    if (this.usuario.password !== this.usuario.valid){
+        alert('contraseña distinta');
+    } else if (this.usuario.email.slice(-12) != "utags.edu.mx"){
+      alert('Terminacion debe ser: utags.edu.mx')
+    } else {
       this.addUSer();
     }
 
+  }
+  async getUnidEject() {
+    this.rest.getUnidadEject().subscribe((data) => {
+     console.log(data);
+    this.unidadE = data;
+    });
   }
 }
