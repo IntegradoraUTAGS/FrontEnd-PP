@@ -28,6 +28,9 @@ export class RestService {
     return this.http.get(endPoint +'usuario/'+id);
    }
    ////////CRUD unidad ejecutora///////////
+   getUnidadEjectById(id): Observable <any>{
+    return this.http.get(endPoint +'unidadEjecutora'+id);
+   }
    getUnidadEject(): Observable <any>{
     return this.http.get(endPoint +'unidadEjecutora');
    }

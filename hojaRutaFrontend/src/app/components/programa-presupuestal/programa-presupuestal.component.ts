@@ -12,16 +12,30 @@ export class ProgramaPresupuestalComponent implements OnInit {
   programa : ProgramaPresupuestalModels = new ProgramaPresupuestalModels();
   pp: any = [];
   year:any=[];
+  unidadEjec:any=[];
+  otro:any=[];
   constructor(public rest: RestService) { }
 
   ngOnInit() {
-      this.rest.getPrograma().subscribe((data:{}) => {
-        this.pp = data;
-        console.log(this.pp.programas);
-      });
+      this.getProgram();
       this.rest.getProgramaPorAño().subscribe((data)=>{
         this.year = data;
       });
+      this.getUnidadEjec();
+  }
+  getProgram(){
+    this.rest.getPrograma().subscribe((data:{programas}) => {
+      this.pp = data.programas;
+      this.otro= data.programas;
+      this.otro.forEach(element => {
+        this.otro =element.unidadEjec.codigo;
+      });
+    });
+  }
+  getUnidadEjec(){
+    this.rest.getUnidadEject().subscribe((data:{unidades})=>{
+     this.unidadEjec= data.unidades;
+    })
   }
 
   desactivar(){

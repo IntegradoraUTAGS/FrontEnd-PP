@@ -4,13 +4,15 @@
     <thead class="thead-green">
         <tr>
             <th scope="col">
-                Status</th>
+                Rol</th>
             <th scope="col">
                 Email</th>
             <th scope="col">
                 Nombre</th>
             <th scope="col">
                 Apellido</th>
+            <th scope="col">
+                    Direccion</th>
             <th scope="col">
                 Eliminar</th>
             <th scope="col">
@@ -20,7 +22,7 @@
     <tbody *ngFor="let el of user.usuarios">
         <tr>
             <th scope="col">
-                <input type="text" value="{{el.estado}}" class="actual" name="estado">
+                <input type="text" value="{{el.rol}}" class="actual" name="rol">
             </th>
             <th scope="col">
                 <input type="text" value="{{el.email}}" class="actual" name="email">
@@ -30,6 +32,9 @@
             </th>
             <th scope="col">
                 <input type="text" value="{{el.apellido}}" class="actual" name="apellido">
+            </th>
+            <th scope="col">
+                <input type="text" value="{{el.direccion}}" class="actual" name="direccion">
             </th>
             <th>
                 <button class="icon-remov" title="delete product" (click)="deleteUSer(el._id)">X</button>

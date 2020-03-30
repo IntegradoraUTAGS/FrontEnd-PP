@@ -13,6 +13,9 @@ value :any=[];
   constructor(public rest: RestService, private route:ActivatedRoute, private router: Router ) { }
   usuario: UsuarioModel = new UsuarioModel();
   ngOnInit() {
+    if(localStorage.getItem("token") === null ){
+      window.location.pathname = "/login";
+  } 
     this.getUser();
   }
   getUser(){

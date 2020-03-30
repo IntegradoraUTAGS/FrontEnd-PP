@@ -9,33 +9,22 @@ import {RestService} from '../../rest.service';
 export class PerfilComponent implements OnInit {
 
   constructor(public rest: RestService) { }
-pp: any=[];
+user: any;
+datosUser:any;
+unidadEjec:any;
   ngOnInit(): void {
-    this.get();
+   this.user= localStorage.getItem('_id');
+   this.getUserID();
   }
-  async get(){
-    this.rest.getPrograma().subscribe((data)=>{
-      console.log(data);
-  this.pp=data;
+  
+  getUserID(){
+    this.datosUser=[];
+    this.rest.getUserById(this.user).subscribe((data:{usuarios})=>{
+      this.datosUser=data.usuarios;
+      console.log(this.datosUser);
+      this.datosUser.forEach(element => {
+       this.unidadEjec= element.unidadEjec
+      });
     })
-  }
-  public maxSizePagination: string = '6';
-
-  public paginationConfig: PaginationInstance = {
-    id: 'advanced',
-    itemsPerPage: 6,
-    currentPage: 1
-  };
-
-  public labels: object = {
-    previousLabel: 'Back',
-    nextLabel: 'Next',
-    screenReaderPaginationLabel: 'Pagination',
-    screenReaderPageLabel: 'page',
-    screenReaderCurrentLabel: `You're on page`
-  };
-
-  public onPageChange(number: number) {
-    this.paginationConfig.currentPage = number;
   }
 }
