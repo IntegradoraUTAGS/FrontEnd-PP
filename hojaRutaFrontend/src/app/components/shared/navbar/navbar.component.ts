@@ -33,6 +33,7 @@ export class NavbarComponent implements OnInit {
       this.userRol.forEach(element => {
          if(element.rol != "ADMIN"){
            document.getElementById('userAdmin').style.display="none";
+           document.getElementById('unidAdmin').style.display="none";
          }
       });
     })

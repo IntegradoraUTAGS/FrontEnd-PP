@@ -14,10 +14,12 @@ export class ProgramaPresupuestalComponent implements OnInit {
   year:any=[];
   unidadEjec:any=[];
   otro:any=[];
+  rol:any=[];
+  area:any=[];
   constructor(public rest: RestService) { }
 
   ngOnInit() {
-      this.getProgram();
+    this.verificarRol();
       this.rest.getProgramaPorAño().subscribe((data)=>{
         this.year = data;
       });
@@ -33,6 +35,26 @@ export class ProgramaPresupuestalComponent implements OnInit {
     this.rest.getUnidadEject().subscribe((data:{unidades})=>{
      this.unidadEjec= data.unidades;
     })
+  }
+  verificarRol(){
+    this.rest.getUserById(localStorage.getItem('_id')).subscribe((resp:{usuarios})=>{
+    this.rol= resp.usuarios;
+    this.rol.forEach(element => {
+      this.rol =element.rol;
+      if(this.rol==="ADMIN"){
+        document.getElementById('btnagregar').style.display="inline";
+         this.getProgram();
+      }
+      else{
+        console.log(element.unidadEjec._id)
+        this.rest.getProgramaArea(element.unidadEjec._id).subscribe((res:{programas})=>{
+          console.log(res);
+          this.pp= res.programas;
+          this.otro= res.programas;
+        })
+      }
+    });
+    });
   }
 
   desactivar(){

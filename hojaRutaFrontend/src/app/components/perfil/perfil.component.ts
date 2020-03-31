@@ -12,9 +12,13 @@ export class PerfilComponent implements OnInit {
 user: any;
 datosUser:any;
 unidadEjec:any;
+bandera:false;
   ngOnInit(): void {
    this.user= localStorage.getItem('_id');
    this.getUserID();
+   if(this.bandera){
+     document.getElementById('departamento').style.display="none";
+   }
   }
   
   getUserID(){

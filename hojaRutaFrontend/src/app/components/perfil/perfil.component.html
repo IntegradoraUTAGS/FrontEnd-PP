@@ -42,10 +42,10 @@
                                         <br>
                                     </div>
 
-                                    <div class="departamentos mb-2 text-center">
+                                    <div class="departamentos mb-2 text-center" id="departamento">
                                         <span class="font-weight-bold">Departamento/s: </span>
 
-                                        <div class="mb-2" >Area: {{unidadEjec.descripcion}}</div>
+                                        <div class="mb-2" *ngIf="unidadEjec">{{unidadEjec.descripcion |uppercase}}</div>
 
                                     </div>
 
