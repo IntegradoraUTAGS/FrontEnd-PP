@@ -27,9 +27,6 @@ export class ProgramaPresupuestalComponent implements OnInit {
     this.rest.getPrograma().subscribe((data:{programas}) => {
       this.pp = data.programas;
       this.otro= data.programas;
-      this.otro.forEach(element => {
-        this.otro =element.unidadEjec.codigo;
-      });
     });
   }
   getUnidadEjec(){

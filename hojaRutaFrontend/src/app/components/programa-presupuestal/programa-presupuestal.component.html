@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-mt-18">
             <table class="row">
-                <tbody *ngFor="let el of pp | paginate: paginationConfig">
+                <tbody *ngFor="let el of pp | paginate: paginationConfig; let in=index ">
                     <div class="container mt-2">
                         <div class="col">
                             <div class="col mt-2">
@@ -44,7 +44,7 @@
                                     <img src="../../../assets/img/ut-logo.jpg" class="tarjeta__img card-img-top" alt="..." style="width: 20%; margin-left: 40%; border-radius: 50%; border:solid blue; margin-top:5%">
                                     <div class="card-body">
                                         <div>
-                                            <p class="card-text font-weight-normal mb-2">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">{{otro}}</span></p>
+                                            <p class="card-text font-weight-normal mb-2">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">{{el.unidadEjec.descripcion}}</span></p>
                                         </div>
                                         <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">´{{el.fecha}}</span></p>
                                     </div>
