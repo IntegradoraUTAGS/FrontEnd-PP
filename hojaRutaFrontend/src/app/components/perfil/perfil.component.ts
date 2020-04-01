@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PaginationInstance } from 'ngx-pagination';
 import {RestService} from '../../rest.service';
+import { UsuarioModel } from 'src/app/models/usuario.models';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
@@ -9,6 +10,7 @@ import {RestService} from '../../rest.service';
 export class PerfilComponent implements OnInit {
 
   constructor(public rest: RestService) { }
+usuario: UsuarioModel = new UsuarioModel();
 user: any;
 datosUser:any;
 unidadEjec:any;
@@ -29,6 +31,16 @@ bandera:false;
       this.datosUser.forEach(element => {
        this.unidadEjec= element.unidadEjec
       });
+    })
+  }
+  update(id,product){
+    this.rest.updateUser(id,product).subscribe((data)=>{
+      console.log(data);
+      alert("update");
+      localStorage.setItem('nombre',data.usrDB.nombre)
+      setTimeout(()=>{    //<<<---    using ()=> syntax
+        window.location.reload();
+   }, 1500);
     })
   }
 }

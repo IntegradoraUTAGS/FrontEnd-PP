@@ -22,19 +22,19 @@
     <tbody *ngFor="let el of user.usuarios">
         <tr>
             <th scope="col">
-                <input type="text" value="{{el.rol}}" class="actual" name="rol">
+                <input type="text" value="{{el.rol}}" class="actual" name="rol" readonly>
             </th>
             <th scope="col">
-                <input type="text" value="{{el.email}}" class="actual" name="email">
+                <input type="text" value="{{el.email}}" class="actual" name="email"readonly>
             </th>
             <th scope="col">
-                <input type="text" value="{{el.nombre}}" class="actual" name="nombre">
+                <input type="text" value="{{el.nombre}}" class="actual" name="nombre"readonly>
             </th>
             <th scope="col">
-                <input type="text" value="{{el.apellido}}" class="actual" name="apellido">
+                <input type="text" value="{{el.apellido}}" class="actual" name="apellido"readonly>
             </th>
             <th scope="col">
-                <input type="text" value="{{el.direccion}}" class="actual" name="direccion">
+                <input type="text" value="{{el.direccion}}" class="actual" name="direccion"readonly>
             </th>
             <th>
                 <button class="icon-remov" title="delete product" (click)="deleteUSer(el._id)">X</button>
@@ -59,16 +59,21 @@
                 <!-- Default form contact -->
                 <form class="text-center border border-light p-5">
 
-                    <p class="h4 mb-4">Unidades Ejecutoras</p>
+                    <p class="h4 mb-4">Usuario</p>
 
                     <!-- Name -->
                     <h5>Email:{{al.email}}</h5>
                     <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="{{al.email}}" [(ngModel)]="usuario.email" name="usuario">
-
+                    <h5>Rol:{{al.rol}}</h5>
+                    <select [(ngModel)]="usuario.rol" name="usuario" class="form-control form-control-lg" >
+                        <option value="USER">Usuario</option>
+                        <option value="ADMIN">Administrador</option>
+                    </select>
                     <!-- Email -->
                     <h5>Nombre:{{al.nombre}}</h5>
                     <input type=" email " id="defaultContactFormEmail " class="form-control mb-4 " placeholder="{{al.nombre}}" [(ngModel)]="usuario.nombre" name="usuario">
-
+                    <h5>Dirección:{{al.direccion}}</h5>
+                    <input type=" text " id="defaultContactFormEmail " class="form-control mb-4 " placeholder="{{al.direccion}}" [(ngModel)]="usuario.direccion" name="usuario">
 
                     <!-- Copy -->
                     <div class="row ">

@@ -9,4 +9,5 @@ export class UsuarioModel{
  estado: Boolean;
  img:String;
  unidadEject:String;
+ rol:String;
 }

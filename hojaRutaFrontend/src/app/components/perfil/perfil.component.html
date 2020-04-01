@@ -74,7 +74,7 @@
 
 
             <!-- Modal -->
-            <div class="modal fade bd-example-modal-xl" id="editar" tabindex="-1" role="dialog" aria-labelledby="editarLabel" aria-hidden="true">
+            <div class="modal fade bd-example-modal-xl" id="editar" tabindex="-1" role="dialog" aria-labelledby="editarLabel" aria-hidden="true" *ngFor="let item of datosUser">
                 <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -85,10 +85,10 @@
                         </div>
                         <div class="modal-body">
                             <form>
-                                <fieldset disabled>
+                                <fieldset >
                                     <div class="form-group mb-5">
                                         <label for="disabledTextInput">Nombre</label>
-                                        <input type="text" id="disabledTextInput" class="form-control" placeholder="UsuarioX">
+                                        <input type="text" id="disabledTextInput" class="form-control" placeholder="{{item.nombre}}" [(ngModel)]="usuario.nombre" name="usuario">
                                     </div>
                                 </fieldset>
                                 <div class="form-group mb-3">
@@ -143,7 +143,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-primary" (click)="update(item._id,usuario)">Save changes</button>
                         </div>
                     </div>
                 </div>
