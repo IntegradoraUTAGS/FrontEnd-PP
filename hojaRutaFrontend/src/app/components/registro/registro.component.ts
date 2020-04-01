@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UsuarioModel} from '../../models/usuario.models';
 import {RestService} from '../../rest.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -13,9 +14,7 @@ export class RegistroComponent implements OnInit {
   validar:any = [];
   bandera :Boolean = false;
   user:any = [];
-  unidadE:any=[];
   ngOnInit() {
-    this.getUnidEject();
   }
   async addUSer (){
      this.user = [];
@@ -27,6 +26,8 @@ export class RegistroComponent implements OnInit {
                   alert('Usuario  ' +this.validar.nombre + '  Creado con exito');
                   location.pathname="/login"
         }
+      },(err:HttpErrorResponse)=>{
+       console.log(err);
       })
 
     }
@@ -39,11 +40,5 @@ export class RegistroComponent implements OnInit {
       this.addUSer();
     }
 
-  }
-  async getUnidEject() {
-    this.rest.getUnidadEject().subscribe((data) => {
-     console.log(data);
-    this.unidadE = data;
-    });
   }
 }

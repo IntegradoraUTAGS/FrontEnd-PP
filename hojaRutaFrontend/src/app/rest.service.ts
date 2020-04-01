@@ -66,5 +66,9 @@ export class RestService {
    getDirectriz(): Observable <any>{
     return this.http.get(endPoint +'directriz');
    }
+   /////////CRUD unidad-usuario//////////
+   getUnidadUsuario(id): Observable <any>{
+    return this.http.get(endPoint +'relacion/'+id);
+   }
 }
 

@@ -46,12 +46,7 @@ export class ProgramaPresupuestalComponent implements OnInit {
          this.getProgram();
       }
       else{
-        console.log(element.unidadEjec._id)
-        this.rest.getProgramaArea(element.unidadEjec._id).subscribe((res:{programas})=>{
-          console.log(res);
-          this.pp= res.programas;
-          this.otro= res.programas;
-        })
+      window.location.pathname="area/unidEjec";
       }
     });
     });

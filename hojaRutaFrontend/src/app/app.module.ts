@@ -20,6 +20,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { PresupuestolUsuarioComponent } from './components/presupuestol-usuario/presupuestol-usuario.component';
 import { DirectrizUsuarioComponent } from './components/directriz-usuario/directriz-usuario.component';
 import { AgregarPresupuestoComponent } from './components/agregar-presupuesto/agregar-presupuesto.component';
+import { AreaUnidadEjecComponent } from './area-unidad-ejec/area-unidad-ejec.component';
 
 
 const appRoutes: Routes = [
@@ -45,7 +46,7 @@ const appRoutes: Routes = [
     ProgramaPresupuestalComponent,
     UserComponent,
     UnidEjecComponent
-    , PerfilComponent, PresupuestolUsuarioComponent, DirectrizUsuarioComponent, AgregarPresupuestoComponent
+    , PerfilComponent, PresupuestolUsuarioComponent, DirectrizUsuarioComponent, AgregarPresupuestoComponent, AreaUnidadEjecComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

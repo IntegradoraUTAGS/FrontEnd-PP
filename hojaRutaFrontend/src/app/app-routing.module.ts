@@ -9,6 +9,7 @@ import { UnidEjecComponent } from './unid-ejec/unid-ejec.component';
 import { DirectrizUsuarioComponent } from './components/directriz-usuario/directriz-usuario.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { AgregarPresupuestoComponent } from './components/agregar-presupuesto/agregar-presupuesto.component';
+import { AreaUnidadEjecComponent } from './area-unidad-ejec/area-unidad-ejec.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: "directriz", component: DirectrizComponent },
   { path: "user", component: UserComponent },
   { path: "unidEjec", component: UnidEjecComponent },
+  { path: "area/unidEjec", component: AreaUnidadEjecComponent },
   { path: "**", pathMatch: "full", redirectTo: "login" },
 
 ];
