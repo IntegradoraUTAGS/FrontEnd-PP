@@ -6,8 +6,8 @@
 
     <div class="row mt-5">
 
-        <div class="col-12  col-md-4">
-            <h4 class="text-center text-md-left">Programa Presupuestario <button type="button" class="btn btn-danger" (click)="desactivar()">Agregar</button></h4>
+        <div class="col-12  col-md-4" >
+            <h4 class="text-center text-md-left">Programa Presupuestario <button type="button" class="btn btn-danger" id="btnagregar" style="display: none;" (click)="desactivar()">Agregar</button></h4>
         </div>
         <div class="col-12  col-md-6 mt-md-0 mt-4 ">
             <div class="row">
@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-mt-18">
             <table class="row">
-                <tbody *ngFor="let el of pp.programas | paginate: paginationConfig">
+                <tbody *ngFor="let el of pp | paginate: paginationConfig; let in=index ">
                     <div class="container mt-2">
                         <div class="col">
                             <div class="col mt-2">
@@ -43,7 +43,9 @@
                                     </div>
                                     <img src="../../../assets/img/ut-logo.jpg" class="tarjeta__img card-img-top" alt="..." style="width: 20%; margin-left: 40%; border-radius: 50%; border:solid blue; margin-top:5%">
                                     <div class="card-body">
-                                        <p class="card-text font-weight-normal mb-2  ">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">Tics</span></p>
+                                        <div>
+                                            <p class="card-text font-weight-normal mb-2">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">{{el.unidadEjec.descripcion}}</span></p>
+                                        </div>
                                         <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">´{{el.fecha}}</span></p>
                                     </div>
                                 </div>
@@ -53,6 +55,7 @@
                     </div>
 
                 </tbody>
+                
             </table>
         </div>
         <div class="col-12 mt-3 d-flex justify-content-center">
@@ -115,6 +118,12 @@
                 <div class="md-form">
                     <input type="date" id="materialSubscriptionFormEmail" class="form-control" style="border: solid #008f39;" [(ngModel)]="programa.fecha" name="programa">
                     <label for="materialSubscriptionFormEmail">Fecha</label>
+                </div>
+                <div class="md-form">
+                    <label for="materialSubscriptionFormEmail">Area: </label>
+                    <select name="" id="" [(ngModel)]="programa.unidadEjec" name="programa">
+                        <option *ngFor="let item of unidadEjec" value="{{item._id}}" >{{item.descripcion|uppercase}}</option>
+                    </select>
                 </div>
 
                 <div class="md-form">

@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
                 alert(this.validar.email + ' Ah sido logeado');
                 location.pathname="/presupuesto";
                 console.log(this.user.ok);
+                window.localStorage.setItem('token', this.user.token);
+                window.localStorage.setItem('nombre', this.user.usuario.nombre);
+                window.localStorage.setItem('_id', this.user.usuario._id);
       }
     }, (data : HttpErrorResponse) =>{
       alert(data.error.err.message);

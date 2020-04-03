@@ -8,5 +8,6 @@ export class UsuarioModel{
  direccion:String;
  estado: Boolean;
  img:String;
- unidadEject:String;
+ rol:String;
+ pass:String;
 }
