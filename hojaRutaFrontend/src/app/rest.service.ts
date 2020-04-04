@@ -74,5 +74,8 @@ export class RestService {
    Comparar(id, prod): Observable <any>{
     return this.http.post(endPoint + 'comparar/'+id, prod);
    }
+   newPass(id, product): Observable <any>{
+    return this.http.put(endPoint + 'password/' + id, product);
+   }
 }
 

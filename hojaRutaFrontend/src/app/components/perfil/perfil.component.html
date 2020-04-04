@@ -22,10 +22,13 @@
                         </div>
                         <div class="correo mb-4 text-center" id="confirm" style="display:none; margin: 10%;">
                             <span class="font-weight-bold" style="font-size: 11px;">Confirmar: </span>
-                            <input type="password" class="font-weight-bold" placeholder="">
+                            <input type="password" class="font-weight-bold" placeholder="" [(ngModel)]="usuario.pass" name="usuario">
                         </div>
                     </div>
-                    <div class="col-12" style="left:50%;">
+                    <div class="col-12" style="left:50%; display: none;" id="btn2">
+                        <button type="button" class="btn btn-outline-success btn-md btn-block " (click)="guardarNpass()">Guardar</button>
+                    </div>
+                    <div class="col-12" style="left:50%;" id="btn1">
                         <button type="button" class="btn btn-outline-primary btn-md btn-block " (click)="compararPass()">Validar</button>
                     </div>
                 </div>

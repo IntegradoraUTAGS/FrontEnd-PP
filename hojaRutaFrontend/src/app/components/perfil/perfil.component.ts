@@ -59,6 +59,8 @@ valid:any={id:"Contraseña Actual"};
        this.rest.Comparar(element._id,this.usuario).subscribe((data)=>{
         console.log(data);
         document.getElementById('confirm').style.display='inline';
+        document.getElementById('btn1').style.display='none';
+        document.getElementById('btn2').style.display='inline';
         document.getElementById('coloress').style.color='#32cd00';
         this.usuario.password="";
        this.valid={id:"Nueva Contraseña"};
@@ -70,5 +72,19 @@ valid:any={id:"Contraseña Actual"};
       });
     })
     
+  }
+  guardarNpass(){
+    if(this.usuario.password !== this.usuario.pass){
+      this.valid={id:"No compatible"};
+      document.getElementById('coloress').style.color='red';
+     }else{
+       this.rest.newPass(this.user,this.usuario).subscribe((res)=>{
+        this.valid={id:"Guardando..."};
+        document.getElementById('coloress').style.color='blue';
+        window.location.reload();
+       },(err:HttpErrorResponse)=>{
+         console.log(err);
+       })
+     }
   }
 }
