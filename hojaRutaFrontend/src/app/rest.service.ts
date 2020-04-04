@@ -71,6 +71,10 @@ export class RestService {
    getUnidadUsuario(id): Observable <any>{
     return this.http.get(endPoint +'relacion/'+id);
    }
+   addUnidadUsuario(product): Observable <any>{
+    return this.http.post<any>(endPoint + 'relacion',product);
+   }
+   ////////////comparar-update password////////////////
    Comparar(id, prod): Observable <any>{
     return this.http.post(endPoint + 'comparar/'+id, prod);
    }

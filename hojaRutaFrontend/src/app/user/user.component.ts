@@ -1,7 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, NgModule } from '@angular/core';
 import {RestService} from '../rest.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UsuarioModel} from '../models/usuario.models';
+import {UsuarioUsuarioModel} from '../models/unidad-usuario.models';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -11,9 +13,12 @@ export class UserComponent implements OnInit {
 user:any = [];
 value :any=[];
 unidadesEjecutoras:any=[];
+unidadEjec:any=[];
   constructor(public rest: RestService, private route:ActivatedRoute, private router: Router ) { }
   usuario: UsuarioModel = new UsuarioModel();
+  UnidadUsuario:UsuarioUsuarioModel = new UsuarioUsuarioModel();
   ngOnInit() {
+    this.getUnidadEjec();
     if(localStorage.getItem("token") === null ){
       window.location.pathname = "/login";
   } 
@@ -56,6 +61,22 @@ unidadesEjecutoras:any=[];
     this.rest.getUnidadUsuario(id).subscribe((resp:{relaciones})=>{
         this.unidadesEjecutoras=resp.relaciones;
         console.log(resp.relaciones);
+    })
+  }
+  getUnidadEjec(){
+    this.rest.getUnidadEject().subscribe((resp:{unidades})=>{
+       this.unidadEjec= resp.unidades;
+    });
+  }
+  postUnidadUsuario(){
+    this.value.usuarios.forEach(element => {
+    this.UnidadUsuario.usuario=  element._id;
+    });
+    this.rest.addUnidadUsuario(this.UnidadUsuario).subscribe((resp)=>{
+      console.log(resp);
+      this.getUnidades(this.UnidadUsuario.usuario);
+    },(err:HttpErrorResponse)=>{
+      console.log(err);
     })
   }
 }
