@@ -1,7 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, NgModule } from '@angular/core';
 import {RestService} from '../rest.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UsuarioModel} from '../models/usuario.models';
+import {UsuarioUsuarioModel} from '../models/unidad-usuario.models';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -10,34 +12,40 @@ import {UsuarioModel} from '../models/usuario.models';
 export class UserComponent implements OnInit {
 user:any = [];
 value :any=[];
+unidadesEjecutoras:any=[];
+unidadEjec:any=[];
   constructor(public rest: RestService, private route:ActivatedRoute, private router: Router ) { }
   usuario: UsuarioModel = new UsuarioModel();
+  UnidadUsuario:UsuarioUsuarioModel = new UsuarioUsuarioModel();
   ngOnInit() {
+    this.getUnidadEjec();
+    if(localStorage.getItem("token") === null ){
+      window.location.pathname = "/login";
+  } 
     this.getUser();
   }
   getUser(){
     this.user = [];
     this.rest.getUser().subscribe((data:{}) => {
       this.user = data;
-      console.log(this.user.usuarios);
     });
   }
  async updateUser(id){
   var element = document.getElementById('display-tab2');
   element.style.display = 'inline';
   var element2 = document.getElementById('display-tab1');
-  element2.style.display = 'none'
+  element2.style.display = 'none';
    await this.rest.getUserById(id).subscribe(res => {
-     this.value = res;
-    console.log(res);
+    this.getUnidades(id);
+    this.value = res;
   }, (err) => {
     console.log(err);
   });
   }
   async updateUserById(id){
     await this.rest.updateUser(id, this.usuario).subscribe(res => {
-     console.log(res);
      location.reload();
+
    }, (err) => {
      console.log(err);
    });
@@ -48,5 +56,27 @@ value :any=[];
     }, (err) => {
       console.log(err);
     });
+  }
+  getUnidades(id){
+    this.rest.getUnidadUsuario(id).subscribe((resp:{relaciones})=>{
+        this.unidadesEjecutoras=resp.relaciones;
+        console.log(resp.relaciones);
+    })
+  }
+  getUnidadEjec(){
+    this.rest.getUnidadEject().subscribe((resp:{unidades})=>{
+       this.unidadEjec= resp.unidades;
+    });
+  }
+  postUnidadUsuario(){
+    this.value.usuarios.forEach(element => {
+    this.UnidadUsuario.usuario=  element._id;
+    });
+    this.rest.addUnidadUsuario(this.UnidadUsuario).subscribe((resp)=>{
+      console.log(resp);
+      this.getUnidades(this.UnidadUsuario.usuario);
+    },(err:HttpErrorResponse)=>{
+      console.log(err);
+    })
   }
 }

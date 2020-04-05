@@ -4,13 +4,15 @@
     <thead class="thead-green">
         <tr>
             <th scope="col">
-                Status</th>
+                Rol</th>
             <th scope="col">
                 Email</th>
             <th scope="col">
                 Nombre</th>
             <th scope="col">
                 Apellido</th>
+            <th scope="col">
+                Direccion</th>
             <th scope="col">
                 Eliminar</th>
             <th scope="col">
@@ -20,16 +22,19 @@
     <tbody *ngFor="let el of user.usuarios">
         <tr>
             <th scope="col">
-                <input type="text" value="{{el.estado}}" class="actual" name="estado">
+                <input type="text" value="{{el.rol}}" class="actual" name="rol" readonly>
             </th>
             <th scope="col">
-                <input type="text" value="{{el.email}}" class="actual" name="email">
+                <input type="text" value="{{el.email}}" class="actual" name="email" readonly>
             </th>
             <th scope="col">
-                <input type="text" value="{{el.nombre}}" class="actual" name="nombre">
+                <input type="text" value="{{el.nombre}}" class="actual" name="nombre" readonly>
             </th>
             <th scope="col">
-                <input type="text" value="{{el.apellido}}" class="actual" name="apellido">
+                <input type="text" value="{{el.apellido}}" class="actual" name="apellido" readonly>
+            </th>
+            <th scope="col">
+                <input type="text" value="{{el.direccion}}" class="actual" name="direccion" readonly>
             </th>
             <th>
                 <button class="icon-remov" title="delete product" (click)="deleteUSer(el._id)">X</button>
@@ -53,29 +58,60 @@
             <div class="formulario">
                 <!-- Default form contact -->
                 <form class="text-center border border-light p-5">
+                    <!-- departamento -->
+                    <div>
+                        <div class="modal-dialog modal-xl" role="document">
+                            <div class="modal-content" style="padding:10%;position: absolute;">
+                                <p class="h4 mb-4">Usuario</p>
 
-                    <p class="h4 mb-4">Unidades Ejecutoras</p>
+                                <!-- Name -->
+                                <h5>Email:{{al.email}}</h5>
+                                <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="{{al.email}}" [(ngModel)]="usuario.email" name="usuario">
+                                <h5>Rol:{{al.rol}}</h5>
+                                <select [(ngModel)]="usuario.rol" name="usuario" class="form-control form-control-lg">
+                                    <option value="USER">Usuario</option>
+                                    <option value="ADMIN">Administrador</option>
+                                </select>
+                                <!-- Email -->
+                                <h5>Nombre:{{al.nombre}}</h5>
+                                <input type=" email " id="defaultContactFormEmail " class="form-control mb-4 " placeholder="{{al.nombre}}" [(ngModel)]="usuario.nombre" name="usuario">
+                                <h5>Dirección:{{al.direccion}}</h5>
+                                <input type=" text " id="defaultContactFormEmail " class="form-control mb-4 " placeholder="{{al.direccion}}" [(ngModel)]="usuario.direccion" name="usuario">
 
-                    <!-- Name -->
-                    <h5>Email:{{al.email}}</h5>
-                    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="{{al.email}}" [(ngModel)]="usuario.email" name="usuario">
+                                <!-- Copy -->
+                                <div class="row ">
+                                    <div class="col-md-6 mx-auto d-flex justify-content-center ">
 
-                    <!-- Email -->
-                    <h5>Nombre:{{al.nombre}}</h5>
-                    <input type=" email " id="defaultContactFormEmail " class="form-control mb-4 " placeholder="{{al.nombre}}" [(ngModel)]="usuario.nombre" name="usuario">
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group mb-3">
 
-
-                    <!-- Copy -->
-                    <div class="row ">
-                        <div class="col-md-6 mx-auto d-flex justify-content-center ">
-
+                                            <label>Departamentos:</label>
+                                            <tbody>
+                                                <thead *ngFor="let item of unidadesEjecutoras">
+                                                    <p>{{item.unidadEjec.descripcion |uppercase}}: {{item.unidadEjec.codigo}}</p>
+                                                </thead>
+                                            </tbody>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <select name="" id="" class="form-control" [(ngModel)]="UnidadUsuario.unidadEjec" name="UsuarioUsuario">
+                                                    <option value="{{unidad._id}}" *ngFor="let unidad of this.unidadEjec">{{unidad.descripcion}}</option>
+                                                </select>
+                                                <button class="btn btn-outline-success" type="button" (click)="postUnidadUsuario()">Agregar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" (click)="updateUserById(al._id)">Save changes</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-
-                    <!-- Send button -->
-                    <button mdbBtn color="info " block="true " type="submit " class="btn btn-outline-success " (click)="updateUserById(al._id)">Send</button>
-
                 </form>
             </div>
         </tbody>

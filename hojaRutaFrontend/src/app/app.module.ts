@@ -13,7 +13,7 @@ import { ProgramaPresupuestalComponent } from './components/programa-presupuesta
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { UnidEjecComponent } from './unid-ejec/unid-ejec.component';
 
 import { PerfilComponent } from './components/perfil/perfil.component';
@@ -21,10 +21,11 @@ import { PresupuestolUsuarioComponent } from './components/presupuestol-usuario/
 import { DirectrizUsuarioComponent } from './components/directriz-usuario/directriz-usuario.component';
 import { AgregarPresupuestoComponent } from './components/agregar-presupuesto/agregar-presupuesto.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { AreaUnidadEjecComponent } from './area-unidad-ejec/area-unidad-ejec.component';
 
 
 const appRoutes: Routes = [
-  {
+  {  
     path: 'user',
     component: UserComponent,
     data: { title: 'User List' }
@@ -45,16 +46,16 @@ const appRoutes: Routes = [
     RegistroComponent,
     ProgramaPresupuestalComponent,
     UserComponent,
-
     UnidEjecComponent
-    , PerfilComponent, PresupuestolUsuarioComponent, DirectrizUsuarioComponent, AgregarPresupuestoComponent, FooterComponent
+    , PerfilComponent, PresupuestolUsuarioComponent, DirectrizUsuarioComponent, AgregarPresupuestoComponent, AreaUnidadEjecComponent, FooterComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

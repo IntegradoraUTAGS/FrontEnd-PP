@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import { catchError} from 'rxjs/operators';
-const endPoint = 'http://localhost:3000/'
+import { stringify } from 'querystring';
+const endPoint = 'https://hoja-ruta.herokuapp.com/'
 @Injectable({
   providedIn: 'root'
 })
@@ -28,6 +29,9 @@ export class RestService {
     return this.http.get(endPoint +'usuario/'+id);
    }
    ////////CRUD unidad ejecutora///////////
+   getUnidadEjectById(id): Observable <any>{
+    return this.http.get(endPoint +'unidadEjecutora'+id);
+   }
    getUnidadEject(): Observable <any>{
     return this.http.get(endPoint +'unidadEjecutora');
    }
@@ -44,6 +48,12 @@ export class RestService {
    getPrograma(): Observable <any>{
     return this.http.get(endPoint +'programa');
    }
+   getProgramaArea(area): Observable <any>{
+    return this.http.get(endPoint +'programa/'+area);
+   }
+   getProgramaPorAño(): Observable <any>{
+    return this.http.get(endPoint +'programa/year');
+   }
    addPRograma(product): Observable <any>{
     return this.http.post<any>(endPoint + 'programa',product);
    }
@@ -52,6 +62,24 @@ export class RestService {
    }
    deletePrograma(id): Observable <any>{
     return this.http.delete(endPoint +'programa/'+ id);
+   }
+///////CRUD directriz //////////////
+   getDirectriz(): Observable <any>{
+    return this.http.get(endPoint +'directriz');
+   }
+   /////////CRUD unidad-usuario//////////
+   getUnidadUsuario(id): Observable <any>{
+    return this.http.get(endPoint +'relacion/'+id);
+   }
+   addUnidadUsuario(product): Observable <any>{
+    return this.http.post<any>(endPoint + 'relacion',product);
+   }
+   ////////////comparar-update password////////////////
+   Comparar(id, prod): Observable <any>{
+    return this.http.post(endPoint + 'comparar/'+id, prod);
+   }
+   newPass(id, product): Observable <any>{
+    return this.http.put(endPoint + 'password/' + id, product);
    }
 }
 

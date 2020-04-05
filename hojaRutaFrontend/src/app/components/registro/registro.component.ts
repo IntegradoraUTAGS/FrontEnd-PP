@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UsuarioModel} from '../../models/usuario.models';
 import {RestService} from '../../rest.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -17,21 +18,27 @@ export class RegistroComponent implements OnInit {
   }
   async addUSer (){
      this.user = [];
+
       await this.rest.addUser(this.usuario).subscribe((data:{}) => {
-       this.user = data; 
-       this.validar = this.user.usrDB;
-       if(this.validar.email != null){
-                 alert('Usuario  ' +this.validar.nombre + '  Creado con exito');
-                 location.pathname="/login"
-       }
-     })
+        this.user = data;
+        this.validar = this.user.usrDB;
+        if(this.validar.email != null){
+                  alert('Usuario  ' +this.validar.nombre + '  Creado con exito');
+                  location.pathname="/login"
+        }
+      },(err:HttpErrorResponse)=>{
+       console.log(err);
+      })
+
     }
  async valid(){
-    if(this.usuario.password != this.usuario.valid){
-        alert("contraseña distinta");
-    }else{
+    if (this.usuario.password !== this.usuario.valid){
+        alert('contraseña distinta');
+    } else if (this.usuario.email.slice(-12) != "utags.edu.mx"){
+      alert('Terminacion debe ser: utags.edu.mx')
+    } else {
       this.addUSer();
     }
-    
+
   }
 }

@@ -2,124 +2,142 @@
 </app-navbar>
 
 
-<div class="container mb-5" id="fecha">
+<div class="container" id="fecha">
 
-  <div class="row mt-5">
+    <div class="row mt-5">
 
-    <div class="col-12  col-md-6">
-      <h4 class="text-center text-md-left">Programa Presupuestario</h4>
-    </div>
-    <div class="col-12  col-md-6 mt-md-0 mt-4 ">
-      <div class="row">
-
-        <label for="inputEmail3" class="h4 col-6 col-md-2 col-form-label offset-md-5
-"><i class="far fa-calendar-alt"></i> Año</label>
-        <div class="col-6 col-md-5 ">
-          <select class="custom-select text-center" id="validationTooltip04" required>
-            <option selected disabled value="" class="text-center">...</option>
-            <option>Todos</option>
-            <option>2020</option>
-            <option>2019</option>
-            <option>2018</option>
-            <option>2017</option>
-          </select>
+        <div class="col-12  col-md-4" >
+            <h4 class="text-center text-md-left">Programa Presupuestario <button type="button" class="btn btn-danger" id="btnagregar" style="display: none;" (click)="desactivar()">Agregar</button></h4>
         </div>
-      </div>
+        <div class="col-12  col-md-6 mt-md-0 mt-4 ">
+            <div class="row">
+
+                <label for="inputEmail3" class="h4 col-6 col-md-2 col-form-label offset-md-5">
+                    <i class="far fa-calendar-alt"></i>  Año</label>
+                <div class="col-6 col-md-5 ">
+                    <select class="custom-select text-center" id="validationTooltip04" required>
+            <option *ngFor="let item of year.programas"  value="{{item}}" class="text-center">{{item}}</option>
+            </select>
+                </div>
+            </div>
+
+        </div>
 
     </div>
-
-  </div>
 
 </div>
 
+<div class="container" id="tabla2">
+    <div class="row">
+        <div class="col-mt-18">
+            <table class="row">
+                <tbody *ngFor="let el of pp | paginate: paginationConfig; let in=index ">
+                    <div class="container mt-2">
+                        <div class="col">
+                            <div class="col mt-2">
+                                <div class="card text-center ">
+                                    <div class="card-header" [ngStyle]="{'background-color': el.color}">
+                                        <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
+                                            <h5 class="card-title " style="color:white; font-family: monospace; padding: 7%; border: solid white;">{{el.descripcion|uppercase}}</h5>
+                                        </a>
+                                    </div>
+                                    <img src="../../../assets/img/ut-logo.jpg" class="tarjeta__img card-img-top" alt="..." style="width: 20%; margin-left: 40%; border-radius: 50%; border:solid blue; margin-top:5%">
+                                    <div class="card-body">
+                                        <div>
+                                            <p class="card-text font-weight-normal mb-2">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">{{el.unidadEjec.descripcion}}</span></p>
+                                        </div>
+                                        <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">´{{el.fecha}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-<div class="container">
- <div class="row mb-4 justify-content-around">
+                    </div>
 
-      <div class="card text-center  ">
-        <div class="card-header">
-          <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
-            <h5 class="card-title ">Proceso educativo</h5>
-          </a>
+                </tbody>
+
+            </table>
         </div>
-        <img src="../../../assets/img/utLogo.jpg" class="tarjeta__img card-img-top" alt="..."
-          routerLink = "directrices">
-
-        <div class="card-body">
-
-            <div class="col">
-
-
-          <p class="card-text font-weight-normal mb-1  ">Unidad Ejecutora: <span
-              class="text-monospace badge badge-pill badge-dark">Tics</span></p>
-          <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">2020</span></p>
+        <div class="col-12 mt-3 d-flex justify-content-center">
+            <pagination-template #p="paginationApi" [id]="paginationConfig.id" [maxSize]="maxSizePagination" autoHide="true" (pageChange)="paginationConfig.currentPage = $event">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li [className]="p.isFirstPage() ? 'page-item disabled' : 'page-item'">
+                            <a class="page-link" (click)="p.previous()" href="#" aria-label="Previous">
+                                <span aria-hidden="true">«</span>
+                            </a>
+                        </li>
+                        <li *ngFor="let page of p.pages" [className]="
+              p.getCurrent() === page.value
+                ? 'page-item disabled'
+                : 'page-item'
+            ">
+                            <a class="page-link" (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+              {{ page.label }}
+            </a>
+                            <a class="page-link" *ngIf="p.getCurrent() === page.value">
+              {{ page.label }}
+            </a>
+                        </li>
+                        <li [className]="
+              p.isLastPage() ? 'page-item disabled' : 'page-item disabled'
+            ">
+                            <a class="page-link" href="#" (click)="p.next()" aria-label="Next">
+                                <span aria-hidden="true">»</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </pagination-template>
         </div>
-      </div>
     </div>
+</div>
+<div class="add-presupuestal" id="tabla1">
+    <!-- Material form subscription -->
+    <div class="card">
 
-      <div class="card text-center ">
-        <div class="card-header">
-          <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
-            <h5 class="card-title ">Proceso educativo</h5>
-          </a>
+        <h5 class="card-header info-color white-text text-center py-4">
+            <strong>Agregar Programa Presupuestal</strong>
+            <button class="float-right" (click)="reload()">X</button>
+        </h5>
+
+        <!--Card content-->
+        <div class="card-body px-lg-5">
+
+            <!-- Form -->
+            <form class="text-center" style="color: #008f39;" action="#!">
+
+
+                <!-- Name -->
+                <div class="md-form mt-3">
+                    <input type="text" id="materialSubscriptionFormPasswords" class="form-control" style="border: solid #008f39;" [(ngModel)]="programa.descripcion" name="programa">
+                    <label for="materialSubscriptionFormPasswords">Descripcion</label>
+                </div>
+
+                <!-- E-mai -->
+                <div class="md-form">
+                    <input type="date" id="materialSubscriptionFormEmail" class="form-control" style="border: solid #008f39;" [(ngModel)]="programa.fecha" name="programa">
+                    <label for="materialSubscriptionFormEmail">Fecha</label>
+                </div>
+                <div class="md-form">
+                    <label for="materialSubscriptionFormEmail">Area: </label>
+                    <select name="" id="" [(ngModel)]="programa.unidadEjec" name="programa">
+                        <option *ngFor="let item of unidadEjec" value="{{item._id}}" >{{item.descripcion|uppercase}}</option>
+                    </select>
+                </div>
+
+                <div class="md-form">
+                    <input type="color" id="materialSubscriptionFormEmail" class="form-control" style="border: solid #008f39;" [(ngModel)]="programa.color" name="programa">
+                    <label for="materialSubscriptionFormEmail">Color</label>
+                </div>
+                <!-- Sign in button -->
+                <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-2 waves-effect" type="submit" (click)="addProgram()">Agregar</button>
+
+            </form>
+            <!-- Form -->
+
         </div>
-        <img src="../../../assets/img/utLogo.jpg" class="tarjeta__img card-img-top" alt="..." routerLink="directrices">
 
-        <div class="card-body">
-
-          <div class="col">
-
-
-            <p class="card-text font-weight-normal mb-1  ">Unidad Ejecutora: <span
-                class="text-monospace badge badge-pill badge-dark">Tics</span></p>
-            <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">2020</span></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card text-center ">
-        <div class="card-header">
-          <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
-            <h5 class="card-title ">Proceso educativo</h5>
-          </a>
-        </div>
-        <img src="../../../assets/img/utLogo.jpg" class="tarjeta__img card-img-top" alt="...">
-
-        <div class="card-body">
-
-
-
-          <p class="card-text font-weight-normal mb-1  ">Unidad Ejecutora: <span
-              class="text-monospace badge badge-pill badge-dark">Tics</span></p>
-          <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">2020</span></p>
-        </div>
-      </div>
-
-
-
-
-
+    </div>
     <!-- Material form subscription -->
 </div>
-</div>
-
-
-
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item active"><a class="page-link " href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-<app-footer></app-footer>

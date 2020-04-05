@@ -1,20 +1,18 @@
 .thead-green {
-    background-color: rgb(0, 128, 0, 0.5);
+    background-color: #00cba9;
     color: white;
 }
 
 .icon-remov {
-    border: solid rgb(0, 128, 0, 0.5);
-    ;
+    border: solid #00cba9;
     border-radius: 60%;
-    color: rgb(0, 128, 0, 0.5);
-    ;
+    color: #00cba9;
     padding-left: 10%;
     padding-right: 10%;
 }
 
 .prueba {
-    border: solid 3px rgb(0, 128, 0, 0.5);
+    border: solid 3px #00cba9;
     ;
 }
 
@@ -29,4 +27,7 @@
 
 #display-tab2 {
     display: none;
+}
+.departamento{
+    border: solid black;
 }
