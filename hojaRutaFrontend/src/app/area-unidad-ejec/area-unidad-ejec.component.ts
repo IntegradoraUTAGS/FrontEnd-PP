@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { RestService } from '../rest.service';
 import { PaginationInstance } from 'ngx-pagination';
+import {PresupuestolUsuarioComponent} from '../components/presupuestol-usuario/presupuestol-usuario.component'
 @Component({
   selector: 'app-area-unidad-ejec',
   templateUrl: './area-unidad-ejec.component.html',
   styleUrls: ['./area-unidad-ejec.component.scss']
 })
 export class AreaUnidadEjecComponent implements OnInit {
-
   constructor(public rest: RestService) { }
-area:any=[];
+  @Input() name:any={hey:"a"};
+  area:any=[];
   ngOnInit(): void {
     this.porArea();
   }
@@ -18,6 +19,10 @@ porArea(){
     this.area=data.relaciones;
     console.log(data.relaciones);
   })
+}
+ProgramaPorArea(id){
+  localStorage.setItem('area', id);
+  location.pathname="unidadUsuario";
 }
 public todoList: object[] = [];
   public maxSizePagination: string = '6';

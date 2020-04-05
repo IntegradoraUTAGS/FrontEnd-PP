@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { DirectrizComponent } from './components/directriz/directriz.component';
@@ -10,6 +10,7 @@ import { DirectrizUsuarioComponent } from './components/directriz-usuario/direct
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { AgregarPresupuestoComponent } from './components/agregar-presupuesto/agregar-presupuesto.component';
 import { AreaUnidadEjecComponent } from './area-unidad-ejec/area-unidad-ejec.component';
+import { PresupuestolUsuarioComponent } from './components/presupuestol-usuario/presupuestol-usuario.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: "directriz", component: DirectrizComponent },
   { path: "user", component: UserComponent },
   { path: "unidEjec", component: UnidEjecComponent },
-  { path: "area/unidEjec", component: AreaUnidadEjecComponent },
+  { path: "area/unidEjec", component: AreaUnidadEjecComponent},
+  {path:"unidadUsuario", component: PresupuestolUsuarioComponent},
   { path: "**", pathMatch: "full", redirectTo: "login" },
 
 ];

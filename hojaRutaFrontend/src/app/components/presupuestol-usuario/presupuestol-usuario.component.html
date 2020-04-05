@@ -1,1 +1,89 @@
-<p>presupuestol-usuario works!</p>
+<app-navbar></app-navbar>
+
+<div class="container" id="fecha">
+
+    <div class="row mt-5">
+
+        <div class="col-12  col-md-6 mt-md-0 mt-4 ">
+            <div class="row">
+
+                <label for="inputEmail3" class="h4 col-6 col-md-2 col-form-label offset-md-5">
+                    <i class="far fa-calendar-alt"></i>  Año</label>
+                <div class="col-6 col-md-5 ">
+                    <select class="custom-select text-center" id="validationTooltip04" required>
+            <option *ngFor="let item of year"  value="{{item}}" class="text-center">{{item}}</option>
+            </select>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container" id="tabla2">
+    <div class="row">
+        <div class="col-mt-18">
+            <table class="row">
+                <tbody *ngFor="let el of pp | paginate: paginationConfig; let in=index ">
+                    <div class="container mt-2">
+                        <div class="col">
+                            <div class="col mt-2">
+                                <div class="card text-center ">
+                                    <div class="card-header" [ngStyle]="{'background-color': el.color}">
+                                        <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
+                                            <h5 class="card-title " style="color:white; font-family: monospace; padding: 7%; border: solid white;">{{el.descripcion|uppercase}}</h5>
+                                        </a>
+                                    </div>
+                                    <img src="../../../assets/img/ut-logo.jpg" class="tarjeta__img card-img-top" alt="..." style="width: 20%; margin-left: 40%; border-radius: 50%; border:solid blue; margin-top:5%">
+                                    <div class="card-body">
+                                        <div>
+                                            <p class="card-text font-weight-normal mb-2">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">{{el.unidadEjec.descripcion}}</span></p>
+                                        </div>
+                                        <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">´{{el.fecha}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col-12 mt-3 d-flex justify-content-center">
+            <pagination-template #p="paginationApi" [id]="paginationConfig.id" [maxSize]="maxSizePagination" autoHide="true" (pageChange)="paginationConfig.currentPage = $event">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li [className]="p.isFirstPage() ? 'page-item disabled' : 'page-item'">
+                            <a class="page-link" (click)="p.previous()" href="#" aria-label="Previous">
+                                <span aria-hidden="true">«</span>
+                            </a>
+                        </li>
+                        <li *ngFor="let page of p.pages" [className]="
+              p.getCurrent() === page.value
+                ? 'page-item disabled'
+                : 'page-item'
+            ">
+                            <a class="page-link" (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+              {{ page.label }}
+            </a>
+                            <a class="page-link" *ngIf="p.getCurrent() === page.value">
+              {{ page.label }}
+            </a>
+                        </li>
+                        <li [className]="
+              p.isLastPage() ? 'page-item disabled' : 'page-item disabled'
+            ">
+                            <a class="page-link" href="#" (click)="p.next()" aria-label="Next">
+                                <span aria-hidden="true">»</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </pagination-template>
+        </div>
+    </div>
+</div>
