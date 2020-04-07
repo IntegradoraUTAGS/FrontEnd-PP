@@ -8,7 +8,6 @@ import { PaginationInstance } from 'ngx-pagination';
   styleUrls: ['./presupuestol-usuario.component.scss']
 })
 export class PresupuestolUsuarioComponent implements OnInit {
-  
   constructor(public rest: RestService) { }
   year:any=[];
   pp:any=[];
@@ -20,11 +19,13 @@ export class PresupuestolUsuarioComponent implements OnInit {
   getArea(){
     this.rest.getProgramaId(localStorage.getItem('area')).subscribe((data:{programas})=>{
       this.pp=data.programas;
+      
     });
   }
   getUser(){
     this.rest.getUnidUser().subscribe((data:{relaciones})=>{
       this.area= data.relaciones;
+      console.log(this.area);
     })
   }
   public todoList: object[] = [];

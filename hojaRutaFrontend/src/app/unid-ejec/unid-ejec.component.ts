@@ -14,15 +14,23 @@ export class UnidEjecComponent implements OnInit {
   constructor( private rest : RestService) { }
   UnidadEjecuctora: UnidadEjecuctoraModels = new UnidadEjecuctoraModels();
   unidadEject: any = [];
+  listUnidEjec:any=[];
   ngOnInit(): void {
+    this.getunid();
   }
   async addUnidadEject (){
       console.log(this.UnidadEjecuctora);
       await this.rest.addUnidadEject(this.UnidadEjecuctora).subscribe((data:{}) => {
        this.unidadEject = data; 
+       this.getunid();
      },(data : HttpErrorResponse) =>{
       
     });
-  
+}
+getunid(){
+  this.rest.getUnidadEject().subscribe((res:{unidades})=>{
+    this.listUnidEjec = res.unidades;
+    console.log(res);
+  })
 }
 }

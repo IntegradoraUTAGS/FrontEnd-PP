@@ -8,7 +8,6 @@ const endPoint = 'https://hoja-ruta.herokuapp.com/'
   providedIn: 'root'
 })
 export class RestService {
-
   constructor(private http: HttpClient) { }
   getUser(): Observable <any>{
    return this.http.get(endPoint +'usuario');

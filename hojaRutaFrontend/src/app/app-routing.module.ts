@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: "registro", component: RegistroComponent },
   { path: "directriz", component: DirectrizComponent },
   { path: "user", component: UserComponent },
-  { path: "unidEjec", component: UnidEjecComponent },
+  { path: "unidEjec", component: UnidEjecComponent},
   { path: "area/unidEjec", component: AreaUnidadEjecComponent},
   {path:"unidadUsuario", component: PresupuestolUsuarioComponent},
   { path: "**", pathMatch: "full", redirectTo: "login" },

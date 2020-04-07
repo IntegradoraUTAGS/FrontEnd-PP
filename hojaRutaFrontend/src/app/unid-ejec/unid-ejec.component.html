@@ -23,4 +23,16 @@
     <button mdbBtn color="info" block="true" type="submit" class="btn btn-outline-success" (click)="addUnidadEject()">Send</button>
 
 </form>
+<ul class="list-group" *ngFor="let item of listUnidEjec" style="width: 25%; margin-left: 37%;">
+    <button style="border: none;">
+        <li class="list-group-item list-group-item" style="text-align: center; border: solid #00cba9;">
+            {{item.codigo}}:{{item.descripcion}}
+        </li>
+    <a>
+    <button class="btn btn-outline-warning">Eliminar</button>
+    <button class="btn btn-outline-success">Actualizar</button>
+    </a>
+    </button>
+
+</ul>
 <!-- Default form contact -->

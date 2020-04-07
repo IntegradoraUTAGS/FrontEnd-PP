@@ -9,7 +9,7 @@ import {PresupuestolUsuarioComponent} from '../components/presupuestol-usuario/p
 })
 export class AreaUnidadEjecComponent implements OnInit {
   constructor(public rest: RestService) { }
-  @Input() name:any={hey:"a"};
+  @Input() dato1:any=[]
   area:any=[];
   ngOnInit(): void {
     this.porArea();
@@ -21,7 +21,7 @@ porArea(){
   })
 }
 ProgramaPorArea(id){
-  localStorage.setItem('area', id);
+  localStorage.setItem('area', id);  
   location.pathname="unidadUsuario";
 }
 public todoList: object[] = [];
