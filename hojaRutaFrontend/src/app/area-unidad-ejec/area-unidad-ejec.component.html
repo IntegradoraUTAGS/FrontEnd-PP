@@ -1,6 +1,5 @@
 <app-navbar>
 </app-navbar>
-
 <div class="container mt-5 mb-5">
 
     <div class="directriz text-center">
@@ -18,7 +17,7 @@
         <div class="col-sm-5"></div>
     </div>
 
-    <div class="col-mt-18">
+    <div class="col-mt-18" id="areas">
         <div class="row">
 
             <tbody *ngFor="let dire of area | paginate: paginationConfig" style="margin: 2%;">
@@ -27,7 +26,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{dire.unidadEjec.descripcion | uppercase}}</h5>
                         <p class="card-text mb-4">{{dire.descripcion}}</p>
-                        <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i> Mostrar</a>
+                        <button class="btn btn-primary" (click)="ProgramaPorArea(dire.unidadEjec._id)"><i class="fas fa-eye"></i> Mostrar Area</button>
                     </div>
                 </div>
             </tbody>

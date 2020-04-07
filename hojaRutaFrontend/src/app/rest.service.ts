@@ -8,7 +8,6 @@ const endPoint = 'https://hoja-ruta.herokuapp.com/'
   providedIn: 'root'
 })
 export class RestService {
-
   constructor(private http: HttpClient) { }
   getUser(): Observable <any>{
    return this.http.get(endPoint +'usuario');
@@ -51,6 +50,9 @@ export class RestService {
    getProgramaArea(area): Observable <any>{
     return this.http.get(endPoint +'programa/'+area);
    }
+   getProgramaId(id): Observable <any>{
+    return this.http.get(endPoint +'programa/id/'+id);
+   }
    getProgramaPorAño(): Observable <any>{
     return this.http.get(endPoint +'programa/year');
    }
@@ -70,6 +72,9 @@ export class RestService {
    /////////CRUD unidad-usuario//////////
    getUnidadUsuario(id): Observable <any>{
     return this.http.get(endPoint +'relacion/'+id);
+   }
+   getUnidUser(): Observable <any>{
+    return this.http.get(endPoint +'relacion/');
    }
    addUnidadUsuario(product): Observable <any>{
     return this.http.post<any>(endPoint + 'relacion',product);

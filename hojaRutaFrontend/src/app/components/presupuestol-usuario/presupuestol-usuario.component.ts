@@ -1,15 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit,Input } from '@angular/core';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { RestService } from 'src/app/rest.service';
+import { PaginationInstance } from 'ngx-pagination';
 @Component({
   selector: 'app-presupuestol-usuario',
   templateUrl: './presupuestol-usuario.component.html',
   styleUrls: ['./presupuestol-usuario.component.scss']
 })
 export class PresupuestolUsuarioComponent implements OnInit {
-
-  constructor() { }
-
+  constructor(public rest: RestService) { }
+  year:any=[];
+  pp:any=[];
+  area:any=[];
   ngOnInit(): void {
+    this.getUser();
+   this.getArea();
   }
+  getArea(){
+    this.rest.getProgramaId(localStorage.getItem('area')).subscribe((data:{programas})=>{
+      this.pp=data.programas;
+      
+    });
+  }
+  getUser(){
+    this.rest.getUnidUser().subscribe((data:{relaciones})=>{
+      this.area= data.relaciones;
+      console.log(this.area);
+    })
+  }
+  public todoList: object[] = [];
+  public maxSizePagination: string = '6';
 
+  public paginationConfig: PaginationInstance = {
+    id: 'advanced',
+    itemsPerPage: 6,
+    currentPage: 1
+  };
+
+  public labels: object = {
+    previousLabel: 'Back',
+    nextLabel: 'Next',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+  };
+
+  public onPageChange(number: number) {
+    this.paginationConfig.currentPage = number;
+  }
 }
+
