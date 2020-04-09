@@ -74,11 +74,11 @@ unidadEjec:any=[];
     this.value.usuarios.forEach(element => {
     this.UnidadUsuario.usuario=  element._id;
     });
-    console.log('unidad', this.UnidadUsuario.unidadEjec)
-    console.log('user', this.UnidadUsuario.usuario)
+    console.log('user value', this.UnidadUsuario)
     this.rest.ComprobarAreaUnidadUsuario(this.UnidadUsuario.usuario, this.UnidadUsuario.unidadEjec).subscribe((res)=>{
       console.log(res);
-      this.rest.addUnidadUsuario(this.UnidadUsuario).subscribe((resp)=>{
+      console.log('post unidades', this.UnidadUsuario)
+      this.rest.addUnidadUsuario(this.UnidadUsuario.usuario,this.UnidadUsuario.unidadEjec).subscribe((resp)=>{
       console.log(resp);
       this.getUnidades(this.UnidadUsuario.usuario);
     },(err:HttpErrorResponse)=>{
@@ -87,9 +87,14 @@ unidadEjec:any=[];
     }, (err:HttpErrorResponse)=>{
      console.log(err.error.message);
      this.error =err.error.message;
-     document.getElementById('mensaje').style.display='inline';
-     setTimeout(function(){ document.getElementById('mensaje').style.display='none'; }, 3000);
+     document.getElementById('errormsg').style.display='inline';
+     setTimeout(function(){ document.getElementById('errormsg').style.display='none'; }, 3000);
     }) 
+  }
+  eliminarArea(id){
+    this.rest.deleteUnidadUsuario(id).subscribe((res)=>{
+     console.log(res);
+    })
   }
   public todoList: object[] = [];
   public maxSizePagination: string = '6';

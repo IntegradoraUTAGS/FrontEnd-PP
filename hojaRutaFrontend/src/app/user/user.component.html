@@ -47,8 +47,7 @@
             </th>
         </tr>
     </tbody>
-    <div style="left:50%;">
-        <h5>Usuarios Existentes:{{user.usuarios.length}}</h5>
+    <div>
         <div class="col-12 mt-3 d-flex justify-content-center">
             <pagination-template #p="paginationApi" [id]="paginationConfig.id" [maxSize]="maxSizePagination" autoHide="true" (pageChange)="paginationConfig.currentPage = $event">
                 <nav aria-label="Page navigation example">
@@ -128,28 +127,30 @@
                                             <tbody>
                                                 <thead *ngFor="let item of unidadesEjecutoras">
 
-                                                    <div>
-                                                        <li style="text-align: left;">{{item.unidadEjec.descripcion |uppercase}}: {{item.unidadEjec.codigo}}</li>
+                                                    <div *ngIf="item.unidadEjec.estado === true" style="background-color: rgba(143, 176, 219, 0.1);">
+                                                        <li style=" text-align: left;">{{item.unidadEjec.descripcion |uppercase}}: {{item.unidadEjec.codigo}}</li>
+                                                        <p><button class=" btn btn-danger " style="width: 40%;padding: 0px;" (click)="eliminarArea(item._id)">eliminar</button></p>
                                                     </div>
+
                                                 </thead>
                                             </tbody>
-                                            <div class="alert alert-danger" role="alert" id="mensaje" style="display: none; margin: 20%;">
+                                            <div class="alert alert-danger " role="alert " id="errormsg" style="display: none;">
                                                 {{this.error}}
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <select name="" id="" class="form-control" [(ngModel)]="UnidadUsuario.unidadEjec" name="UsuarioUsuario">
-                                                    <option value="{{unidad._id}}" *ngFor="let unidad of this.unidadEjec">{{unidad.descripcion}}</option>
+                                        <div class="form-group ">
+                                            <div class="input-group ">
+                                                <select name=" " id=" " class="form-control " [(ngModel)]="UnidadUsuario.unidadEjec " name="UsuarioUsuario ">
+                                                    <option value="{{unidad._id}} " *ngFor="let unidad of this.unidadEjec ">{{unidad.descripcion}}</option>
                                                 </select>
-                                                <button class="btn btn-outline-success" type="button" (click)="postUnidadUsuario()">Agregar</button>
+                                                <button class="btn btn-outline-success " type="button " (click)="postUnidadUsuario() ">Agregar</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" (click)="updateUserById(al._id)">Save changes</button>
+                                <div class="modal-footer ">
+                                    <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
+                                    <button type="button " class="btn btn-primary " (click)="updateUserById(al._id) ">Save changes</button>
                                 </div>
                             </div>
                         </div>

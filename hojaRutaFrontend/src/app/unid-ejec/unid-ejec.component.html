@@ -30,7 +30,7 @@
             {{item.codigo| uppercase}},{{item.descripcion|uppercase}}
         </li>
     <a>
-    <button class="btn btn-outline-warning">Eliminar</button>
+    <button class="btn btn-outline-warning" (click)="eliminarUnidad(item._id)">Eliminar</button>
         <button class="btn btn-outline-success">Actualizar</button>
         </a>
         </button>

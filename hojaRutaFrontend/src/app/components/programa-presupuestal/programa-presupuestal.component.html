@@ -34,7 +34,7 @@
                 <tbody *ngFor="let el of pp | paginate: paginationConfig; let in=index ">
                     <div class="container mt-2">
                         <div class="col">
-                            <div class="col mt-2">
+                            <div class="col mt-2" *ngIf="el.unidadEjec.estado ==true ">
                                 <div class="card text-center ">
                                     <div class="card-header" [ngStyle]="{'background-color': el.color}">
                                         <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">

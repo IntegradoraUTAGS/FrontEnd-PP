@@ -33,6 +33,16 @@ getunid(){
     console.log(res);
   })
 }
+eliminarUnidad(id){
+this.rest.deleteUnidadEject(id).subscribe((resp)=>{
+  this.getunid();
+},(err:HttpErrorResponse)=>{
+  console.log(err);
+})
+}
+actualizarUnidad(){
+
+}
 public todoList: object[] = [];
 public maxSizePagination: string = '6';
 
