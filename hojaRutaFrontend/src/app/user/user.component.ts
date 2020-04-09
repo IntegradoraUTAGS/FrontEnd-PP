@@ -72,11 +72,16 @@ unidadEjec:any=[];
     this.value.usuarios.forEach(element => {
     this.UnidadUsuario.usuario=  element._id;
     });
-    this.rest.addUnidadUsuario(this.UnidadUsuario).subscribe((resp)=>{
-      console.log(resp);
-      this.getUnidades(this.UnidadUsuario.usuario);
-    },(err:HttpErrorResponse)=>{
-      console.log(err);
+    console.log('unidad', this.UnidadUsuario.unidadEjec)
+    console.log('user', this.UnidadUsuario.usuario)
+    this.rest.ComprobarAreaUnidadUsuario(this.UnidadUsuario.usuario, this.UnidadUsuario.unidadEjec).subscribe((res)=>{
+      console.log(res);
     })
+    // this.rest.addUnidadUsuario(this.UnidadUsuario).subscribe((resp)=>{
+    //   console.log(resp);
+    //   this.getUnidades(this.UnidadUsuario.usuario);
+    // },(err:HttpErrorResponse)=>{
+    //   console.log(err);
+    // })
   }
 }

@@ -16,6 +16,7 @@ export class ProgramaPresupuestalComponent implements OnInit {
   otro:any=[];
   rol:any=[];
   area:any=[];
+  errores:any=[];
   constructor(public rest: RestService) { }
 
   ngOnInit() {
@@ -77,7 +78,11 @@ export class ProgramaPresupuestalComponent implements OnInit {
       console.log(this.pp);
       location.reload();
     },(err: HttpErrorResponse)=>{
-      console.log(err);
+      console.log(err.error.err.name);
+      this.errores=err.error.err.name;
+      if(this.errores === 'ValidationError'){
+        document.getElementById('mensaje').style.display='inline';
+      }
     })
    }
    public todoList: object[] = [];

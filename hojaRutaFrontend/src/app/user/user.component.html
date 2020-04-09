@@ -91,9 +91,15 @@
                                             <label>Departamentos:</label>
                                             <tbody>
                                                 <thead *ngFor="let item of unidadesEjecutoras">
-                                                    <p>{{item.unidadEjec.descripcion |uppercase}}: {{item.unidadEjec.codigo}}</p>
+
+                                                    <div>
+                                                        <li style="text-align: left;">{{item.unidadEjec.descripcion |uppercase}}: {{item.unidadEjec.codigo}}</li>
+                                                    </div>
                                                 </thead>
                                             </tbody>
+                                            <div class="alert alert-danger" role="alert" id="mensaje" style="display: none;">
+                                                !Esta area ya fue agregada¡
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">

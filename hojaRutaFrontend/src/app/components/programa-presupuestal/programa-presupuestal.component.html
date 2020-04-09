@@ -6,7 +6,7 @@
 
     <div class="row mt-5">
 
-        <div class="col-12  col-md-4" >
+        <div class="col-12  col-md-4">
             <h4 class="text-center text-md-left">Programa Presupuestario <button type="button" class="btn btn-danger" id="btnagregar" style="display: none;" (click)="desactivar()">Agregar</button></h4>
         </div>
         <div class="col-12  col-md-6 mt-md-0 mt-4 ">
@@ -55,7 +55,7 @@
                     </div>
 
                 </tbody>
-                
+
             </table>
         </div>
         <div class="col-12 mt-3 d-flex justify-content-center">
@@ -130,9 +130,13 @@
                     <input type="color" id="materialSubscriptionFormEmail" class="form-control" style="border: solid #008f39;" [(ngModel)]="programa.color" name="programa">
                     <label for="materialSubscriptionFormEmail">Color</label>
                 </div>
+                <!-- alert -->
                 <!-- Sign in button -->
                 <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-2 waves-effect" type="submit" (click)="addProgram()">Agregar</button>
-
+                <hr>
+                <div class="alert alert-warning" role="alert" id="mensaje" style="display: none;">
+                    !Porfavor llene campos vacios¡
+                </div>
             </form>
             <!-- Form -->
 

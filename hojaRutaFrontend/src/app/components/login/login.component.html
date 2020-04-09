@@ -4,7 +4,7 @@
 
             <div class="col-sm-6 col-md-5 hidden-xs hidden-sm">
 
-                <img src="../../../assets/img/ut-logo.jpg" alt="" class="center-block img-fluid" style="border-radius: 50%;border:solid blue; width: 50%; margin: 20%"/>
+                <img src="../../../assets/img/ut-logo.jpg" alt="" class="center-block img-fluid" style="border-radius: 50%;border:solid blue; width: 50%; margin: 20%" />
 
             </div>
 
@@ -22,7 +22,12 @@
                     <form class="form-signin" class="form-horizontal">
 
                         <label class="user"> Usuario: {{usuario.email}} </label>
+                        <div class="alert alert-danger" role="alert" style="display: none;" id="mensaje">
+                            {{this.error}}
+                        </div>
+                        <div style="margin-top: 5%;">
 
+                        </div>
                         <input type="text" class="form-control" placeholder="" required [(ngModel)]="usuario.email" name="usuario">
 
                         <label class=""> Contraseña </label>

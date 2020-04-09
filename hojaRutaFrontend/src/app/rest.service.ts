@@ -73,6 +73,9 @@ export class RestService {
    getUnidadUsuario(id): Observable <any>{
     return this.http.get(endPoint +'relacion/'+id);
    }
+   ComprobarAreaUnidadUsuario(idusuario, idunidad): Observable <any>{
+    return this.http.get(endPoint +'comprobarAreas/'+idusuario + '/' +idunidad);
+   }
    getUnidUser(): Observable <any>{
     return this.http.get(endPoint +'relacion/');
    }

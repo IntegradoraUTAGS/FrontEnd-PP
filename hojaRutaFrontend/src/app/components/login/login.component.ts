@@ -12,6 +12,7 @@ import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 export class LoginComponent implements OnInit {
   validar:any = [];
   user:any = [];
+  error:any=[];
   constructor(public rest: RestService, private route:ActivatedRoute, private router: Router  ) { }
   usuario: UsuarioModel = new UsuarioModel();
   ngOnInit() {
@@ -23,7 +24,6 @@ export class LoginComponent implements OnInit {
       this.user = data; 
       this.validar = this.user.usuario;
       if(this.validar.email === this.usuario.email && this.validar.password){
-                alert(this.validar.email + ' Ah sido logeado');
                 location.pathname="/presupuesto";
                 console.log(this.user.ok);
                 window.localStorage.setItem('token', this.user.token);
@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
                 window.localStorage.setItem('_id', this.user.usuario._id);
       }
     }, (data : HttpErrorResponse) =>{
-      alert(data.error.err.message);
+       this.error=data.error.err.message;
+       document.getElementById('mensaje').style.display='inline';
+       setTimeout(function(){ document.getElementById('mensaje').style.display='none'; }, 3000);
       console.log(data.error.err.message);
     })
   
