@@ -19,10 +19,11 @@
                 Actualizar</th>
         </tr>
     </thead>
-    <tbody *ngFor="let el of user.usuarios">
+    <tbody *ngFor="let el of user.usuarios | paginate: paginationConfig;">
         <tr>
             <th scope="col">
-                <input type="text" value="{{el.rol}}" class="actual" name="rol" readonly>
+                <input type="text" value="{{el.rol}}" *ngIf="el.rol== 'ADMIN'" style="color: rgb(223, 28, 28); font-family:'Courier New', Courier, monospace; text-align:center" class="actual" name="rol" readonly>
+                <input type="text" value="{{el.rol}}" *ngIf="el.rol== 'USER'" style="color: rgb(35, 199, 30); font-family:'Courier New', Courier, monospace; text-align:center" class="actual" name="rol" readonly>
             </th>
             <th scope="col">
                 <input type="text" value="{{el.email}}" class="actual" name="email" readonly>
@@ -46,6 +47,41 @@
             </th>
         </tr>
     </tbody>
+    <div style="left:50%;">
+        <h5>Usuarios Existentes:{{user.usuarios.length}}</h5>
+        <div class="col-12 mt-3 d-flex justify-content-center">
+            <pagination-template #p="paginationApi" [id]="paginationConfig.id" [maxSize]="maxSizePagination" autoHide="true" (pageChange)="paginationConfig.currentPage = $event">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li [className]="p.isFirstPage() ? 'page-item disabled' : 'page-item'">
+                            <a class="page-link" (click)="p.previous()" href="#" aria-label="Previous">
+                                <span aria-hidden="true">«</span>
+                            </a>
+                        </li>
+                        <li *ngFor="let page of p.pages" [className]="
+              p.getCurrent() === page.value
+                ? 'page-item disabled'
+                : 'page-item'
+            ">
+                            <a class="page-link" (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+              {{ page.label }}
+            </a>
+                            <a class="page-link" *ngIf="p.getCurrent() === page.value">
+              {{ page.label }}
+            </a>
+                        </li>
+                        <li [className]="
+              p.isLastPage() ? 'page-item disabled' : 'page-item disabled'
+            ">
+                            <a class="page-link" href="#" (click)="p.next()" aria-label="Next">
+                                <span aria-hidden="true">»</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </pagination-template>
+        </div>
+    </div>
 </table>
 <div id="display-tab2">
     <table class="table">
@@ -97,8 +133,8 @@
                                                     </div>
                                                 </thead>
                                             </tbody>
-                                            <div class="alert alert-danger" role="alert" id="mensaje" style="display: none;">
-                                                !Esta area ya fue agregada¡
+                                            <div class="alert alert-danger" role="alert" id="mensaje" style="display: none; margin: 20%;">
+                                                {{this.error}}
                                             </div>
                                         </div>
                                         <div class="form-group">

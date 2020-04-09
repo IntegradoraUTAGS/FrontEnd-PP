@@ -81,6 +81,7 @@ export class ProgramaPresupuestalComponent implements OnInit {
       console.log(err.error.err.name);
       this.errores=err.error.err.name;
       if(this.errores === 'ValidationError'){
+        setTimeout(function(){ document.getElementById('mensaje').style.display='none'; }, 3000);
         document.getElementById('mensaje').style.display='inline';
       }
     })

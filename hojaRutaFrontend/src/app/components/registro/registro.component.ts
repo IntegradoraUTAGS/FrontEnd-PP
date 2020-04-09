@@ -11,6 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class RegistroComponent implements OnInit {
   usuario: UsuarioModel = new UsuarioModel();
   constructor(public rest: RestService, private route:ActivatedRoute, private router: Router ) { }
+ error:any={mensaje:''};
   validar:any = [];
   bandera :Boolean = false;
   user:any = [];
@@ -23,19 +24,32 @@ export class RegistroComponent implements OnInit {
         this.user = data;
         this.validar = this.user.usrDB;
         if(this.validar.email != null){
-                  alert('Usuario  ' +this.validar.nombre + '  Creado con exito');
                   location.pathname="/login"
         }
       },(err:HttpErrorResponse)=>{
-       console.log(err);
+       console.log(err.error.err.message);
+       if(err.error.err.message === 'Usuario validation failed: email: email Debe ser único y diferente'){
+        this.error = {mensaje:'Email ya existe'}
+       document.getElementById('mensajeria').style.display='inline';
+        setTimeout(function(){ document.getElementById('mensajeria').style.display='none'; }, 3000);
+       }else{
+        this.error = {mensaje:'Llenar campos'}
+        document.getElementById('mensajeria').style.display='inline';
+         setTimeout(function(){ document.getElementById('mensajeria').style.display='none'; }, 3000);
+       }
+       
       })
 
     }
  async valid(){
     if (this.usuario.password !== this.usuario.valid){
-        alert('contraseña distinta');
-    } else if (this.usuario.email.slice(-12) != "utags.edu.mx"){
-      alert('Terminacion debe ser: utags.edu.mx')
+        this.error = {mensaje:'Contraseña distinta'}
+        document.getElementById('mensajeria').style.display='inline';
+        setTimeout(function(){ document.getElementById('mensajeria').style.display='none'; }, 3000);
+    } else if (this.usuario.email.slice(-13) != "@utags.edu.mx"){
+      this.error = {mensaje:'Terminacion debe ser: @utags.edu.mx'}
+      document.getElementById('emaile').style.display='inline';
+      setTimeout(function(){ document.getElementById('emaile').style.display='none'; }, 3000);
     } else {
       this.addUSer();
     }
