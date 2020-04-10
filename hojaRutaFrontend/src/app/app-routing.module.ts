@@ -9,6 +9,9 @@ import { UnidEjecComponent } from './unid-ejec/unid-ejec.component';
 import { DirectrizUsuarioComponent } from './components/directriz-usuario/directriz-usuario.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { AgregarPresupuestoComponent } from './components/agregar-presupuesto/agregar-presupuesto.component';
+import { PlaneacionComponent } from './components/planeacion/planeacion.component';
+import { PresupuestacionComponent } from './components/presupuestacion/presupuestacion.component';
+import { DistribucionCuatrimestralComponent } from './components/distribucion-cuatrimestral/distribucion-cuatrimestral.component';
 
 
 const routes: Routes = [
@@ -23,7 +26,11 @@ const routes: Routes = [
   { path: "directriz", component: DirectrizComponent },
   { path: "user", component: UserComponent },
   { path: "unidEjec", component: UnidEjecComponent },
+  {path:"planeacion", component:PlaneacionComponent},
+  {path:"presupuestacion", component:PresupuestacionComponent},
+  {path:"distribucion-cuatrimestral", component:DistribucionCuatrimestralComponent},
   { path: "**", pathMatch: "full", redirectTo: "login" },
+  
 
 ];
 
