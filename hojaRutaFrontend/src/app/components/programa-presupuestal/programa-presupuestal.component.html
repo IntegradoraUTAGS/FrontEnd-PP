@@ -50,6 +50,22 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col mt-2" *ngIf="el.unidadEjec.estado ==false ">
+                                <div class="card text-center ">
+                                    <div class="card-header" [ngStyle]="{'background-color': el.color}">
+                                        <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
+                                            <h5 class="card-title " style="color:white; font-family: monospace; padding: 7%; border: solid white;">{{el.descripcion|uppercase}}</h5>
+                                        </a>
+                                    </div>
+                                    <img src="../../../assets/img/ut-logo.jpg" class="tarjeta__img card-img-top" alt="..." style="width: 20%; margin-left: 40%; border-radius: 50%; border:solid blue; margin-top:5%">
+                                    <div class="card-body">
+                                        <div>
+                                            <p class="card-text font-weight-normal mb-2" style="color: red;">Unidad Eliminada: <span class="text-monospace badge badge-pill badge-danger">{{el.unidadEjec.descripcion}}</span></p>
+                                        </div>
+                                        <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">´{{el.fecha}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

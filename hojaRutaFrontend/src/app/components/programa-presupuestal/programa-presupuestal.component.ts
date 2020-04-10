@@ -47,7 +47,7 @@ export class ProgramaPresupuestalComponent implements OnInit {
          this.getProgram();
       }
       else{
-      window.location.pathname="area/unidEjec";
+      window.location.pathname="/area/unidad";
       }
     });
     });

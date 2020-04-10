@@ -122,14 +122,12 @@
                                 <div class="modal-body">
                                     <form>
                                         <div class="form-group mb-3">
-
-                                            <label>Departamentos:</label>
                                             <tbody>
+                                                <label>Departamentos:</label>
                                                 <thead *ngFor="let item of unidadesEjecutoras">
 
                                                     <div *ngIf="item.unidadEjec.estado === true" style="background-color: rgba(143, 176, 219, 0.1);">
-                                                        <li style=" text-align: left;">{{item.unidadEjec.descripcion |uppercase}}: {{item.unidadEjec.codigo}}</li>
-                                                        <p><button class=" btn btn-danger " style="width: 40%;padding: 0px;" (click)="eliminarArea(item._id)">eliminar</button></p>
+                                                        <p><button class=" btn btn-danger " style="width: 100%;" (click)="eliminarArea(item._id)">eliminar: {{item.unidadEjec.descripcion |uppercase}}: {{item.unidadEjec.codigo}}</button></p>
                                                     </div>
 
                                                 </thead>

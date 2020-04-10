@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AreaUnidadEjecComponent } from './area-unidad-ejec.component';
+import { AreaUnidadComponent } from './area-unidad.component';
 
-describe('AreaUnidadEjecComponent', () => {
-  let component: AreaUnidadEjecComponent;
-  let fixture: ComponentFixture<AreaUnidadEjecComponent>;
+describe('AreaUnidadComponent', () => {
+  let component: AreaUnidadComponent;
+  let fixture: ComponentFixture<AreaUnidadComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AreaUnidadEjecComponent ]
+      declarations: [ AreaUnidadComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AreaUnidadEjecComponent);
+    fixture = TestBed.createComponent(AreaUnidadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
