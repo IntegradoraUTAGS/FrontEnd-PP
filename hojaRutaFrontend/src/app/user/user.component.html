@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <table class="table" id="display-tab1">
     <thead class="thead-green">
-        <tr>
+        <tr style="background-color: lightseagreen;border-radius: 10%;">
             <th scope="col">
                 Rol</th>
             <th scope="col">
@@ -13,38 +13,38 @@
                 Apellido</th>
             <th scope="col">
                 Direccion</th>
-            <th scope="col">
-                Eliminar</th>
-            <th scope="col">
-                Actualizar</th>
+            <th scope="col" style="text-align: center;">
+                Elim/Actual</th>
         </tr>
     </thead>
     <tbody *ngFor="let el of user.usuarios | paginate: paginationConfig;">
         <tr>
-            <th scope="col">
+            <th scope="col" style="border: solid 1px darkgrey; width: 20%;">
                 <input type="text" value="{{el.rol}}" *ngIf="el.rol== 'ADMIN'" style="color: rgb(223, 28, 28); font-family:'Courier New', Courier, monospace; text-align:center" class="actual" name="rol" readonly>
                 <input type="text" value="{{el.rol}}" *ngIf="el.rol== 'USER'" style="color: rgb(35, 199, 30); font-family:'Courier New', Courier, monospace; text-align:center" class="actual" name="rol" readonly>
             </th>
-            <th scope="col">
+            <th scope="col" style="border: solid 1px darkgrey;">
                 <input type="text" value="{{el.email}}" class="actual" name="email" readonly>
             </th>
-            <th scope="col">
+            <th scope="col" style="border: solid 1px darkgrey;">
                 <input type="text" value="{{el.nombre}}" class="actual" name="nombre" readonly>
             </th>
-            <th scope="col">
+            <th scope="col" style="border: solid 1px darkgrey;">
                 <input type="text" value="{{el.apellido}}" class="actual" name="apellido" readonly>
             </th>
-            <th scope="col">
+            <th scope="col" style="border: solid 1px darkgrey;">
                 <input type="text" value="{{el.direccion}}" class="actual" name="direccion" readonly>
             </th>
-            <th>
-                <button class="icon-remov" title="delete product" (click)="deleteUSer(el._id)">X</button>
-            </th>
-            <th>
-                <button class="prueba" title="Actualizar" (click)="updateUser(el._id)">
+            <div style=" border: solid 1px darkgrey; ">
+                <th>
+                    <button class="btn btn-primary" title="delete product" (click)="deleteUSer(el._id)">Eliminar</button>
+                </th>
+                <th>
+                    <button class="prueba" title="Actualizar" (click)="updateUser(el._id)">
                   <a class="glyphicon glyphicon-pencil"></a>
                 </button>
-            </th>
+                </th>
+            </div>
         </tr>
     </tbody>
     <div>
@@ -147,7 +147,7 @@
                                     </form>
                                 </div>
                                 <div class="modal-footer ">
-                                    <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
+                                    <button type="button " class="btn btn-secondary " data-dismiss="modal " (click)="return()">Close</button>
                                     <button type="button " class="btn btn-primary " (click)="updateUserById(al._id) ">Save changes</button>
                                 </div>
                             </div>

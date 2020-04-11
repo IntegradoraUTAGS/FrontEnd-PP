@@ -96,6 +96,9 @@ unidadEjec:any=[];
      console.log(res);
     })
   }
+  return(){
+    location.reload();
+  }
   public todoList: object[] = [];
   public maxSizePagination: string = '6';
 

@@ -10,12 +10,29 @@ import { PaginationInstance } from 'ngx-pagination';
 export class DirectrizComponent implements OnInit {
 directriz:DirectrizModels=new DirectrizModels();
 directriz1:any=[];
+usuario:any=[];
   constructor(public api:RestService) { }
 
   ngOnInit() {
+    this.getUsuario();
+  }
+  getUsuario(){
+    this.api.getUserById(localStorage.getItem('_id')).subscribe((resp:{usuarios})=>{
+      this.usuario = resp.usuarios;
+      resp.usuarios.forEach(element => {
+        if(element.rol=== 'ADMIN'){
+          this.getDirectriz();
+        }else if(element.rol=== 'USER'){
+          this.api.getDirectrizUnidad(localStorage.getItem('area')).subscribe((resp)=>{
+            this.directriz1 = resp;
+          })
+        }
+      });
+    })
+  }
+  getDirectriz(){
     this.api.getDirectriz().subscribe((resp)=>{
       this.directriz1 = resp;
-      console.log(this.directriz1);
     });
   }
   public todoList: object[] = [];
@@ -23,7 +40,7 @@ directriz1:any=[];
 
   public paginationConfig: PaginationInstance = {
     id: 'advanced',
-    itemsPerPage: 4,
+    itemsPerPage: 3,
     currentPage: 1
   };
 
