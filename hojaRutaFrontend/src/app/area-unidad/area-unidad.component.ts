@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { PaginationInstance } from 'ngx-pagination';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-area-unidad',
   templateUrl: './area-unidad.component.html',
@@ -8,7 +9,7 @@ import { PaginationInstance } from 'ngx-pagination';
 })
 export class AreaUnidadComponent implements OnInit {
 
-  constructor(public rest: RestService) { }
+  constructor(public rest: RestService, public router:Router) { }
   area:any=[];
   ngOnInit(): void {
     this.porArea();
@@ -21,7 +22,7 @@ export class AreaUnidadComponent implements OnInit {
   }
   ProgramaPorArea(id){
     localStorage.setItem('area', id);  
-    location.pathname="unidadUsuario";
+    this.router.navigate(['/directriz']);
   }
   public todoList: object[] = [];
     public maxSizePagination: string = '6';

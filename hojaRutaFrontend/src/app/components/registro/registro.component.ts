@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {UsuarioModel} from '../../models/usuario.models';
-import {RestService} from '../../rest.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {UsuarioModel} from '../../models/usuario.models';
+/*Llamar al archivo de modelos usuario*/
+import {RestService} from '../../rest.service';
+/*Llamar a la api de servicios*/
 import { HttpErrorResponse } from '@angular/common/http';
+/*Llamar a los errores de la api*/
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -10,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class RegistroComponent implements OnInit {
   usuario: UsuarioModel = new UsuarioModel();
-  constructor(public rest: RestService, private route:ActivatedRoute, private router: Router ) { }
+  constructor(public rest: RestService, public router : Router ) { }
  error:any={mensaje:''};
   validar:any = [];
   bandera :Boolean = false;
@@ -24,7 +27,7 @@ export class RegistroComponent implements OnInit {
         this.user = data;
         this.validar = this.user.usrDB;
         if(this.validar.email != null){
-                  location.pathname="/login"
+          this.router.navigate(['/login']);
         }
       },(err:HttpErrorResponse)=>{
        console.log(err.error.err.message);

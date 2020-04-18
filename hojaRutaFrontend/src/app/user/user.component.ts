@@ -11,7 +11,8 @@ import { PaginationInstance } from 'ngx-pagination';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-user:any = [];
+userRol:any=[];
+  user:any = [];
 error:any=[];
 value :any=[];
 unidadesEjecutoras:any=[];
@@ -20,11 +21,24 @@ unidadEjec:any=[];
   usuario: UsuarioModel = new UsuarioModel();
   UnidadUsuario:UsuarioUsuarioModel = new UsuarioUsuarioModel();
   ngOnInit() {
+    this.validar();
     this.getUnidadEjec();
     if(localStorage.getItem("token") === null ){
-      window.location.pathname = "/login";
+      this.router.navigate(['login']);
   } 
-    this.getUser();
+    
+  }
+  validar(){
+    this.rest.getUserById(localStorage.getItem("_id")).subscribe((data:{usuarios})=>{
+      this.userRol=data.usuarios;
+      this.userRol.forEach(element => {
+         if(element.rol !== "ADMIN"){
+          this.router.navigate(['area/unidad']);
+         }else if(element.rol === "ADMIN"){
+          this.getUser();
+         }
+      });
+    })
   }
   getUser(){
     this.user = [];

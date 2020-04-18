@@ -1,17 +1,18 @@
 <header class="main-header">
     <i id="toggle-menu" class="fas fa-bars"></i>
-    <a class="sesion text-white  text-decoration-none btnSalir" title="Perfil" style="font-size: 12px;" href="http://localhost:4200/perfil">Usuario:{{usuarioLogeado |uppercase}}</a>
-    <button class="text-white ml-9" style="border: none; background-color: #00cba9;" title="Salir" (click)="salir()"><i class="fas fa-sign-out-alt ml-2"></i></button>
+    <p class="sesion text-white  text-decoration-none btnSalir" title="Perfil" style="font-size: 12px;" (click)="perfil()" >Usuario:{{usuarioLogeado |uppercase}}</p>
+    <button class="text-white ml-9" style="border: none; background-color: #00cba9;" title="Salir" (click)="salirs()"><i class="fas fa-sign-out-alt ml-2"></i></button>
 </header>
 
 
 <nav class="main-nav">
     <ul class="main-menu">
-        <li><a href="http://localhost:4200/presupuesto"><i class="fas fa-home mr-4"></i> Inicio</a></li>
-        <li><a href="http://localhost:4200/presupuesto"><i class="fas fa-book mr-4"></i>Programa Presupuestario</a></li>
-        <li id="userAdmin"><a href="http://localhost:4200/directriz"><i class="fas fa-cog mr-4"></i>Directriz</a></li>
-        <li id="userAdmin"><a href="http://localhost:4200/user"><i class="fas fa-users mr-4 bg-black"></i> Usuarios</a></li>
-        <li id="unidAdmin"><a href="http://localhost:4200/unidEjec"><i class="fas fa-users mr-4 bg-black"></i> Unidad Ejecutora</a></li>
-        <li><a href="#"><i class="fas fa-sign-out-alt mr-4"></i>Salir</a></li>
+        <li><p (click)="presupuesto()"><i class="fas fa-home mr-4"></i> Inicio</p></li>
+        <li><p (click)="planeacion()"><i class="fas fa-book mr-4"></i>Planeacion</p></li>
+        <div id="userAdmin" style="display: none;">
+        <li ><p (click)="directriz()" ><i class="fas fa-cog mr-4"></i>Directriz</p></li>
+        <li ><p (click)="user()"><i class="fas fa-users mr-4 bg-black"></i> Usuarios</p></li>
+        <li ><p (click)="unidad()"><i class="fas fa-users mr-4 bg-black"></i> Unidad Ejecutora</p></li>
+        </div>
     </ul>
 </nav>

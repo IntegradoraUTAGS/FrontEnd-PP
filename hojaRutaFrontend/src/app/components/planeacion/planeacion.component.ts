@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
-
-
 @Component({
   selector: 'app-planeacion',
   templateUrl: './planeacion.component.html',
@@ -10,46 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaneacionComponent implements OnInit {
 
-  
-
-
-
-
-
-
-  
-  title:string = 'AGREGAR'; 
-
-
-
-   
-
-
-
-  ruta = [ 
-
- 
- 
-
-  ]; 
-
-   
-
-  
-
- 
- 
-
-  model:any = {}; 
-
-  
-
- 
+title:string = 'AGREGAR'; 
+ruta = []; 
+model:any = {}; 
 
   hideUpdate:boolean = true; 
-
- 
- 
 
   add():void{ 
  
@@ -64,24 +26,17 @@ export class PlaneacionComponent implements OnInit {
 
   } 
 
-
-
   delete(i):void { 
 
     var answer = confirm('¿Eliminar?'); 
 
     if(answer) { 
 
-      this.ruta.splice(i, 1); 
-
-      
+      this.ruta.splice(i, 1);  
 
     } 
 
   } 
-
- 
- 
 
   myValue; 
 

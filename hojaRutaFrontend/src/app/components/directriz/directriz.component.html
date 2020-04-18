@@ -36,18 +36,18 @@
                         <p class="card-text mb-4"></p>
                         <h5 class="card-title">Unidad Eliminada:</h5>
                         <p class="card-text mb-4"> <span class="text-monospace badge badge-pill badge-danger">{{dire.unidadEjec.descripcion}}</span></p>
-                        <a href="http://localhost:4200/planeacion" class="btn btn-primary"><i class="fas fa-eye"></i> Mostrar</a>
-                        <a href="#" class="btn btn-info ml-3"><i class="fas fa-cog"></i> Editar</a>
-                        <a href="#" class="btn btn-danger ml-3"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                        <p (click)="planeacion()" class="btn btn-primary"><i class="fas fa-eye"></i> Mostrar</p>
+                        <p  class="btn btn-info ml-3"><i class="fas fa-cog"></i> Editar</p>
+                        <p  class="btn btn-danger ml-3"><i class="fas fa-trash-alt"></i> Eliminar</p>
                     </div>
                     <div class="card-body" *ngIf="dire.unidadEjec.estado === true">
                         <h5 class="card-title">Eje PIDE UTAgs CGUTyP:</h5>
                         <p class="card-text mb-4"></p>
                         <h5 class="card-title">Unidad Ejecutora:</h5>
                         <p class="card-text mb-4"> <span class="text-monospace badge badge-pill badge-dark">{{dire.unidadEjec.descripcion}}</span></p>
-                        <a href="http://localhost:4200/planeacion" class="btn btn-primary"><i class="fas fa-eye"></i> Mostrar</a>
-                        <a href="#" class="btn btn-info ml-3"><i class="fas fa-cog"></i> Editar</a>
-                        <a href="#" class="btn btn-danger ml-3"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                        <p (click)="planeacion()" class="btn btn-primary"><i class="fas fa-eye"></i> Mostrar</p>
+                        <p  class="btn btn-info ml-3"><i class="fas fa-cog"></i> Editar</p>
+                        <p  class="btn btn-danger ml-3"><i class="fas fa-trash-alt"></i> Eliminar</p>
                     </div>
                 </div>
             </tbody>
