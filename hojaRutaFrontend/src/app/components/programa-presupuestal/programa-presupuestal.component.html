@@ -6,7 +6,7 @@
 
     <div class="row mt-5">
 
-        <div class="col-12  col-md-4" >
+        <div class="col-12  col-md-4">
             <h4 class="text-center text-md-left">Programa Presupuestario <button type="button" class="btn btn-danger" id="btnagregar" style="display: none;" (click)="desactivar()">Agregar</button></h4>
         </div>
         <div class="col-12  col-md-6 mt-md-0 mt-4 ">
@@ -34,7 +34,7 @@
                 <tbody *ngFor="let el of pp | paginate: paginationConfig; let in=index ">
                     <div class="container mt-2">
                         <div class="col">
-                            <div class="col mt-2">
+                            <div class="col mt-2" *ngIf="el.unidadEjec.estado ==true ">
                                 <div class="card text-center ">
                                     <div class="card-header" [ngStyle]="{'background-color': el.color}">
                                         <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
@@ -45,6 +45,22 @@
                                     <div class="card-body">
                                         <div>
                                             <p class="card-text font-weight-normal mb-2">Unidad Ejecutora: <span class="text-monospace badge badge-pill badge-dark">{{el.unidadEjec.descripcion}}</span></p>
+                                        </div>
+                                        <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">´{{el.fecha}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col mt-2" *ngIf="el.unidadEjec.estado ==false ">
+                                <div class="card text-center ">
+                                    <div class="card-header" [ngStyle]="{'background-color': el.color}">
+                                        <a href="http://localhost:4200/directriz" class="tarjeta__title h5 text-decoration-none ">
+                                            <h5 class="card-title " style="color:white; font-family: monospace; padding: 7%; border: solid white;">{{el.descripcion|uppercase}}</h5>
+                                        </a>
+                                    </div>
+                                    <img src="../../../assets/img/ut-logo.jpg" class="tarjeta__img card-img-top" alt="..." style="width: 20%; margin-left: 40%; border-radius: 50%; border:solid blue; margin-top:5%">
+                                    <div class="card-body">
+                                        <div>
+                                            <p class="card-text font-weight-normal mb-2" style="color: red;">Unidad Eliminada: <span class="text-monospace badge badge-pill badge-danger">{{el.unidadEjec.descripcion}}</span></p>
                                         </div>
                                         <p class="font-weight-normal ">Año: <span class="text-monospace badge badge-pill badge-light">´{{el.fecha}}</span></p>
                                     </div>
@@ -130,9 +146,13 @@
                     <input type="color" id="materialSubscriptionFormEmail" class="form-control" style="border: solid #008f39;" [(ngModel)]="programa.color" name="programa">
                     <label for="materialSubscriptionFormEmail">Color</label>
                 </div>
+                <!-- alert -->
                 <!-- Sign in button -->
                 <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-2 waves-effect" type="submit" (click)="addProgram()">Agregar</button>
-
+                <hr>
+                <div class="alert alert-warning" role="alert" id="mensaje" style="display: none;">
+                    !Porfavor llene campos vacios¡
+                </div>
             </form>
             <!-- Form -->
 

@@ -23,16 +23,51 @@
     <button mdbBtn color="info" block="true" type="submit" class="btn btn-outline-success" (click)="addUnidadEject()">Send</button>
 
 </form>
-<ul class="list-group" *ngFor="let item of listUnidEjec" style="width: 25%; margin-left: 37%;">
-    <button style="border: none;">
+<div>
+    <ul class="list-group" *ngFor="let item of listUnidEjec |paginate: paginationConfig" style="width: 25%; margin-left: 37%;">
+        <button style="border: none;">
         <li class="list-group-item list-group-item" style="text-align: center; border: solid #00cba9;">
-            {{item.codigo}}:{{item.descripcion}}
+            {{item.codigo| uppercase}},{{item.descripcion|uppercase}}
         </li>
     <a>
-    <button class="btn btn-outline-warning">Eliminar</button>
-    <button class="btn btn-outline-success">Actualizar</button>
-    </a>
-    </button>
+    <button class="btn btn-outline-warning" (click)="eliminarUnidad(item._id)">Eliminar</button>
+        <button class="btn btn-outline-success">Actualizar</button>
+        </a>
+        </button>
 
-</ul>
+    </ul>
+    <div class="col-12 mt-3 d-flex justify-content-center">
+        <pagination-template #p="paginationApi" [id]="paginationConfig.id" [maxSize]="maxSizePagination" autoHide="true" (pageChange)="paginationConfig.currentPage = $event">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li [className]="p.isFirstPage() ? 'page-item disabled' : 'page-item'">
+                        <a class="page-link" (click)="p.previous()" href="#" aria-label="Previous">
+                            <span aria-hidden="true">«</span>
+                        </a>
+                    </li>
+                    <li *ngFor="let page of p.pages" [className]="
+      p.getCurrent() === page.value
+        ? 'page-item disabled'
+        : 'page-item'
+    ">
+                        <a class="page-link" (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+      {{ page.label }}
+    </a>
+                        <a class="page-link" *ngIf="p.getCurrent() === page.value">
+      {{ page.label }}
+    </a>
+                    </li>
+                    <li [className]="
+      p.isLastPage() ? 'page-item disabled' : 'page-item disabled'
+    ">
+                        <a class="page-link" href="#" (click)="p.next()" aria-label="Next">
+                            <span aria-hidden="true">»</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </pagination-template>
+    </div>
+
+</div>
 <!-- Default form contact -->

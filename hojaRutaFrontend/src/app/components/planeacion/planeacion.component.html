@@ -1,0 +1,216 @@
+<app-navbar></app-navbar>
+<div>
+    <div>
+        <br>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href=" planeacion ">Planeación de las Áreas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="distribucion-cuatrimestral">Distribución Cuatrimestral de Metas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="presupuestacion">Presupuesto Estimado</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Ditribución de Gastos en el Año</a>
+            </li>
+
+
+        </ul><br><br>
+
+
+
+
+
+
+        <h2 class="text-center">Agregar Planeación de Área</h2>
+
+
+        <div class="agre">
+
+
+            <form class="was-validated">
+                <div class="form-group">
+                    <label for="objetivosestrategicos"> Objetivos Estratégicos</label>
+                    <input type="text" class="form-control" id="objetivosestrategicos" name="objetivosestrategicos" [(ngModel)]="model.objetivosestrategicos" placeholder="Ingrese Objetivo" required>
+                    <div class="valid-feedback">Valido.</div>
+                    <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="indi">Indicadores de los Objetivos Estratégicos</label>
+                    <input type="text" class="form-control" id="indi" name="indi" [(ngModel)]="model.indi" placeholder="Ingrese Indicadores de los objetivos" required>
+                    <div class="valid-feedback">Valido.</div>
+                    <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="meta">Meta al año</label>
+                    <input type="text" class="form-control" id="meta" name="meta" [(ngModel)]="model.meta" placeholder="Ingrese Meta al Año" required>
+                    <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="estrategia">Estrategia</label>
+                    <textarea class="form-control" id="" rows="3" id="estrategia" name="estrategia" [(ngModel)]="model.estrategia" placeholder="Ingrese Estrategias" required></textarea>
+                    <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="actividad">Actividades</label>
+                    <textarea class="form-control" id="" rows="3" id="actividad" name="actividad" [(ngModel)]="model.actividad" placeholder="Ingrese Actividades Enumeradas" required></textarea>
+                    <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="indicador">Indicador</label>
+                    <textarea class="form-control" id="" rows="3" id="indicador" name="indicador" [(ngModel)]="model.indicador" placeholder="Ingrese Indicador de cada Actividad" required></textarea>
+                    <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="meta2"> Meta al año</label>
+                    <textarea class="form-control" id="area" rows="3" id="meta2" name="meta2" [(ngModel)]="model.meta2" placeholder="Ingrese Meta de cada Actividad " required>
+ 
+     ></textarea>
+                    <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                </div>
+
+
+                <div>
+                    <button type="submit" class="btn btn-success" (click)="add()">Guardar</button>
+
+
+                </div>
+
+
+
+            </form>
+        </div>
+
+
+
+
+
+        <div>
+
+            <h2 class="text-center">Consultar Planeaciones de Áreas </h2>
+
+
+            <div class="di2">
+                <div class="card" *ngFor="let rutaa of ruta; let i = index">
+
+                    <div class="card-body">
+
+
+
+                        <h5 class="card-title">Objetivo Estrategico</h5>
+                        <p class="card-text">{{rutaa.objetivosestrategicos}}</p>
+                        <h5 class="card-title">Indicador de Objetivo Estrategico</h5>
+                        <p class="card-text">{{rutaa.indi}}</p>
+                        <h5 class="card-title">Meta al Año</h5>
+                        <p class="card-text">{{rutaa.meta }}</p>
+                        <h5 class="card-title">Estrategias</h5>
+                        <p class="card-text">{{rutaa.estrategia}}</p>
+                        <h5 class="card-title">Actividades</h5>
+                        <p class="card-text">{{rutaa.actividad}}</p>
+                        <h5 class="card-title">Indicadores</h5>
+                        <p class="card-text">{{rutaa.indicador}}</p>
+                        <h5 class="card-title">Metas al Año</h5>
+                        <p class="card-text">{{rutaa.meta2}}</p>
+
+
+
+                        <button type="button" class="btn btn-info " (click)="edit(i)" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-cog"></i>  Editar</button>
+                        <button type="button" class="btn btn-danger" (click)="delete(i)"><i class="fas fa-trash-alt">
+    </i>Eliminar</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+
+                            <div class="modal-body">
+
+                                <form class="was-validated">
+                                    <div class="form-group">
+                                        <label for="objetivosestrategicos"> Objetivos Estratégicos</label>
+                                        <input type="text" class="form-control" id="objetivosestrategicos" name="objetivosestrategicos" [(ngModel)]="model.objetivosestrategicos" placeholder="Ingrese Objetivo" required>
+                                        <div class="valid-feedback">Valido.</div>
+                                        <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="indi">Indicadores de los Objetivos Estratégicos</label>
+                                        <input type="text" class="form-control" id="indi" name="indi" [(ngModel)]="model.indi" placeholder="Ingrese Indicadores de los objetivos" required>
+                                        <div class="valid-feedback">Valido.</div>
+                                        <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="meta">Meta al año</label>
+                                        <input type="text" class="form-control" id="meta" name="meta" [(ngModel)]="model.meta" placeholder="Ingrese Meta al Año" required>
+                                        <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="estrategia">Estrategia</label>
+                                        <textarea class="form-control" id="" rows="3" id="estrategia" name="estrategia" [(ngModel)]="model.estrategia" placeholder="Ingrese Estrategias" required></textarea>
+                                        <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="actividad">Actividades</label>
+                                        <textarea class="form-control" id="" rows="3" id="actividad" name="actividad" [(ngModel)]="model.actividad" placeholder="Ingrese Actividades Enumeradas" required></textarea>
+                                        <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="indicador">Indicador</label>
+                                        <textarea class="form-control" id="" rows="3" id="indicador" name="indicador" [(ngModel)]="model.indicador" placeholder="Ingrese Indicador de cada Actividad" required></textarea>
+                                        <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="meta2"> Meta al año</label>
+                                        <textarea class="form-control" id="area" rows="3" id="meta2" name="meta2" [(ngModel)]="model.meta2" placeholder="Ingrese Meta de cada Actividad " required>
+ 
+     ></textarea>
+                                        <div class="invalid-feedback">Por favor, rellene este campo.</div>
+                                    </div>
+
+
+                                    <div>
+
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-success" (click)="update()">Actualizar</button>
+
+                                    </div>
+
+
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>

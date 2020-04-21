@@ -1,34 +1,42 @@
-.titulo{
+.titulo {
     margin-top: 10px;
 }
 
-.body{
+.body {
     background: #263238;
-    height: 100vh;
+    height: 100%;
 }
 
-.img{
+.img {
     margin-top: 0em;
     margin-right: auto;
     margin-left: auto;
     width: 100px;
 }
 
-.caja{
+.caja {
     text-align: center;
-    width: 400px;
+    width: 500px;
     padding: 1em;
     background: #263238;
-  
+    border: solid rgba(255, 255, 255, 0.253);
     color: white;
     margin-left: auto;
     margin-right: auto;
 }
 
-#texto{
+#texto {
     font: bold 30px Tahoma
 }
 
-.ic{
+.ic {
     margin-right: 10px;
+}
+
+#emaile {
+    display: none;
+    width: 20%;
+    position: absolute;
+    top: 50%;
+    left: 65%;
 }

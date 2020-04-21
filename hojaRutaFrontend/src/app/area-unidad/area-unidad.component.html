@@ -21,7 +21,7 @@
         <div class="row">
 
             <tbody *ngFor="let dire of area | paginate: paginationConfig" style="margin: 2%;">
-                <div class="card mt-5">
+                <div class="card mt-5" *ngIf="dire.unidadEjec.estado === true">
                     <h5 class="card-header">Area: <span class="text-secondary">{{dire.unidadEjec.codigo}}</span></h5>
                     <div class="card-body">
                         <h5 class="card-title">{{dire.unidadEjec.descripcion | uppercase}}</h5>

@@ -9,6 +9,8 @@ import { PaginationInstance } from 'ngx-pagination';
   styleUrls: ['./programa-presupuestal.component.scss']
 })
 export class ProgramaPresupuestalComponent implements OnInit {
+
+  //Inicializamos las variables que vayamos a utilizar
   programa : ProgramaPresupuestalModels = new ProgramaPresupuestalModels();
   pp: any = [];
   year:any=[];
@@ -16,27 +18,32 @@ export class ProgramaPresupuestalComponent implements OnInit {
   otro:any=[];
   rol:any=[];
   area:any=[];
+  errores:any=[];
   constructor(public rest: RestService) { }
 
   ngOnInit() {
+    //Al cargar la pagina iniciamos la verificacion del rol
     this.verificarRol();
       this.rest.getProgramaPorAño().subscribe((data)=>{
         this.year = data;
       });
       this.getUnidadEjec();
   }
+
+  //Obtenemos los programas presupuestuales  con una suscripcion
   getProgram(){
+
     this.rest.getPrograma().subscribe((data:{programas}) => {
       this.pp = data.programas;
       this.otro= data.programas;
     });
   }
-  getUnidadEjec(){
+  getUnidadEjec() {  //Obtenemos las unidades ejecutoras  con una suscripcion
     this.rest.getUnidadEject().subscribe((data:{unidades})=>{
      this.unidadEjec= data.unidades;
     })
   }
-  verificarRol(){
+  verificarRol() { //Verificamos si tiene el rol necesario
     this.rest.getUserById(localStorage.getItem('_id')).subscribe((resp:{usuarios})=>{
     this.rol= resp.usuarios;
     this.rol.forEach(element => {
@@ -46,13 +53,13 @@ export class ProgramaPresupuestalComponent implements OnInit {
          this.getProgram();
       }
       else{
-      window.location.pathname="area/unidEjec";
+      window.location.pathname="/area/unidad";
       }
     });
     });
   }
 
-  desactivar(){
+  desactivar(){ //Creamos una funcion para desactivar algunas cosas
     document.getElementById('tabla1').style.display= "inline";
     document.getElementById('tabla2').style.display= "none";
     document.getElementById('fecha').style.display= "none";
@@ -61,7 +68,7 @@ export class ProgramaPresupuestalComponent implements OnInit {
   reload(){
     location.reload();
   }
-  date(d){
+  date(d){  //Obtenemos la fecha
     d = new Date(d);
    var date = d. getDate() +1;
    var month = d. getMonth() + 1; // Since getMonth() returns month from 0-11 not 1-12.
@@ -69,7 +76,7 @@ export class ProgramaPresupuestalComponent implements OnInit {
    var dateStr =  year;
    return dateStr;
   }
-  async addProgram (){
+  async addProgram (){ //Agregamos un programa presupuestual
     console.log(this.programa)
     this.pp = [];
      await this.rest.addPRograma(this.programa).subscribe((data:{}) => {
@@ -77,13 +84,18 @@ export class ProgramaPresupuestalComponent implements OnInit {
       console.log(this.pp);
       location.reload();
     },(err: HttpErrorResponse)=>{
-      console.log(err);
+      console.log(err.error.err.name);
+      this.errores=err.error.err.name;
+      if(this.errores === 'ValidationError'){
+        setTimeout(function(){ document.getElementById('mensaje').style.display='none'; }, 3000);
+        document.getElementById('mensaje').style.display='inline';
+      }
     })
    }
    public todoList: object[] = [];
   public maxSizePagination: string = '6';
 
-  public paginationConfig: PaginationInstance = {
+  public paginationConfig: PaginationInstance = {//Definimos la paginacion
     id: 'advanced',
     itemsPerPage: 6,
     currentPage: 1

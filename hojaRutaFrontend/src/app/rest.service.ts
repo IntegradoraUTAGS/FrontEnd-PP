@@ -73,11 +73,17 @@ export class RestService {
    getUnidadUsuario(id): Observable <any>{
     return this.http.get(endPoint +'relacion/'+id);
    }
+   ComprobarAreaUnidadUsuario(idusuario, idunidad): Observable <any>{
+    return this.http.get(endPoint +'comprobarAreas/'+idusuario + '/' +idunidad);
+   }
    getUnidUser(): Observable <any>{
     return this.http.get(endPoint +'relacion/');
    }
-   addUnidadUsuario(product): Observable <any>{
-    return this.http.post<any>(endPoint + 'relacion',product);
+   addUnidadUsuario(idUsuario, idUnidad): Observable <any>{
+    return this.http.get(endPoint + 'relacion/'+idUsuario+'/'+idUnidad);
+   }
+   deleteUnidadUsuario(id): Observable <any>{
+    return this.http.delete(endPoint +'relacion/'+ id);
    }
    ////////////comparar-update password////////////////
    Comparar(id, prod): Observable <any>{

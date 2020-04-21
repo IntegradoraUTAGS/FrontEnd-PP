@@ -20,8 +20,15 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { PresupuestolUsuarioComponent } from './components/presupuestol-usuario/presupuestol-usuario.component';
 import { DirectrizUsuarioComponent } from './components/directriz-usuario/directriz-usuario.component';
 import { AgregarPresupuestoComponent } from './components/agregar-presupuesto/agregar-presupuesto.component';
+<<<<<<< HEAD
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { AreaUnidadEjecComponent } from './area-unidad-ejec/area-unidad-ejec.component';
+=======
+import { PlaneacionComponent } from './components/planeacion/planeacion.component';
+import { PresupuestacionComponent } from './components/presupuestacion/presupuestacion.component';
+import { DistribucionCuatrimestralComponent } from './components/distribucion-cuatrimestral/distribucion-cuatrimestral.component';
+import { AreaUnidadComponent } from './area-unidad/area-unidad.component';
+>>>>>>> e97a55087e3920e4343355fb6977d02587bd9eda
 
 
 const appRoutes: Routes = [
@@ -46,8 +53,20 @@ const appRoutes: Routes = [
     RegistroComponent,
     ProgramaPresupuestalComponent,
     UserComponent,
+<<<<<<< HEAD
     UnidEjecComponent
     , PerfilComponent, PresupuestolUsuarioComponent, DirectrizUsuarioComponent, AgregarPresupuestoComponent, AreaUnidadEjecComponent, FooterComponent
+=======
+    UnidEjecComponent, 
+    PerfilComponent, 
+    PresupuestolUsuarioComponent,
+     DirectrizUsuarioComponent,
+      AgregarPresupuestoComponent,
+       PlaneacionComponent,
+        PresupuestacionComponent,
+         DistribucionCuatrimestralComponent,
+         AreaUnidadComponent,
+>>>>>>> e97a55087e3920e4343355fb6977d02587bd9eda
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

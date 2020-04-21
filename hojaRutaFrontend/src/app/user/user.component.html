@@ -1,6 +1,8 @@
 <app-navbar></app-navbar>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<!--
+En este bloque se crea las tablas para los usuarios con el bootstrap y se traen los datos desde el service
+ -->
 <div class="container mt-5">
   <table class="table " id="display-tab1">
     <thead class="thead-green">
@@ -21,36 +23,71 @@
           Actualizar</th>
       </tr>
     </thead>
-    <tbody *ngFor="let el of user.usuarios">
-      <tr>
-        <th scope="col">
-          <input type="text" value="{{el.rol}}" class="actual" name="rol" readonly>
-        </th>
-        <th scope="col">
-          <input type="text" value="{{el.email}}" class="actual" name="email" readonly>
-        </th>
-        <th scope="col">
-          <input type="text" value="{{el.nombre}}" class="actual" name="nombre" readonly>
-        </th>
-        <th scope="col">
-          <input type="text" value="{{el.apellido}}" class="actual" name="apellido" readonly>
-        </th>
-        <th scope="col">
-          <input type="text" value="{{el.direccion}}" class="actual" name="direccion" readonly>
-        </th>
-        <th>
-          <button class="icon-remov" title="delete product" (click)="deleteUSer(el._id)">X</button>
-        </th>
-        <th>
-          <button class="prueba" title="Actualizar" (click)="updateUser(el._id)">
-            <a class="glyphicon glyphicon-pencil"></a>
-          </button>
-        </th>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
+<!--     Traemos los datos desde el service y utilizamos un ngfor para que se muestren automaticamente -->
+    <tbody *ngFor="let el of user.usuarios | paginate: paginationConfig;">
+        <tr>
+            <th scope="col">
+                <input type="text" value="{{el.rol}}" *ngIf="el.rol== 'ADMIN'" style="color: rgb(223, 28, 28); font-family:'Courier New', Courier, monospace; text-align:center" class="actual" name="rol" readonly>
+                <input type="text" value="{{el.rol}}" *ngIf="el.rol== 'USER'" style="color: rgb(35, 199, 30); font-family:'Courier New', Courier, monospace; text-align:center" class="actual" name="rol" readonly>
+            </th>
+            <th scope="col">
+                <input type="text" value="{{el.email}}" class="actual" name="email" readonly>
+            </th>
+            <th scope="col">
+                <input type="text" value="{{el.nombre}}" class="actual" name="nombre" readonly>
+            </th>
+            <th scope="col">
+                <input type="text" value="{{el.apellido}}" class="actual" name="apellido" readonly>
+            </th>
+            <th scope="col">
+                <input type="text" value="{{el.direccion}}" class="actual" name="direccion" readonly>
+            </th>
+            <th>
+                <button class="icon-remov" title="delete product" (click)="deleteUSer(el._id)">X</button>
+            </th>
+            <th>
+                <button class="prueba" title="Actualizar" (click)="updateUser(el._id)">
+                  <a class="glyphicon glyphicon-pencil"></a>
+                </button>
+            </th>
+        </tr>
+    </tbody>
+    <div>
+        <div class="col-12 mt-3 d-flex justify-content-center">
+            <pagination-template #p="paginationApi" [id]="paginationConfig.id" [maxSize]="maxSizePagination" autoHide="true" (pageChange)="paginationConfig.currentPage = $event">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li [className]="p.isFirstPage() ? 'page-item disabled' : 'page-item'">
+                            <a class="page-link" (click)="p.previous()" href="#" aria-label="Previous">
+                                <span aria-hidden="true">«</span>
+                            </a>
+                        </li>
+                        <li *ngFor="let page of p.pages" [className]="
+              p.getCurrent() === page.value
+                ? 'page-item disabled'
+                : 'page-item'
+            ">
+                            <a class="page-link" (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+              {{ page.label }}
+            </a>
+                            <a class="page-link" *ngIf="p.getCurrent() === page.value">
+              {{ page.label }}
+            </a>
+                        </li>
+                        <li [className]="
+              p.isLastPage() ? 'page-item disabled' : 'page-item disabled'
+            ">
+                            <a class="page-link" href="#" (click)="p.next()" aria-label="Next">
+                                <span aria-hidden="true">»</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </pagination-template>
+        </div>
+    </div>
+</table>
 <div id="display-tab2">
 
     <h3 class="text-center">Actualizar</h3>
@@ -58,6 +95,7 @@
       <div class="col-6-auto">
           <table>
 
+            <!-- Actualizamos los datos y los anidamos con el ngModel en un formulario -->
             <tbody *ngFor="let al of value.usuarios">
               <div class="formulario">
                 <!-- Default form contact -->
@@ -85,11 +123,40 @@
                         <input type=" text " id="defaultContactFormEmail " class="form-control mb-4 "
                           placeholder="{{al.direccion}}" [(ngModel)]="usuario.direccion" name="usuario">
 
-                        <!-- Copy -->
-                        <div class="row ">
-                          <div class="col-md-6 mx-auto d-flex justify-content-center ">
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group mb-3">
+                                            <tbody>
+                                                <label>Departamentos:</label>
+                                                <thead *ngFor="let item of unidadesEjecutoras">
 
-                          </div>
+                                                    <div *ngIf="item.unidadEjec.estado === true" style="background-color: rgba(143, 176, 219, 0.1);">
+                                                        <p><button class=" btn btn-danger " style="width: 100%;" (click)="eliminarArea(item._id)">eliminar: {{item.unidadEjec.descripcion |uppercase}}: {{item.unidadEjec.codigo}}</button></p>
+                                                    </div>
+
+                                                </thead>
+                                            </tbody>
+                                            <div class="alert alert-danger " role="alert " id="errormsg" style="display: none;">
+                                                {{this.error}}
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="input-group ">
+                                                <select name=" " id=" " class="form-control " [(ngModel)]="UnidadUsuario.unidadEjec " name="UsuarioUsuario ">
+                                                    <option value="{{unidad._id}} " *ngFor="let unidad of this.unidadEjec ">{{unidad.descripcion}}</option>
+                                                </select>
+                                                <button class="btn btn-outline-success " type="button " (click)="postUnidadUsuario() ">Agregar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer ">
+                                    <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
+                                    <button type="button " class="btn btn-primary " (click)="updateUserById(al._id) ">Save changes</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-body">
                           <form>

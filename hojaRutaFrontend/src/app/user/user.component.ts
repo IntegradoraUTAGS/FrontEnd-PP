@@ -4,13 +4,18 @@ import {RestService} from '../rest.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UsuarioModel} from '../models/usuario.models';
 import {UsuarioUsuarioModel} from '../models/unidad-usuario.models';
+import { PaginationInstance } from 'ngx-pagination';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+
+
+  //Inicializamos las variables que vamos a utilizar
 user:any = [];
+error:any=[];
 value :any=[];
 unidadesEjecutoras:any=[];
 unidadEjec:any=[];
@@ -18,18 +23,24 @@ unidadEjec:any=[];
   usuario: UsuarioModel = new UsuarioModel();
   UnidadUsuario:UsuarioUsuarioModel = new UsuarioUsuarioModel();
   ngOnInit() {
+
+    //Al cargar la pagina verificamos si tiene el token
     this.getUnidadEjec();
     if(localStorage.getItem("token") === null ){
       window.location.pathname = "/login";
-  } 
+  }
     this.getUser();
   }
+
+  //Obtenemos el usuario
   getUser(){
     this.user = [];
-    this.rest.getUser().subscribe((data:{}) => {
+    this.rest.getUser().subscribe((data:{usuarios}) => {
       this.user = data;
     });
   }
+
+  //Agregamos un metodo asyncrono para decidir si mostramos o no las tablas
  async updateUser(id){
   var element = document.getElementById('display-tab2');
   element.style.display = 'inline';
@@ -42,6 +53,9 @@ unidadEjec:any=[];
     console.log(err);
   });
   }
+
+
+  //Agragamos una funcion para actualizar el usuario
   async updateUserById(id){
     await this.rest.updateUser(id, this.usuario).subscribe(res => {
      location.reload();
@@ -50,6 +64,8 @@ unidadEjec:any=[];
      console.log(err);
    });
   }
+
+  //Agragamos una funcion para eliminar
   deleteUSer(id){
     this.rest.deleteUser(id).subscribe(res => {
       this.getUser();
@@ -57,26 +73,68 @@ unidadEjec:any=[];
       console.log(err);
     });
   }
+
+  //Obtenemos las unidades
   getUnidades(id){
     this.rest.getUnidadUsuario(id).subscribe((resp:{relaciones})=>{
         this.unidadesEjecutoras=resp.relaciones;
         console.log(resp.relaciones);
     })
   }
+
+  //obtenemos las unidades ejecutoras
   getUnidadEjec(){
     this.rest.getUnidadEject().subscribe((resp:{unidades})=>{
        this.unidadEjec= resp.unidades;
     });
   }
+
+
+  //Metodo para postear la
   postUnidadUsuario(){
     this.value.usuarios.forEach(element => {
     this.UnidadUsuario.usuario=  element._id;
     });
-    this.rest.addUnidadUsuario(this.UnidadUsuario).subscribe((resp)=>{
+    console.log('user value', this.UnidadUsuario)
+    this.rest.ComprobarAreaUnidadUsuario(this.UnidadUsuario.usuario, this.UnidadUsuario.unidadEjec).subscribe((res)=>{
+      console.log(res);
+      console.log('post unidades', this.UnidadUsuario)
+      this.rest.addUnidadUsuario(this.UnidadUsuario.usuario,this.UnidadUsuario.unidadEjec).subscribe((resp)=>{
       console.log(resp);
       this.getUnidades(this.UnidadUsuario.usuario);
     },(err:HttpErrorResponse)=>{
       console.log(err);
     })
+    }, (err:HttpErrorResponse)=>{
+     console.log(err.error.message);
+     this.error =err.error.message;
+     document.getElementById('errormsg').style.display='inline';
+     setTimeout(function(){ document.getElementById('errormsg').style.display='none'; }, 3000);
+    })
+  }
+  eliminarArea(id){
+    this.rest.deleteUnidadUsuario(id).subscribe((res)=>{
+     console.log(res);
+    })
+  }
+  public todoList: object[] = [];
+  public maxSizePagination: string = '6';
+//Agregamos la paginacion 
+  public paginationConfig: PaginationInstance = {
+    id: 'advanced',
+    itemsPerPage: 10,
+    currentPage: 1
+  };
+
+  public labels: object = {
+    previousLabel: 'Back',
+    nextLabel: 'Next',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+  };
+
+  public onPageChange(number: number) {
+    this.paginationConfig.currentPage = number;
   }
 }

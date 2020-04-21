@@ -9,10 +9,14 @@ import { UnidEjecComponent } from './unid-ejec/unid-ejec.component';
 import { DirectrizUsuarioComponent } from './components/directriz-usuario/directriz-usuario.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { AgregarPresupuestoComponent } from './components/agregar-presupuesto/agregar-presupuesto.component';
-import { AreaUnidadEjecComponent } from './area-unidad-ejec/area-unidad-ejec.component';
 import { PresupuestolUsuarioComponent } from './components/presupuestol-usuario/presupuestol-usuario.component';
+import { PlaneacionComponent } from './components/planeacion/planeacion.component';
+import { PresupuestacionComponent } from './components/presupuestacion/presupuestacion.component';
+import { DistribucionCuatrimestralComponent } from './components/distribucion-cuatrimestral/distribucion-cuatrimestral.component';
+import {AreaUnidadComponent} from './area-unidad/area-unidad.component';
 
 
+//INICIALIZAMOS LAS RUTAS
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "login" },
   { path: "login", component: LoginComponent },
@@ -24,9 +28,12 @@ const routes: Routes = [
   { path: "registro", component: RegistroComponent },
   { path: "directriz", component: DirectrizComponent },
   { path: "user", component: UserComponent },
-  { path: "unidEjec", component: UnidEjecComponent},
-  { path: "area/unidEjec", component: AreaUnidadEjecComponent},
   {path:"unidadUsuario", component: PresupuestolUsuarioComponent},
+  { path: "unidEjec", component: UnidEjecComponent },
+  {path:"planeacion", component:PlaneacionComponent},
+  {path:"presupuestacion", component:PresupuestacionComponent},
+  {path:"distribucion-cuatrimestral", component:DistribucionCuatrimestralComponent},
+  {path:"area/unidad", component: AreaUnidadComponent},
   { path: "**", pathMatch: "full", redirectTo: "login" },
 
 ];

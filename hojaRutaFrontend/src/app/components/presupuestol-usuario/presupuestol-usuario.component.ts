@@ -8,6 +8,7 @@ import { PaginationInstance } from 'ngx-pagination';
   styleUrls: ['./presupuestol-usuario.component.scss']
 })
 export class PresupuestolUsuarioComponent implements OnInit {
+  //Llamamos las variables necesarias
   constructor(public rest: RestService) { }
   year:any=[];
   pp:any=[];
@@ -16,12 +17,14 @@ export class PresupuestolUsuarioComponent implements OnInit {
     this.getUser();
    this.getArea();
   }
+  //Obtenemos el area
   getArea(){
     this.rest.getProgramaId(localStorage.getItem('area')).subscribe((data:{programas})=>{
       this.pp=data.programas;
-      
+
     });
   }
+  //Obtenemos el usuario
   getUser(){
     this.rest.getUnidUser().subscribe((data:{relaciones})=>{
       this.area= data.relaciones;
@@ -31,6 +34,7 @@ export class PresupuestolUsuarioComponent implements OnInit {
   public todoList: object[] = [];
   public maxSizePagination: string = '6';
 
+  //Inicializamos la paginacion
   public paginationConfig: PaginationInstance = {
     id: 'advanced',
     itemsPerPage: 6,

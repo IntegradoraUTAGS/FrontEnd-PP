@@ -1,5 +1,8 @@
 <app-navbar></app-navbar>
 
+
+
+
 <div class="container mt-5 mb-5">
 
     <div class="directriz text-center">
@@ -27,7 +30,7 @@
 
     <div class="col-mt-18">
         <div class="row">
-
+            <!-- Cargamos las directricez a travez del servicio y también utilizamos la paginacion -->
             <tbody *ngFor="let dire of directriz1.directrices | paginate: paginationConfig">
                 <div class="card mt-5">
                     <h5 class="card-header">Directriz: <span class="text-secondary">Calidad Educativa</span></h5>
@@ -101,6 +104,6 @@
 
 
     </div>
-    <app-footer></app-footer>
+
 
 
