@@ -1,119 +1,156 @@
 <app-navbar></app-navbar>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<table class="table" id="display-tab1">
+
+<div class="container mt-5">
+  <table class="table " id="display-tab1">
     <thead class="thead-green">
-        <tr>
-            <th scope="col">
-                Rol</th>
-            <th scope="col">
-                Email</th>
-            <th scope="col">
-                Nombre</th>
-            <th scope="col">
-                Apellido</th>
-            <th scope="col">
-                Direccion</th>
-            <th scope="col">
-                Eliminar</th>
-            <th scope="col">
-                Actualizar</th>
-        </tr>
+      <tr>
+        <th scope="col">
+          Rol</th>
+        <th scope="col">
+          Email</th>
+        <th scope="col">
+          Nombre</th>
+        <th scope="col">
+          Apellido</th>
+        <th scope="col">
+          Direccion</th>
+        <th scope="col">
+          Eliminar</th>
+        <th scope="col">
+          Actualizar</th>
+      </tr>
     </thead>
     <tbody *ngFor="let el of user.usuarios">
-        <tr>
-            <th scope="col">
-                <input type="text" value="{{el.rol}}" class="actual" name="rol" readonly>
-            </th>
-            <th scope="col">
-                <input type="text" value="{{el.email}}" class="actual" name="email" readonly>
-            </th>
-            <th scope="col">
-                <input type="text" value="{{el.nombre}}" class="actual" name="nombre" readonly>
-            </th>
-            <th scope="col">
-                <input type="text" value="{{el.apellido}}" class="actual" name="apellido" readonly>
-            </th>
-            <th scope="col">
-                <input type="text" value="{{el.direccion}}" class="actual" name="direccion" readonly>
-            </th>
-            <th>
-                <button class="icon-remov" title="delete product" (click)="deleteUSer(el._id)">X</button>
-            </th>
-            <th>
-                <button class="prueba" title="Actualizar" (click)="updateUser(el._id)">
-                  <a class="glyphicon glyphicon-pencil"></a>
-                </button>
-            </th>
-        </tr>
+      <tr>
+        <th scope="col">
+          <input type="text" value="{{el.rol}}" class="actual" name="rol" readonly>
+        </th>
+        <th scope="col">
+          <input type="text" value="{{el.email}}" class="actual" name="email" readonly>
+        </th>
+        <th scope="col">
+          <input type="text" value="{{el.nombre}}" class="actual" name="nombre" readonly>
+        </th>
+        <th scope="col">
+          <input type="text" value="{{el.apellido}}" class="actual" name="apellido" readonly>
+        </th>
+        <th scope="col">
+          <input type="text" value="{{el.direccion}}" class="actual" name="direccion" readonly>
+        </th>
+        <th>
+          <button class="icon-remov" title="delete product" (click)="deleteUSer(el._id)">X</button>
+        </th>
+        <th>
+          <button class="prueba" title="Actualizar" (click)="updateUser(el._id)">
+            <a class="glyphicon glyphicon-pencil"></a>
+          </button>
+        </th>
+      </tr>
     </tbody>
-</table>
+  </table>
+</div>
+
 <div id="display-tab2">
-    <table class="table">
-        <thead class="thead-green">
-            <tr>
-                <th scope="col"> Actualizar</th>
-            </tr>
-        </thead>
-        <tbody *ngFor="let al of value.usuarios">
-            <div class="formulario">
+
+    <h3 class="text-center">Actualizar</h3>
+    <div class="row">
+      <div class="col-6-auto">
+          <table>
+
+            <tbody *ngFor="let al of value.usuarios">
+              <div class="formulario">
                 <!-- Default form contact -->
                 <form class="text-center border border-light p-5">
-                    <!-- departamento -->
-                    <div>
-                        <div class="modal-dialog modal-xl" role="document">
-                            <div class="modal-content" style="padding:10%;position: absolute;">
-                                <p class="h4 mb-4">Usuario</p>
+                  <!-- departamento -->
+                  <div>
+                    <div class=" " role="document">
+                      <div class="modal-content" style="padding:10%;position: absolute;">
+                        <p class="h4 mb-4">Usuario</p>
 
-                                <!-- Name -->
-                                <h5>Email:{{al.email}}</h5>
-                                <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="{{al.email}}" [(ngModel)]="usuario.email" name="usuario">
-                                <h5>Rol:{{al.rol}}</h5>
-                                <select [(ngModel)]="usuario.rol" name="usuario" class="form-control form-control-lg">
-                                    <option value="USER">Usuario</option>
-                                    <option value="ADMIN">Administrador</option>
-                                </select>
-                                <!-- Email -->
-                                <h5>Nombre:{{al.nombre}}</h5>
-                                <input type=" email " id="defaultContactFormEmail " class="form-control mb-4 " placeholder="{{al.nombre}}" [(ngModel)]="usuario.nombre" name="usuario">
-                                <h5>Dirección:{{al.direccion}}</h5>
-                                <input type=" text " id="defaultContactFormEmail " class="form-control mb-4 " placeholder="{{al.direccion}}" [(ngModel)]="usuario.direccion" name="usuario">
+                        <!-- Name -->
+                        <h5>Email:{{al.email}}</h5>
+                        <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="{{al.email}}"
+                          [(ngModel)]="usuario.email" name="usuario">
+                        <h5>Rol:{{al.rol}}</h5>
+                        <select [(ngModel)]="usuario.rol" name="usuario" class="form-control form-control-lg">
+                          <option value="USER">Usuario</option>
+                          <option value="ADMIN">Administrador</option>
+                        </select>
+                        <!-- Email -->
+                        <h5>Nombre:{{al.nombre}}</h5>
+                        <input type=" email " id="defaultContactFormEmail " class="form-control mb-4 " placeholder="{{al.nombre}}"
+                          [(ngModel)]="usuario.nombre" name="usuario">
+                        <h5>Dirección:{{al.direccion}}</h5>
+                        <input type=" text " id="defaultContactFormEmail " class="form-control mb-4 "
+                          placeholder="{{al.direccion}}" [(ngModel)]="usuario.direccion" name="usuario">
 
-                                <!-- Copy -->
-                                <div class="row ">
-                                    <div class="col-md-6 mx-auto d-flex justify-content-center ">
+                        <!-- Copy -->
+                        <div class="row ">
+                          <div class="col-md-6 mx-auto d-flex justify-content-center ">
 
-                                    </div>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="form-group mb-3">
-
-                                            <label>Departamentos:</label>
-                                            <tbody>
-                                                <thead *ngFor="let item of unidadesEjecutoras">
-                                                    <p>{{item.unidadEjec.descripcion |uppercase}}: {{item.unidadEjec.codigo}}</p>
-                                                </thead>
-                                            </tbody>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <select name="" id="" class="form-control" [(ngModel)]="UnidadUsuario.unidadEjec" name="UsuarioUsuario">
-                                                    <option value="{{unidad._id}}" *ngFor="let unidad of this.unidadEjec">{{unidad.descripcion}}</option>
-                                                </select>
-                                                <button class="btn btn-outline-success" type="button" (click)="postUnidadUsuario()">Agregar</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" (click)="updateUserById(al._id)">Save changes</button>
-                                </div>
-                            </div>
+                          </div>
                         </div>
-                    </div>
-                </form>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group mb-3">
+
+                              <label>Departamentos:</label>
+            <tbody>
+              <thead *ngFor="let item of unidadesEjecutoras">
+                <p>{{item.unidadEjec.descripcion |uppercase}}: {{item.unidadEjec.codigo}}</p>
+              </thead>
+            </tbody>
             </div>
-        </tbody>
-    </table>
+            <div class="form-group">
+
+
+              <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Departamento</th>
+                    <th scope="col">Código</th>
+                    <th scope="col">Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr   *ngFor="let unidad of this.unidadEjec" >
+                    <th scope="row">1</th>
+                    <td>{{unidad.descripcion}}</td>
+                    <td>{{unidad.codigo}}</td>
+                    <td>
+                      <button type="button" href="#" class="text-white btn btn-danger ml-3 btn-sm"><i
+                          class="fas fa-trash-alt"></i>
+                        Eliminar</button>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+
+              <div class="input-group">
+                <select name="" id="" class="form-control" [(ngModel)]="UnidadUsuario.unidadEjec" name="UsuarioUsuario">
+                  <option value="{{unidad._id}}" *ngFor="let unidad of this.unidadEjec">{{unidad.descripcion}}</option>
+                </select>
+                <button class="btn btn-outline-success" type="button" (click)="postUnidadUsuario()">Agregar</button>
+              </div>
+            </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="updateUserById(al._id)">Save changes</button>
+            </div>
+            </div>
+            </div>
+            </div>
+            </form>
+            </div>
+            </tbody>
+          </table>
+      </div>
+    </div>
+
 </div>
