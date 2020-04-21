@@ -16,7 +16,7 @@ export class PresupuestacionComponent implements OnInit {
   model:any = {}; 
   model2:any = {}; 
   hideUpdate:boolean = true;
-
+//Metodo de agregar.
   add():void{ 
  
     
@@ -30,7 +30,7 @@ export class PresupuestacionComponent implements OnInit {
 
   } 
 
-
+//Metodo de eliminar
   delete(i):void { 
 
     var answer = confirm('¿Eliminar?'); 
@@ -49,7 +49,7 @@ export class PresupuestacionComponent implements OnInit {
  
 
   myValue; 
-
+//Metodo de editar
   edit(i):void { 
    
     this.hideUpdate = false;
@@ -69,7 +69,7 @@ export class PresupuestacionComponent implements OnInit {
 
  
  
-
+//Metodo de actualizar
   update():void { 
 
     let i = this.myValue; 

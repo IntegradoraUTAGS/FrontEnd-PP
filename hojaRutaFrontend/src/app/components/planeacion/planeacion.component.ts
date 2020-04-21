@@ -50,7 +50,7 @@ export class PlaneacionComponent implements OnInit {
 
  
  
-
+//Metodo para agregar el cual contiene una confirmacion si desea guardar.
   add():void{ 
  
     
@@ -65,7 +65,7 @@ export class PlaneacionComponent implements OnInit {
   } 
 
 
-
+//Metodo de eliminar al igual contienen una confirmacion de eliminar.
   delete(i):void { 
 
     var answer = confirm('¿Eliminar?'); 
@@ -85,6 +85,7 @@ export class PlaneacionComponent implements OnInit {
 
   myValue; 
 
+  //Metodo de editar estara en las cards para editar cada uno.
   edit(i):void { 
    
     this.hideUpdate = false;
@@ -109,7 +110,6 @@ export class PlaneacionComponent implements OnInit {
 
   } 
 
- 
  
 
   update():void { 

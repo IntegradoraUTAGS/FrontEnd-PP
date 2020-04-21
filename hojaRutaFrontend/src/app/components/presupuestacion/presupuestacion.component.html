@@ -1,5 +1,5 @@
 <br>
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs"><!--Esta parte es la nav donde el usuario se puede  mover entre las pags de la hoja de ruta.-->
   <li class="nav-item">
     <a class="nav-link active" href=" planeacion ">Planeación de las Áreas</a>
   </li>
@@ -21,8 +21,9 @@
 
 <div class="agre" >  
  
+ <!--Esta parte es el formulario de llenado de la parte de presupuestacion.-->
 <h1 > Agregar Presupuesto Estimado </h1>
-<form  class="was-validated">
+<form  class="was-validated"><!--contiene la validación, aparece un mensaje en caso de que este vacio.-->
 
  <div class="form-group">
     <label for="exampleFormControlSelect1">Actividad</label>
@@ -56,6 +57,8 @@
      <div class="invalid-feedback">Por favor, rellene este campo.</div>
 </div>
 
+<!--boton que contiene el metodo de agregado.-->
+
       <button type="submit" class="btn btn-success" (click)="add()">Guardar</button>
 
      
@@ -67,7 +70,7 @@
 
 
   <div >
-      
+      <!--El usuario podra consultar mediante cards la informacion.-->
       <h1 >Consultar Presupuesto Estimado </h1>
 
    
@@ -77,7 +80,7 @@
       <div class="card-body">
 
 
-  
+  <!--Se esta colocando los datos que el usuario ingreso en las card.-->
     <h5 class="card-title">Objetivo Estrategico</h5>
     <p class="card-text">{{rutaa.concepto}}</p>
     <h5 class="card-title">Indicador de Objetivo Estrategico</h5>
@@ -86,7 +89,7 @@
     <p class="card-text">{{rutaa.costoTotal }}</p>
     
 
-   
+   <!--los botones realizaran los metodos de editar y eliminar.-->
    <button type="button"  class="btn btn-info "(click)="edit(i)"  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-cog"></i>  Editar</button>
     <button type="button" class="btn btn-danger" (click)="delete(i)" ><i class="fas fa-trash-alt">
     </i>Eliminar</button>
@@ -97,7 +100,7 @@
 
     </div>
   
-
+<!--Se utiliza un modal para el editado de la información.-->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -142,7 +145,7 @@
      <div class="invalid-feedback">Por favor, rellene este campo.</div>
 </div>
 
-      
+<!--Los botones son para guardar la informacion Actualizada y cerrar el modal-->      
 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
       <button type="submit" class="btn btn-success" (click)= "update()">Actualizar</button><br>

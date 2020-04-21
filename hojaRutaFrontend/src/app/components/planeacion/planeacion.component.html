@@ -1,6 +1,6 @@
 
 <div >
-<div > 
+<div > <!--Esta parte es la nav donde el usuario se puede  mover entre las pags de la hoja de ruta.-->
 <br>
 <ul class="nav nav-tabs">
   <li class="nav-item">
@@ -30,12 +30,12 @@
 <div  class="agre"  >
 
   
-<form  class="was-validated">
+<form  class="was-validated"> <!--Se necesita colocar la clase de validate.-->
 <div class="form-group">
      <label for="objetivosestrategicos" > Objetivos Estratégicos</label>
-     <input type="text" class="form-control" id="objetivosestrategicos"name="objetivosestrategicos" [(ngModel)]="model.objetivosestrategicos"placeholder="Ingrese Objetivo" required>
-     <div class="valid-feedback">Valido.</div>
-     <div class="invalid-feedback">Por favor, rellene este campo.</div>
+     <input type="text" class="form-control" id="objetivosestrategicos"name="objetivosestrategicos"
+    [(ngModel)]="model.objetivosestrategicos"placeholder="Ingrese Objetivo" required> <!--Se utiliza en ngModel para poder mandar el dato a la card.-->
+     <div class="valid-feedback">Valido.</div> <!--Esta linea es utilizada para validar que el campo este lleno.-->
 </div>
 
 <div class="form-group">
@@ -80,7 +80,7 @@
      <div class="invalid-feedback">Por favor, rellene este campo.</div>
 </div>
 
-
+<!--El boton realizara la acción de agregado-->
 <div >
 <button type="submit" class="btn btn-success" (click)="add()" >Guardar</button>
 
@@ -97,17 +97,18 @@
 
  
       <div >
-      
+      <!--La información se manda a las card donde se podra consultar.-->
       <h2 class="text-center">Consultar Planeaciones de Áreas </h2>
     
    
       <div class="di2">
-      <div class="card" *ngFor="let rutaa of ruta; let i = index">
+      <div class="card" *ngFor="let rutaa of ruta; let i = index"> <!--se utiliza el ngFor que trae los datos que
+      se guardan en ruta esto se localiza en component.ts.-->
   
       <div class="card-body">
 
 
-  
+  <!--en esta parte se estan imprimiendo los datos dentro de una card que el usuario va agregando.-->
     <h5 class="card-title">Objetivo Estrategico</h5>
     <p class="card-text">{{rutaa.objetivosestrategicos}}</p>
     <h5 class="card-title">Indicador de Objetivo Estrategico</h5>
@@ -124,7 +125,7 @@
     <p class="card-text">{{rutaa.meta2}}</p>
 
 
-   
+   <!--Los botones llaman al metodo de editar y eliminar.-->
     <button type="button"  class="btn btn-info "(click)="edit(i)"  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-cog"></i>  Editar</button>
     <button type="button" class="btn btn-danger" (click)="delete(i)" ><i class="fas fa-trash-alt">
     </i>Eliminar</button>
@@ -138,7 +139,7 @@
 
 
    
-
+<!--En esta parte esta el modal que se utilizara cuando el usuario desee editar el llenado.-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -147,12 +148,13 @@
        
 <div  class="modal-body">
 
+<!--el modal contiene un formulario que coloca los datos dependiendo de lo que dese editar.-->
 <form  class="was-validated">
 <div class="form-group">
      <label for="objetivosestrategicos" > Objetivos Estratégicos</label>
      <input type="text" class="form-control" id="objetivosestrategicos"name="objetivosestrategicos" [(ngModel)]="model.objetivosestrategicos"placeholder="Ingrese Objetivo" required>
      <div class="valid-feedback">Valido.</div>
-     <div class="invalid-feedback">Por favor, rellene este campo.</div>
+     <div class="invalid-feedback">Por favor, rellene este campo.</div>//validación
 </div>
 
 <div class="form-group">
@@ -199,7 +201,7 @@
 
 
 <div >
-
+<!--botones para guardar lo editado y cerrar el modal.-->
 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 <button type="submit" class="btn btn-success"   (click)= "update()">Actualizar</button>
 
