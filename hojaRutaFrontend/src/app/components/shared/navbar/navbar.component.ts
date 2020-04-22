@@ -1,15 +1,16 @@
 import { Component, OnInit } from "@angular/core";
-import { element } from 'protractor';
 import { RestService } from 'src/app/rest.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import { PresupuestolUsuarioComponent } from '../../presupuestol-usuario/presupuestol-usuario.component';
+
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.scss"]
 })
 export class NavbarComponent implements OnInit {
+  /*Obtener el nombre del usuario logeado*/
   usuarioLogeado:any;
+  /*Verificar rol del usuario ya sea admin o user(default) */
   userRol:any;
   constructor(public rest: RestService, public router: Router) {}
 
@@ -29,11 +30,13 @@ export class NavbarComponent implements OnInit {
     });
     this.getUser();
   }
+  /*Funcion para verificar el rol del usuario y poder determinar si tiene acceso a elementos del navbar o no */
   getUser(){
     this.rest.getUserById(localStorage.getItem("_id")).subscribe((data:{usuarios})=>{
       this.userRol=data.usuarios;
       this.userRol.forEach(element => {
          if(element.rol === "ADMIN"){
+           /*Si es administrador los elementos ocultos seran visibles*/
            document.getElementById('userAdmin').style.display="inline";
          }
       });
@@ -41,17 +44,16 @@ export class NavbarComponent implements OnInit {
   }
   
   salirs(){
+    /*Al salir el token y otros componentes seran eliminados para no poder observar datos de la app */
     localStorage.clear();
     this.login();
-  }
-  changeColor(){
-     document.getElementById("Inicio").style.backgroundColor = "green";
   }
 login(){
   if(localStorage.getItem("token") === null ){
     this.router.navigate(['/login']);
 } 
 }
+/*Redireccionar con el uso de router a los diversos componentes */
 presupuesto(){
   this.router.navigate(['/presupuesto']);
 }

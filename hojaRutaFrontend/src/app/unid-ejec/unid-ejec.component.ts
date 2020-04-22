@@ -12,28 +12,31 @@ import { PaginationInstance } from 'ngx-pagination';
 export class UnidEjecComponent implements OnInit {
   
   constructor( private rest : RestService) { }
+  /*guardar valor de los atributos del modelo en la variable */
   UnidadEjecuctora: UnidadEjecuctoraModels = new UnidadEjecuctoraModels();
   unidadEject: any = [];
+  /*Lista de todas las unidades ejecutoras agregadas */
   listUnidEjec:any=[];
   ngOnInit(): void {
     this.getunid();
   }
   async addUnidadEject (){
-      console.log(this.UnidadEjecuctora);
+      /*funcion para agregar una nueva unidad-ejecutora */
       await this.rest.addUnidadEject(this.UnidadEjecuctora).subscribe((data:{}) => {
        this.unidadEject = data; 
        this.getunid();
      },(data : HttpErrorResponse) =>{
-      
+       console.log(data);
     });
 }
 getunid(){
+  /*obtener las unidades-ejecutoras aregadas */
   this.rest.getUnidadEject().subscribe((res:{unidades})=>{
     this.listUnidEjec = res.unidades;
-    console.log(res);
   })
 }
 eliminarUnidad(id){
+  /*funcion para eliminar unidad-ejecutora por id*/
 this.rest.deleteUnidadEject(id).subscribe((resp)=>{
   this.getunid();
 },(err:HttpErrorResponse)=>{
@@ -41,8 +44,9 @@ this.rest.deleteUnidadEject(id).subscribe((resp)=>{
 })
 }
 actualizarUnidad(){
-
+/*En proceso de actualizar una unidad ejecutora */
 }
+/*paginar la cantidad de unidades-ejecutoras que regresara en este caso 5 */
 public todoList: object[] = [];
 public maxSizePagination: string = '6';
 

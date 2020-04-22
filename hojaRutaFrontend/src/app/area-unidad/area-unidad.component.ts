@@ -10,20 +10,24 @@ import { Router } from '@angular/router';
 export class AreaUnidadComponent implements OnInit {
 
   constructor(public rest: RestService, public router:Router) { }
+  /*respuesta de la api se guardara en esta variable */
   area:any=[];
   ngOnInit(): void {
     this.porArea();
   }
   porArea(){
+    /*api que relaciona las unidades-ejecutoras y usuarios*/
     this.rest.getUnidadUsuario(localStorage.getItem('_id')).subscribe((data:{relaciones})=>{
       this.area=data.relaciones;
       console.log(data.relaciones);
     })
   }
+  /*enviara el area seleccionada al localstorage para poder usuar posteriormente */
   ProgramaPorArea(id){
     localStorage.setItem('area', id);  
     this.router.navigate(['/directriz']);
   }
+  /*paginar las respuestas de las areas maximo 4 */
   public todoList: object[] = [];
     public maxSizePagination: string = '6';
   
